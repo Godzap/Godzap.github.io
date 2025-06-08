@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-dark': '#121212',
+                        'stone-med': '#222222',
+                        'parchment': '#dcd4c8',
+                        'gold': '#c89f65',
+                        'gold-dark': '#a18052',
+                        'steel': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        header: ['Cinzel', 'Georgia', 'serif'],
+                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
+                        'inner-dark': 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                    },
+                    textShadow: {
+                        'default': '1px 1px 2px rgba(0,0,0,0.7)',
+                        'gold': '0 0 8px rgba(200, 159, 101, 0.7)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.game-card{background:rgba(20,20,20,0.8);border:1px solid #444;box-shadow:0 8px 32px rgba(0,0,0,0.5), inset 0 2px 8px rgba(0,0,0,0.6);transition:all 0.4s ease;position:relative;overflow:hidden;border-radius:4px}.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right, #c89f65, #a18052);z-index:2}.game-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.7), 0 0 20px rgba(200,159,101,0.3), inset 0 2px 8px rgba(0,0,0,0.6);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.button-buy{background:linear-gradient(to right, #c89f65, #a18052);transition:all 0.3s;text-shadow:1px 1px 2px rgba(0,0,0,0.5);box-shadow:0 2px 4px rgba(0,0,0,0.4)}.button-buy:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(200,159,101,0.4);filter:brightness(1.1)}.stat-highlight{background:rgba(200,159,101,0.15);border:1px dashed #c89f65;padding:2px 8px;border-radius:4px;color:#dcd4c8}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.editor-card{background:rgba(20,20,20,0.9);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.editor-card img{border:1px solid #a18052;box-shadow:0 0 10px rgba(200,159,101,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.grid-cols-auto{grid-template-columns:repeat(auto-fit, minmax(75px, 1fr))}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}.header-bg{background-image:url('Assets/imagens/istockphoto-619260624-612x612.jpg');background-size:cover;background-position:center}
+    </style>
+</head>
+<body class="font-body">
+    <header class="py-4 px-4 header-bg sticky top-0 z-40 shadow-xl border-b-4 border-stone-dark">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-4xl font-header tracking-wider header-text-shadow">
+                        <a href="index.html" class="text-parchment-light">Super Medieval</span> <span class="text-gold">WIKI</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment-light header-text-shadow">
+                    <a href="https://discord.gg/43uf8t7Pyb" class="hover:text-gold transition-colors font-medium tracking-wider">Discord</a>
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3140166045" class="hover:text-gold transition-colors font-medium tracking-wider">Coleção</a>
+                    <a href="" class="hover:text-gold transition-colors font-medium tracking-wider">Youtube</a>
+                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Reddit</a>
+                    <a href="https://x.com/Super_Medieval" class="hover:text-gold transition-colors font-medium tracking-wider">Twitter</a>
+                    
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="mobile-menu lg:hidden">
+                    <button id="mobileMenuToggle" class="text-parchment">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
+        <div class="container mx-auto p-8 h-full flex flex-col">
+            <div class="flex justify-end mb-16">
+                <button id="closeMobileMenu" class="text-parchment text-3xl"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="flex flex-col items-center space-y-8 text-xl">
+                <a href="index.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Home</a>
+                <a href="armas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armas</a>
+                <a href="classes.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Classes</a>
+                <a href="armaduras.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
+                <a href="atributos.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
+                <a href="mecanicas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Mecânicas</a>
+            </nav>
+        </div>
+    </div>
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        <section id="classes">
+            <h2 class="text-4xl font-header text-center text-parchment mb-6 tracking-wider header-text">O Chamado do Herói: Classes e Especializações</h2>
+            <div class="header-divider w-1/2 mx-auto mb-8"></div>
+            <div class="max-w-4xl mx-auto p-6 rounded-lg news-card">
+                <p class="mb-4">Ao atingir o Nível 5, sua jornada como um aventureiro sem rumo chega ao fim e um novo caminho se inicia. Você terá a oportunidade de se dedicar a uma vocação, uma Classe que definirá seu estilo de combate, suas habilidades e seu papel no mundo.</p>
+                <p class="mb-6">Esta é uma escolha permanente e definirá o restante da sua trajetória. Pense bem, pois não há como voltar atrás.</p>
+
+                <div class="p-4 rounded-lg bg-stone-med/30 border-l-4 border-gold mb-6">
+                    <h5 class="font-bold text-parchment tracking-wider">Pontos de Talento</h5>
+                    <p class="mt-2">A cada 5 níveis após o nível 5 (ou seja, nos níveis 5, 10, 15, e assim por diante), você receberá 1 Ponto de Talento. Estes pontos são usados na Árvore de Talentos específica da sua classe para aprimorar suas habilidades ou desbloquear novos poderes, permitindo que você se especialize em um dos caminhos disponíveis.</p>
+                </div>
+
+                <h3 class="text-3xl font-header text-gold mb-6 text-center">As Classes do Reino</h3>
+
+                <!-- Guerreiro -->
+                <div class="mb-12">
+                    <h4 class="text-2xl font-header text-parchment mb-3">Guerreiro</h4>
+                    <p class="mb-4">O mestre da linha de frente, o bastião de qualquer grupo. O Guerreiro é um especialista em combate corporal, capaz tanto de proteger seus aliados com uma defesa impenetrável quanto de esmagar seus inimigos com força bruta.</p>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Habilidade Primária: Corrida</h5><p class="mt-1">Aumenta sua velocidade de movimento em uma grande quantidade por um curto período de tempo. Perfeito para iniciar um combate ou recuar taticamente.</p></div>
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Habilidade Suprema (Ultimate): Grito de Guerra</h5><p class="mt-1">Você libera um urro intimidador que afeta todos ao seu redor (exceto membros do seu grupo). Inimigos atingidos ficam apavorados, incapazes de atacar ou correr por um momento, e têm suas telas tremendo. Além disso, você recebe um bônus em sua Vida e Estamina máximas baseado no número de inimigos que acertou.</p></div>
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Árvore de Talentos: Os Caminhos do Guerreiro</h5><ul class="list-disc list-inside mt-2 text-steel"><li class="text-parchment">O Protetor: Focado em ser um "tanque". Os talentos deste caminho aumentam a eficácia de seus bloqueios, tornando-o uma muralha de escudos.</li><li class="text-parchment">O Carrasco: Focado em dano massivo. Os talentos deste caminho aumentam o dano de suas armas, transformando-o em uma máquina de matar.</li><li class="text-parchment">O Combatente: Um caminho híbrido. Foca no equilíbrio entre dano e defesa, criando um guerreiro versátil que pode se adaptar a qualquer situação.</li></ul></div>
+                    </div>
+                </div>
+
+                <!-- Ladino -->
+                <div class="mb-12">
+                    <h4 class="text-2xl font-header text-parchment mb-3">Ladino</h4>
+                    <p class="mb-4">Mestre das sombras, da precisão e da trapaça. O Ladino usa velocidade, furtividade e astúcia para controlar o campo de batalha, seja eliminando um alvo crucial sem ser visto ou duelando com uma elegância mortal.</p>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Habilidade Primária: Emboscada</h5><p class="mt-1">Após um curto período de canalização, você fica invisível enquanto estiver agachado e não atacar. O disfarce perfeito para se posicionar para um ataque surpresa.</p></div>
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Habilidade Suprema (Ultimate): Hora do Abate</h5><p class="mt-1">Por 15 segundos, sua sede de sangue atinge o ápice. Seus ataques não consomem mais Estamina e a janela de tempo para aparar golpes (parry) é significativamente aumentada, permitindo uma ofensiva implacável.</p></div>
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Árvore de Talentos: Os Caminhos do Ladino</h5><ul class="list-disc list-inside mt-2 text-steel"><li class="text-parchment">O Assassino: Focado na arte da furtividade e golpes mortais. Os talentos deste caminho aprimoram sua invisibilidade, e aumentam massivamente o dano de adagas e ataques pelas costas.</li><li class="text-parchment">O Duelista: Focado no combate frontal com graça e precisão. Os talentos deste caminho são voltados para o uso de rapieras, aprimorando a eficácia do seu aparar e concedendo contra-ataques devastadores.</li><li class="text-parchment">A Cobra: Focado em usar venenos e atrapalhar os inimigos. Os talentos deste caminho são voltados para a aplicação de venenos, seja a aplicando em sua adaga ou com nuvéns de fumaça venenosas.</li></ul></div>
+                    </div>
+                </div>
+
+                <!-- Clérigo -->
+                <div class="mb-12">
+                    <h4 class="text-2xl font-header text-parchment mb-3">Clérigo</h4>
+                    <p class="mb-4">Um canal para o poder divino, o Clérigo pode ser tanto um guardião benevolente quanto um juiz impiedoso. Sua força reside em sua fé, manifestada através de bênçãos que podem salvar vidas ou maldições que podem arruiná-las.</p>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Habilidade Primária: Bênção</h5><p class="mt-1">Você canaliza poder divino em um alvo. O efeito base desta bênção é modificado drasticamente pela sua árvore de talentos.</p></div>
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Habilidade Suprema (Ultimate): Clamor aos Céus</h5><p class="mt-1">Você invoca uma intervenção divina em uma grande área ao seu redor. Esta habilidade aplica sua Bênção (ou Maldição) em área, remove todos os efeitos negativos de aliados e revive imediatamente quaisquer membros do grupo que estiverem caídos no chão.</p></div>
+                        <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-gold tracking-wider">Árvore de Talentos: A Fé Tríplice</h5><p class="mt-1">A árvore de talentos do Clérigo é única, pois ela redefine completamente o efeito de sua habilidade "Bênção".</p><ul class="list-disc list-inside mt-2 text-steel"><li class="text-parchment">O Guardião Divino (Cura): Transforma a "Bênção" em uma poderosa cura que restaura a vida dos aliados.</li><li class="text-parchment">O Inquisidor (Buffs): Transforma a "Bênção" em um encantamento que concede bônus de dano e resistência a um aliado.</li><li class="text-parchment">O Corrompido(Debuffs/Dano): Transforma a "Bênção" em uma "Maldição" que causa dano ao longo do tempo e atormenta seus inimigos com efeitos negativos.</li></ul></div>
+                    </div>
+                </div>
+                
+                <!-- Arqueiro -->
+                <div>
+                    <h4 class="text-2xl font-header text-parchment mb-3">Arqueiro</h4>
+                    <div class="p-4 rounded-lg bg-stone-dark/70 border-2 border-dashed border-steel/50">
+                        <p class="text-center text-steel italic">Esta classe está atualmente em desenvolvimento. Mais informações sobre o mestre do arco e flecha serão reveladas em breve.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="Assets/js/main.js" defer></script>
+</body>
+</html> 

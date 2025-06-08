@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Império do Sol - Super Medieval Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-dark': '#121212',
+                        'stone-med': '#222222',
+                        'parchment': '#dcd4c8',
+                        'gold': '#c89f65',
+                        'gold-dark': '#a18052',
+                        'steel': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        header: ['Cinzel', 'Georgia', 'serif'],
+                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
+                        'inner-dark': 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                    },
+                    textShadow: {
+                        'default': '1px 1px 2px rgba(0,0,0,0.7)',
+                        'gold': '0 0 8px rgba(200, 159, 101, 0.7)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
+    </style>
+    <style>
+        /* Imperio do Sol Theme - Baseado na paleta do símbolo */
+        .imperio-theme {
+            background-color: #4A1C1C; /* Vermelho Imperial Profundo */
+            color: #EAE0D1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath fill='%232a201a' fill-opacity='0.4' d='M0,26a26,26 0 1,0 52,0a26,26 0 1,0 -52,0'/%3E%3C/svg%3E");
+        }
+        .imperio-theme .header-text-imperio {
+            color: #DAB56F; /* Ouro Imperial */
+            text-shadow: 0 0 10px rgba(218, 181, 111, 0.7), 0 0 25px rgba(139, 0, 0, 0.8);
+        }
+        .imperio-theme .card-imperio {
+            background-color: rgba(42, 21, 21, 0.85); /* Vermelho Escuro Translúcido */
+            border: 1px solid #8B0000; /* Carmesim Imperial */
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.2), inset 0 0 15px rgba(0,0,0,0.6);
+        }
+        .imperio-theme .button-imperio {
+            background-color: transparent;
+            color: #DAB56F; /* Ouro Imperial */
+            border: 1px solid #8B0000;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .imperio-theme .button-imperio:hover {
+            background-color: #8B0000;
+            color: #EAE0D1; /* Tom Pergaminho para melhor contraste no hover */
+            box-shadow: 0 0 15px rgba(218, 181, 111, 0.5);
+            transform: translateY(-2px);
+        }
+        .imperio-theme .modal-content-imperio {
+            background-color: #2A1515; /* Vermelho Imperial (Fundo do Modal) */
+            border: 2px solid #8B0000;
+            color: #EAE0D1;
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+        }
+        .imperio-theme .text-gold-solar {
+             color: #DAB56F; /* Ouro Imperial */
+        }
+        .imperio-theme .text-imperio-highlight {
+            color: #DAB56F; /* Ouro Imperial */
+            font-weight: bold;
+        }
+        .imperio-theme .header-divider-imperio {
+            background: linear-gradient(to right, transparent, #8B0000, transparent);
+            opacity: 0.6;
+        }
+        .imperio-theme .quote-imperio {
+            border-left: 3px solid #DAB56F; /* Ouro Imperial */
+            background-color: rgba(218, 181, 111, 0.1);
+            font-style: italic;
+            color: #EAE0D1;
+        }
+    </style>
+</head>
+<body class="font-body imperio-theme">
+    <!-- Header -->
+    <header class="py-6 px-4 relative">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center">
+                    <div class="text-2xl font-header tracking-wider flex flex-col">
+                        <a href="index.html" class="hover:text-gold transition-colors">
+                            <span class="text-parchment">SUPER MEDIEVAL</span>
+                            <span class="text-gold mt-[-5px]">WIKI</span>
+                        </a>
+                    </div>
+                </div>
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment">
+                    <a href="index.html" class="hover:text-gold transition-colors font-medium tracking-wider">Home</a>
+                    <a href="armas.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
+                    <a href="classes.html" class="hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
+                    <a href="armaduras.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armaduras</a>
+                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Atributos</a>
+                </nav>
+                <div class="mobile-menu lg:hidden">
+                    <button id="mobileMenuToggle" class="text-parchment"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+            <div class="header-divider w-full h-px mt-3"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
+        <div class="container mx-auto p-8 h-full flex flex-col">
+            <div class="flex justify-end mb-16">
+                <button id="closeMobileMenu" class="text-parchment text-3xl"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="flex flex-col items-center space-y-8 text-xl">
+                <a href="index.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Home</a>
+                <a href="armas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armas</a>
+                <a href="classes.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Classes</a>
+                <a href="armaduras.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
+                <a href="atributos.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        <div class="max-w-4xl mx-auto p-6 rounded-lg card-imperio space-y-8">
+            
+            <div class="flex justify-center -mt-2 mb-4">
+                <img src="Assets/Imagens/Imperiodosol.png" alt="Símbolo do Império do Sol" class="w-40 h-auto">
+            </div>
+
+            <!-- Sobre a Facção -->
+            <section>
+                <h2 class="text-4xl font-header text-center header-text-imperio mb-4 tracking-wider">O Império do Sol</h2>
+                <div class="header-divider-imperio w-1/2 mx-auto mb-8"></div>
+                <p class="text-lg leading-relaxed mb-6 text-justify">
+                    Se seus olhos já contemplaram as majestosas torres douradas de Solaria ou a marcha disciplinada dos Cavaleiros do Sol, você conhece o poder do Império do Sol. Uma teocracia absolutista onde fé e estado são inseparáveis, e a luz do sol é venerada como manifestação divina. Governado por um Papa manipulado por um Conselho de Cardeais, a sociedade é rigidamente ordenada em torno da devoção.
+                </p>
+                <p class="text-lg leading-relaxed mb-6 text-justify">
+                   Sua força reside em três pilares: os <strong class="text-imperio-highlight">Cavaleiros do Sol</strong>, a elite militar; a temida <strong class="text-imperio-highlight">Inquisição</strong>, que mantém a pureza doutrinária; e a <strong class="text-imperio-highlight">Legião</strong>, o exército com milhares de homens. A motivação declarada do Império é espalhar a luz e a ordem, eliminando a escuridão e a heresia, nutrindo um ódio ancestral pela Corte Carmesim.
+                </p>
+                <p class="text-lg leading-relaxed text-justify quote-imperio p-4 rounded-lg">
+                    Viajante, ao pisar nos domínios do Império do Sol, lembre-se: a luz que ilumina também pode cegar. Observe suas palavras, pois os olhos da Inquisição estão sempre vigilantes, e a heresia é purificada com fogo.
+                </p>
+            </section>
+
+            <!-- Botões para abrir Modais -->
+            <section>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button data-modal-target="relacoes-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-book-open mr-2"></i> Relações
+                    </button>
+                    <button data-modal-target="recrutamento-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-book-open mr-2"></i> Recrutamento
+                    </button>
+                    <button data-modal-target="historia-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-book-open mr-2"></i> Ver História
+                    </button>  
+                    <button data-modal-target="cultura-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-sun mr-2"></i> Cultura
+                    </button>
+                    <button data-modal-target="estrutura-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-sitemap mr-2"></i> Hierarquia
+                    </button>
+                    <button data-modal-target="objetivos-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-crosshairs mr-2"></i> Objetivos
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modais -->
+    <!-- História Modal -->
+    <div id="historia-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-imperio max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="historia-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gold-solar text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-imperio mb-6 text-center tracking-wider">A Origem do Império</h3>
+            <div class="space-y-6 text-justify">
+                <p class="text-lg">O Império do Sol surgiu das cinzas da Era da Escuridão, um tempo em que o mundo estava submerso em trevas sob o domínio do Primogênito vampírico. Das profundezas dessa escuridão, surgiu um santo abençoado pelo próprio sol, destinado a mudar o destino do mundo.</p>
+
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-fist-raised fa-fw mr-2"></i>O Iluminado e a Alvorada</h4>
+                    <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base">Este santo, cujo nome verdadeiro foi perdido e hoje é chamado de <strong class="text-imperio-highlight">"O Iluminado"</strong>, confrontou o Primogênito em uma batalha épica de nove dias. Ao fim, O Iluminado derrotou o senhor dos vampiros, amaldiçoando-o e a todos os seus descendentes a queimar sob a luz do sol.</p>
+                </div>
+
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-book-open fa-fw mr-2"></i>O Legado e o Desaparecimento</h4>
+                     <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
+                     <div class="font-light text-base space-y-3">
+                        <p>O Iluminado, no entanto, não buscava adoração. Ele ensinou que o sol era a manifestação física do poder divino. Após estabelecer os primeiros templos e treinar discípulos, ele desapareceu misteriosamente, assim como o Primogênito.</p>
+                        <p>Alguns dizem que ambos pereceram de ferimentos mútuos, outros acreditam que transcenderam para continuar sua batalha eterna em outro plano de existência.</p>
+                     </div>
+                </div>
+
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-chess-rook fa-fw mr-2"></i>A Ascensão do Império</h4>
+                    <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base">Os discípulos continuaram seu trabalho, transformando o culto solar em uma religião organizada. Com o crescimento de sua influência e poder político, a Igreja Solar e o Estado se fundiram, dando origem ao Império do Sol como é conhecido hoje.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cultura Modal -->
+    <div id="cultura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-imperio max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="cultura-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gold-solar text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-imperio mb-6 text-center tracking-wider">Cultura e Dogma Solar</h3>
+            <div class="space-y-6">
+                <p class="text-lg text-justify">A cultura do Império do Sol é profundamente moldada por sua religião, que permeia todos os aspectos da vida cotidiana, desde a arte e arquitetura até as práticas sociais e proibições.</p>
+                
+                <!-- Práticas Religiosas -->
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-book-dead fa-fw mr-2"></i>Práticas Religiosas</h4>
+                    <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
+                    <ul class="space-y-4 text-base font-light">
+                        <li>
+                            <strong class="text-imperio-highlight text-lg flex items-center"><i class="fas fa-sun fa-fw mr-3 text-gold-solar/70"></i>Adoração Solar</strong>
+                            <p class="mt-1 pl-8 text-justify">Os cidadãos são obrigados a realizar orações ao sol nascente e poente. Templos são construídos com aberturas estratégicas para que os raios de sol iluminem o altar principal em momentos chave do dia e do ano.</p>
+                        </li>
+                        <li>
+                            <strong class="text-imperio-highlight text-lg flex items-center"><i class="fas fa-gavel fa-fw mr-3 text-gold-solar/70"></i>Flagelação Ritual</strong>
+                            <p class="mt-1 pl-8 text-justify">Prática comum entre os mais fervorosos como forma de purificação e oferenda ao sol. Acredita-se que ao liberar energia vital (sangue), o devoto devolve ao sol parte da energia recebida, completando um ciclo sagrado. A intensidade varia do simbólico ao severo.</p>
+                        </li>
+                        <li>
+                            <strong class="text-imperio-highlight text-lg flex items-center"><i class="fas fa-calendar-alt fa-fw mr-3 text-gold-solar/70"></i>Festivais Solares</strong>
+                            <p class="mt-1 pl-8 text-justify">O calendário é marcado por festivais que coincidem com eventos astronômicos:</p>
+                            <ul class="list-disc list-inside space-y-1 mt-2 pl-10 text-parchment/90">
+                                <li><span class="font-semibold text-gold-solar">Festival do Sol Ascendente (Solstício de Verão):</span> Procissões, banquetes e renovação de votos de fidelidade.</li>
+                                <li><span class="font-semibold text-gold-solar">Dia da Iluminação:</span> Celebra a vitória sobre o Primogênito com recriações da batalha e rituais de fogo.</li>
+                                <li><span class="font-semibold text-gold-solar">Vigília da Luz (Solstício de Inverno):</span> Fogueiras são mantidas acesas durante a noite mais longa para simbolizar a resistência da luz.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tabus e Proibições -->
+                <div class="p-4 rounded-lg border border-red-900/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-ban fa-fw mr-2"></i>Tabus e Proibições</h4>
+                    <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
+                    <ul class="space-y-3 text-base font-light">
+                        <li class="flex items-start"><i class="fas fa-moon fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Rituais Noturnos:</strong> Qualquer ritual religioso realizado à noite é considerado potencialmente herético e sujeito à investigação pela Inquisição.</p></li>
+                        <li class="flex items-start"><i class="fas fa-skull-crossbones fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Simpatia Vampírica:</strong> Expressar simpatia ou fascínio por vampiros ou pela Corte Carmesim é um crime grave, punido com execução pública.</p></li>
+                        <li class="flex items-start"><i class="fas fa-question-circle fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Questionamento Doutrinário:</strong> Desafiar publicamente os ensinamentos oficiais da Igreja Solar é heresia, com punições que vão da penitência forçada à execução.</p></li>
+                        <li class="flex items-start"><i class="fas fa-eye-slash fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Ocultação da Marca Solar:</strong> Tentar esconder ou remover a marca da conversão é um ato de apostasia, tratado com extrema severidade.</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estrutura Modal -->
+    <div id="estrutura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-imperio max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="estrutura-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gold-solar text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-imperio mb-6 text-center tracking-wider">Estrutura e Hierarquia</h3>
+            <div class="text-lg space-y-6 text-justify">
+                <p>O Império do Sol é uma teocracia absolutista onde a estrutura de poder é uma fusão entre o governo religioso e militar, com uma hierarquia rígida que define o lugar de cada indivíduo.</p>
+                
+                <!-- Hierarquia Religiosa e de Poder -->
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-crown fa-fw mr-2"></i>Estrutura de Poder</h4>
+                    <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light mb-4">A estrutura religiosa do Império segue uma hierarquia rígida, que é também a espinha dorsal do poder político:</p>
+                    <ul class="space-y-3 text-base font-light">
+                        <li>
+                            <strong class="text-imperio-highlight text-lg"><i class="fas fa-cross fa-fw mr-2 text-gold-solar/70"></i>Papa Solar:</strong>
+                            <p class="mt-1 pl-6">Nominalmente o líder supremo do Império, considerado infalível em questões de fé. Veste-se exclusivamente de branco e dourado, e raramente aparece em público sem elaboradas cerimônias.</p>
+                        </li>
+                        <li>
+                            <strong class="text-imperio-highlight text-lg"><i class="fas fa-users-cog fa-fw mr-2 text-gold-solar/70"></i>Conselho Cardinalício:</strong>
+                            <p class="mt-1 pl-6">O verdadeiro centro de poder do Império. Cada Cardeal controla um aspecto diferente da governança imperial (finanças, relações exteriores, etc.). São identificados por suas vestes vermelhas e douradas.</p>
+                        </li>
+                        <li>
+                            <strong class="text-imperio-highlight text-lg"><i class="fas fa-place-of-worship fa-fw mr-2 text-gold-solar/70"></i>Arcebispos, Bispos e Padres:</strong>
+                            <p class="mt-1 pl-6">Administram regiões, cidades e paróquias, formando a base administrativa da Igreja e do Estado.</p>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- Ordens Militares -->
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-khanda fa-fw mr-2"></i>Ordens Militares</h4>
+                    <p class="font-light mb-4">A ascensão na sociedade imperial e o poder militar são obtidos ao entrar em uma das três grandes ordens, renunciando a laços e bens pessoais para se tornar um instrumento do Império.</p>
+                    <div class="space-y-4">
+                        <div class="p-3 rounded-lg bg-black/20 border-l-2 border-gold-solar/50">
+                            <strong class="block text-xl text-gold-solar"><i class="fas fa-shield-alt fa-fw mr-2"></i>Cavaleiros do Sol</strong>
+                            <p class="font-light text-base mt-1 pl-7">A elite militar do Império, liderada por <strong class="font-semibold text-parchment">Rodrigo Melo</strong>. São guerreiros que combinam habilidades marciais com fervor religioso, usando armaduras douradas e especializados no combate a ameaças sobrenaturais, como vampiros.</p>
+                        </div>
+                         <div class="p-3 rounded-lg bg-black/20 border-l-2 border-gold-solar/50">
+                            <strong class="block text-xl text-gold-solar"><i class="fas fa-search fa-fw mr-2"></i>Inquisição Solar</strong>
+                            <p class="font-light text-base mt-1 pl-7">Liderada por <strong class="font-semibold text-parchment">Maníaco da lança</strong>, a Inquisição aplica as leis religiosas e combate heresias. Possuem autoridade judicial e policial para investigar, julgar e executar suspeitos, sendo temidos por seus métodos implacáveis.</p>
+                        </div>
+                         <div class="p-3 rounded-lg bg-black/20 border-l-2 border-gold-solar/50">
+                            <strong class="block text-xl text-gold-solar"><i class="fas fa-users fa-fw mr-2"></i>Legionários Solares</strong>
+                            <p class="font-light text-base mt-1 pl-7">Comandados por <strong class="font-semibold text-parchment">Fica flenys</strong>, formam o exército regular do Império. Responsáveis pela defesa territorial e campanhas militares, são menos prestigiosos que os Cavaleiros, mas representam a numerosa espinha dorsal do poderio militar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Relações Modal -->
+    <div id="relacoes-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-imperio max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="relacoes-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gold-solar text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-imperio mb-6 text-center tracking-wider">Relações</h3>
+            <div class="text-lg space-y-6 text-justify">
+                <p>Como defensores autoproclamados da luz e da pureza, o Império do Sol mantém relações complexas e frequentemente hostis com as outras facções.</p>
+
+                <div class="space-y-4">
+                    <div class="p-4 rounded-lg border border-red-900/30 bg-black/20">
+                        <h4 class="text-2xl font-header text-imperio-highlight mb-2">Corte Carmesim</h4>
+                        <div class="header-divider-imperio w-1/4 mb-3 opacity-50"></div>
+                        <div class="space-y-2 text-base font-light leading-relaxed">
+                            <p>A relação com a Corte Carmesim é de ódio aberto e irreconciliável. O Império vê os vampiros como abominações que representam a antítese de tudo o que consideram sagrado. A doutrina imperial ensina que os vampiros são criaturas corrompidas que devem ser purificadas pelo fogo sagrado do sol.</p>
+                            <p>Caçadores de vampiros são heróis celebrados na cultura imperial, com ordens religiosas inteiras dedicadas à localização e destruição de ninhos vampíricos. Qualquer cidadão imperial suspeito de colaborar com vampiros enfrenta a Inquisição e, quase invariavelmente, execução pública.</p>
+                            <p>A participação conjunta na expedição a Nornheim foi aceita apenas com extrema relutância e após intensos debates no Conselho Cardinalício, com a justificativa de que "até as trevas podem servir à luz quando devidamente controladas".</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                        <h4 class="text-2xl font-header text-imperio-highlight mb-2">Herdeiros de Malzahir</h4>
+                        <div class="header-divider-imperio w-1/4 mb-3 opacity-50"></div>
+                        <div class="space-y-2 text-base font-light leading-relaxed">
+                            <p>As relações com os Herdeiros são tensas mas pragmáticas. O Império considera a fé dos Herdeiros como equivocada mas não inerentemente maligna, classificando-a oficialmente como "erro teológico" em vez de heresia completa.</p>
+                            <p>Comerciantes dos Herdeiros são permitidos em territórios imperiais sob regulamentações estritas, incluindo proibições de proselitismo e requisitos para respeitar costumes locais. Diplomaticamente, o Império mantém embaixadores na corte do Sultão, embora estes frequentemente sirvam mais como espiões e missionários disfarçados do que como verdadeiros diplomatas.</p>
+                            <p>Espinograto, em particular, estudou extensivamente a cultura militar dos Herdeiros, adaptando algumas de suas táticas de cavalaria para uso pelos Cavaleiros do Sol, embora jamais admita publicamente esta influência "pagã".</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 rounded-lg border border-gray-500/30 bg-black/20">
+                        <h4 class="text-2xl font-header text-imperio-highlight mb-2">Guilda dos Aventureiros</h4>
+                        <div class="header-divider-imperio w-1/4 mb-3 opacity-50"></div>
+                        <div class="space-y-2 text-base font-light leading-relaxed">
+                            <p>O Império mantém uma relação ambivalente com a Guilda dos Aventureiros. Por um lado, aprecia seus serviços práticos e sua disposição para enfrentar ameaças sobrenaturais. Por outro, desconfia de sua neutralidade e falta de compromisso ideológico.</p>
+                            <p>Missionários imperiais frequentemente tentam converter membros da Guilda, vendo-os como potenciais agentes da fé solar devido a sua mobilidade e influência. A lenda de All-mer é oficialmente reconhecida pelo Império, embora sua teologia o reinterprete como um "servo do sol" em vez de uma figura divina independente.</p>
+                            <p>A Inquisição mantém vigilância sobre as atividades da Guilda em território imperial, particularmente preocupada com sua tendência a preservar conhecimentos que o Império consideraria perigosos ou heréticos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recrutamento Modal -->
+    <div id="recrutamento-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-imperio max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="recrutamento-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gold-solar text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-imperio mb-6 text-center tracking-wider">Recrutamento e Organização Social</h3>
+            <div class="space-y-6">
+                <p class="text-lg text-justify">A entrada e a ascensão na sociedade do Império do Sol são processos rigorosamente controlados, definidos pela devoção e utilidade à causa solar.</p>
+                
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3">Fiéis Comuns</h4>
+                    <ul class="space-y-4 text-base">
+                        <li>
+                            <strong class="text-imperio-highlight block text-lg"><i class="fas fa-fire fa-fw mr-2"></i>Como se Tornar:</strong>
+                            <p class="mt-1 font-light text-justify">O caminho mais básico para a cidadania imperial é através da conversão e aceitação da fé solar. Isso envolve passar pelo Ritual da Marca, onde o emblema do sol é aplicado nas costas do convertido com ferro em brasa. Esta marca é permanente e simboliza a pertença eterna à luz.</p>
+                        </li>
+                        <li>
+                            <strong class="text-imperio-highlight block text-lg"><i class="fas fa-hands-helping fa-fw mr-2"></i>O Pacto:</strong>
+                            <p class="mt-1 font-light text-justify">Em troca da proteção, ordem e propósito oferecidos pelo Império, os fiéis comuns devem obedecer às leis solares, pagar impostos (frequentemente na forma de trabalho ou serviço), e participar dos rituais coletivos, incluindo a flagelação periódica para "devolver energia vital ao sol".</p>
+                        </li>
+                        <li>
+                            <strong class="text-imperio-highlight block text-lg"><i class="fas fa-user-cog fa-fw mr-2"></i>Papel:</strong>
+                            <p class="mt-1 font-light text-justify">Formam a base da sociedade imperial, trabalhando como artesãos, agricultores, comerciantes e servos. Embora sua vida seja regida por regras estritas, muitos encontram conforto na estrutura clara e na certeza doutrinária que o Império proporciona.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-imperio-highlight mb-3">Ordens Militares e Religiosas</h4>
+                    <div class="space-y-4 text-base">
+                        <div>
+                            <p class="font-light text-justify"><strong class="text-imperio-highlight">Como se Tornar:</strong> A ascensão além do status de fiel comum geralmente ocorre através do recrutamento para uma das três grandes ordens do Império. Cada uma tem seus próprios critérios e processos:</p>
+                            <ul class="list-none space-y-3 mt-3 pl-4">
+                                <li><strong class="text-gold-solar block"><i class="fas fa-shield-alt fa-fw mr-2"></i>Cavaleiros do Sol:</strong><span class="font-light text-justify"> Recrutam jovens que demonstram excepcional aptidão física, devoção e potencial de liderança. O treinamento é brutal e inclui não apenas combate, mas também doutrinação intensa e rituais de purificação.</span></li>
+                                <li><strong class="text-gold-solar block"><i class="fas fa-gavel fa-fw mr-2"></i>Inquisição:</strong><span class="font-light text-justify"> Seleciona candidatos com mentes afiadas, lealdade inquestionável e um zelo particular pela pureza doutrinária. O treinamento enfatiza teologia, detecção de heresia e técnicas de interrogatório.</span></li>
+                                <li><strong class="text-gold-solar block"><i class="fas fa-users fa-fw mr-2"></i>Legião:</strong><span class="font-light text-justify"> A mais acessível das três ordens, aceita qualquer fiel que demonstre disciplina, força e disposição para servir. O treinamento é rigoroso, mas menos seletivo que o dos Cavaleiros.</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong class="text-imperio-highlight block text-lg"><i class="fas fa-scroll fa-fw mr-2"></i>O Juramento:</strong>
+                            <p class="mt-1 font-light text-justify">A entrada em qualquer uma destas ordens envolve votos solenes de serviço, obediência e devoção. Os membros renunciam a laços familiares anteriores, propriedades pessoais e autonomia individual, tornando-se instrumentos da vontade do Império.</p>
+                        </div>
+                        <div>
+                            <strong class="text-imperio-highlight block text-lg"><i class="fas fa-sitemap fa-fw mr-2"></i>Papel:</strong>
+                            <p class="mt-1 font-light text-justify">Estas ordens formam a espinha dorsal do poder imperial. Os Cavaleiros do Sol são a elite militar e os campeões da fé; a Inquisição mantém a pureza doutrinária e caça hereges; a Legião defende as fronteiras e executa as campanhas militares do Império.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-center italic text-gold-solar/80 pt-4 text-base">Compreender esta estrutura é essencial para navegar no Império. Cada nível tem suas próprias expectativas, privilégios e restrições, e a devoção ao sol – seja genuína ou performática – é a moeda que determina o valor de cada indivíduo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Objetivos Modal -->
+    <div id="objetivos-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-imperio max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="objetivos-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gold-solar text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-imperio mb-6 text-center tracking-wider">Objetivos e Ambições</h3>
+            <div class="text-lg space-y-4 text-justify">
+                 <p>Com o surgimento de monstros nas fronteiras e os sinais de que algo catastrófico se aproxima, o Império do Sol estabeleceu objetivos específicos, alguns declarados publicamente e outros mantidos em segredo.</p>
+                <ul class="space-y-6 mt-4">
+                    <li class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                        <strong class="text-imperio-highlight text-xl flex items-center"><i class="fas fa-gem fa-fw mr-3"></i>Recuperação dos Órgãos Sagrados</strong>
+                        <div class="header-divider-imperio w-1/4 my-2 opacity-50"></div>
+                        <div class="text-base font-light space-y-3">
+                            <p>O objetivo principal do Império na expedição a Nornheim é recuperar os órgãos sagrados do Iluminado, que foram preservados após sua misteriosa desaparição. Segundo textos antigos guardados nos arquivos secretos do Vaticano Solar, estes órgãos (coração, olhos, mãos e cérebro) contêm fragmentos do poder do iluminado.</p>
+                            <p>Acredita-se que, se reunidos e adequadamente consagrados, estes órgãos poderiam:</p>
+                            <ul class="list-disc list-inside space-y-1 mt-2 pl-4 text-parchment/90">
+                                <li>Restaurar o poder original do iluminado.</li>
+                                <li>Criar um novo Iluminado capaz de enfrentar as ameaças atuais.</li>
+                                <li>Estabelecer uma era de domínio solar permanente.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
+                        <strong class="text-imperio-highlight text-xl flex items-center"><i class="fas fa-globe-americas fa-fw mr-3"></i>Conversão Universal</strong>
+                        <div class="header-divider-imperio w-1/4 my-2 opacity-50"></div>
+                        <div class="text-base font-light space-y-3">
+                            <p>Um objetivo de longo prazo do Império, intensificado pela crise atual, é a conversão de toda a humanidade à fé solar. Os líderes imperiais veem as catástrofes recentes como punição divina pela persistência de "falsas crenças" e "tolerância ao mal".</p>
+                            <p>A expedição a Nornheim é vista como oportunidade para demonstrar a superioridade da fé solar, convertendo membros de outras facções através do exemplo e de "milagres" que esperam realizar com a ajuda de relíquias descobertas no arquipélago.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="Assets/js/main.js" defer></script>
+</body>
+</html>

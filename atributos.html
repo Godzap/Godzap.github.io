@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos - Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-dark': '#121212',
+                        'stone-med': '#222222',
+                        'parchment': '#dcd4c8',
+                        'gold': '#c89f65',
+                        'gold-dark': '#a18052',
+                        'steel': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        header: ['Cinzel', 'Georgia', 'serif'],
+                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ-h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
+                        'inner-dark': 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                    },
+                    textShadow: {
+                        'default': '1px 1px 2px rgba(0,0,0,0.7)',
+                        'gold': '0 0 8px rgba(200, 159, 101, 0.7)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.game-card{background:rgba(20,20,20,0.8);border:1px solid #444;box-shadow:0 8px 32px rgba(0,0,0,0.5), inset 0 2px 8px rgba(0,0,0,0.6);transition:all 0.4s ease;position:relative;overflow:hidden;border-radius:4px}.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right, #c89f65, #a18052);z-index:2}.game-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.7), 0 0 20px rgba(200,159,101,0.3), inset 0 2px 8px rgba(0,0,0,0.6);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.button-buy{background:linear-gradient(to right, #c89f65, #a18052);transition:all 0.3s;text-shadow:1px 1px 2px rgba(0,0,0,0.5);box-shadow:0 2px 4px rgba(0,0,0,0.4)}.button-buy:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(200,159,101,0.4);filter:brightness(1.1)}.stat-highlight{background:rgba(200,159,101,0.15);border:1px dashed #c89f65;padding:2px 8px;border-radius:4px;color:#dcd4c8}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.editor-card{background:rgba(20,20,20,0.9);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.editor-card img{border:1px solid #a18052;box-shadow:0 0 10px rgba(200,159,101,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.grid-cols-auto{grid-template-columns:repeat(auto-fit, minmax(75px, 1fr))}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}.header-bg{background-image:url('Assets/imagens/istockphoto-619260624-612x612.jpg');background-size:cover;background-position:center}
+    </style>
+</head>
+<body class="font-body">
+    <header class="py-4 px-4 header-bg sticky top-0 z-40 shadow-xl border-b-4 border-stone-dark">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-4xl font-header tracking-wider header-text-shadow">
+                        <a href="index.html" class="text-parchment-light">Super Medieval</span> <span class="text-gold">WIKI</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment-light header-text-shadow">
+                    <a href="https://discord.gg/43uf8t7Pyb" class="hover:text-gold transition-colors font-medium tracking-wider">Discord</a>
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3140166045" class="hover:text-gold transition-colors font-medium tracking-wider">Coleção</a>
+                    <a href="" class="hover:text-gold transition-colors font-medium tracking-wider">Youtube</a>
+                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Reddit</a>
+                    <a href="https://x.com/Super_Medieval" class="hover:text-gold transition-colors font-medium tracking-wider">Twitter</a>
+                    
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="mobile-menu lg:hidden">
+                    <button id="mobileMenuToggle" class="text-parchment">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+    <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
+        <div class="container mx-auto p-8 h-full flex flex-col">
+            <div class="flex justify-end mb-16">
+                <button id="closeMobileMenu" class="text-parchment text-3xl"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="flex flex-col items-center space-y-8 text-xl">
+                <a href="index.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Home</a>
+                <a href="armas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armas</a>
+                <a href="classes.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Classes</a>
+                <a href="armaduras.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
+                <a href="atributos.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
+                <a href="mecanicas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Mecânicas</a>
+            </nav>
+        </div>
+    </div>
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        <section id="atributos">
+            <h2 class="text-4xl font-header text-center text-parchment mb-6 tracking-wider header-text">Atributos e Habilidades</h2>
+            <div class="header-divider w-1/2 mx-auto mb-8"></div>
+            <div class="max-w-4xl mx-auto p-6 rounded-lg news-card">
+                <h3 class="text-2xl font-header text-gold mb-4 text-center">Guia Básico do seu Personagem: Atributos, Recursos e Combate</h3>
+                <p class="mb-6">Bem-vindo, aventureiro! Este guia completo é sua principal fonte de informação para entender como construir e dominar seu personagem. Aqui você aprenderá sobre os Atributos fundamentais, os Recursos que você precisa gerenciar para sobreviver, e as Mecânicas de Combate que separam os amadores dos guerreiros lendários.</p>
+                
+                <h4 class="text-xl font-header text-gold mb-3">Parte 1: Os Atributos Primários</h4>
+                <p class="mb-4">Tudo começa aqui. Seus atributos são a base do seu personagem.</p>
+                <div class="p-4 rounded-lg bg-stone-med/30 border-l-4 border-gold mb-4">
+                    <h5 class="font-bold text-parchment tracking-wider">Ganhando Pontos de Atributo</h5>
+                    <ul class="list-disc list-inside mt-2 text-steel">
+                        <li><span class="text-parchment">Criação de Personagem:</span> Ao criar seu personagem, você recebe 10 pontos para distribuir livremente.</li>
+                        <li><span class="text-parchment">Avançando de Nível:</span> A cada nível que você avança, você ganha mais 3 pontos para fortalecer seu personagem como desejar.</li>
+                    </ul>
+                </div>
+                <h5 class="font-bold text-parchment tracking-wider mb-3">Os Seis Atributos Fundamentais</h5>
+                <div class="space-y-3 mb-6">
+                    <p><strong class="text-gold">Força:</strong> Aumenta o dano de armas pesadas (machados, martelos) e sua Estabilidade em 2.</p>
+                    <p><strong class="text-gold">Agilidade:</strong> Aumenta o dano com armas de longa distância (arcos, bestas) e sua Velocidade de Movimento.</p>
+                    <p><strong class="text-gold">Destreza:</strong> Aumenta o dano de armas rápidas (adagas, rapieiras) e sua Estamina em 2.</p>
+                    <p><strong class="text-gold">Inteligência:</strong> Aumenta sua Mana máxima e a regeneração dela. Essencial para clérigos e alquimistas.</p>
+                    <p><strong class="text-gold">Focus:</strong> Melhora sua proficiência em criação de itens e na coleta de recursos.</p>
+                    <p><strong class="text-gold">Constituição:</strong> Aumenta seus Pontos de Vida máximos em 3, tornando-o mais resistente.</p>
+                </div>
+                
+                <h4 class="text-xl font-header text-gold mb-3">Parte 2: Recursos e Status Vitais</h4>
+                <p class="mb-4">Seus Atributos Primários influenciam diretamente suas barras de recursos e status, que você deve gerenciar constantemente para sobreviver e lutar com eficácia.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="p-4 rounded-lg bg-stone-med/30"><h5 class="font-bold text-parchment">Vida</h5><p>A sua barra de saúde. Se chegar a zero, você morre. <span class="text-steel block mt-1">Aumento: Você ganha +3 de Vida máxima para cada ponto em Constituição.</span></p></div>
+                    <div class="p-4 rounded-lg bg-stone-med/30"><h5 class="font-bold text-parchment">Estamina</h5><p>Sua energia para ações físicas como correr, atacar e rolar. <span class="text-steel block mt-1">Aumento: Você ganha +2 de Estamina máxima para cada ponto em Destreza.</span></p></div>
+                    <div class="p-4 rounded-lg bg-stone-med/30"><h5 class="font-bold text-parchment">Mana</h5><p>Seu recurso para conjurar magias e usar habilidades especiais. <span class="text-steel block mt-1">Aumento: Você ganha +2 de Mana máxima para cada ponto em Inteligência.</span><span class="text-steel block mt-1">Regeneração: Regenera passivamente 1% do seu máximo por minuto.</span></p></div>
+                    <div class="p-4 rounded-lg bg-stone-med/30"><h5 class="font-bold text-parchment">Estabilidade (Postura)</h5><p>Representa seu equilíbrio em combate. Se chegar a zero, você cai no chão, vulnerável. <span class="text-steel block mt-1">Aumento: Você ganha +2 de Estabilidade máxima para cada ponto em Força.</span><span class="text-gold block mt-1">Dica: Quebrar a Estabilidade com armas contundentes é a melhor forma de derrotar inimigos com armaduras pesadas.</span></p></div>
+                    <div class="p-4 rounded-lg bg-stone-med/30 md:col-span-2"><h5 class="font-bold text-parchment">Fome e Sede</h5><p>Suas barras de nutrição. Mantê-las cheias concede bônus (buffs) importantes.</p></div>
+                </div>
+                
+                <h4 class="text-xl font-header text-gold mb-3">Parte 3: A Arte da Batalha (Habilidades Desbloqueáveis)</h4>
+                <p class="mb-4">Investir em seus atributos não apenas aumenta seus status, mas também desbloqueia habilidades que mudam o jogo. Isso acontece através dos Patamares de Atributo, bônus especiais concedidos ao atingir os níveis 10, 25, 50, 80 e 100 em um atributo.</p>
+                <p class="mb-4">Abaixo estão as habilidades do primeiro Patamar (Nível 10).</p>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-parchment tracking-wider">Aparar (Parry)</h5><p class="mt-1">Uma manobra de alto risco para desviar um golpe e atordoar o inimigo.</p><p class="mt-2"><span class="stat-highlight">Requisito: 10 de Força.</span></p><p class="mt-2 text-sm text-steel">Como Ativar: Pressione R com uma arma apropriada. Se um ataque inimigo conectar na janela de 0.1 segundos, você o apara.</p><p class="mt-2 text-sm text-gold">Recompensa: O oponente fica atordoado e seu próximo golpe nele causa +50% de dano.</p></div>
+                    <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-parchment tracking-wider">Rolamento (Dodge Roll)</h5><p class="mt-1">A principal ferramenta para se esquivar de dano e se reposicionar.</p><p class="mt-2"><span class="stat-highlight">Requisito: 10 de Destreza.</span></p><p class="mt-2 text-sm text-steel">Como Ativar: Pressione F. Você fica imune a dano durante a maior parte da animação.</p><p class="mt-2 text-sm text-gold">Vulnerabilidade: Cuidado, pois você fica vulnerável por um breve momento no final do rolamento.</p></div>
+                    <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-parchment tracking-wider">Defesa Perfeita (Perfect Block)</h5><p class="mt-1">Bloquear um ataque no momento exato para anular o dano sem custo de Estamina.</p><p class="mt-2"><span class="stat-highlight">Requisito: 10 de Constituição.</span></p><p class="mt-2 text-sm text-steel">Como Ativar: Bloqueie exatamente 0.1 segundos antes do impacto.</p><p class="mt-2 text-sm text-gold">Efeito: O bloqueio é perfeito, não custando Estamina e não sofrendo dano.</p></div>
+                    <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-parchment tracking-wider">Trocar Instância da Arma</h5><p class="mt-1">Adapte sua arma para explorar as fraquezas do inimigo.</p><p class="mt-2"><span class="stat-highlight">Requisito: 10 de Inteligência.</span></p><p class="mt-2 text-sm text-steel">Como Ativar: Pressione E + Botão Esquerdo do Mouse.</p><p class="mt-2 text-sm text-gold">Efeito: Alterna o tipo de dano da sua arma (ex: de Cortante para Perfurante).</p></div>
+                    <div class="p-4 rounded-lg bg-stone-dark/50 border border-stone-med"><h5 class="font-bold text-parchment tracking-wider">Uso de Bancadas de Trabalho</h5><p class="mt-1">Acesso a estações de criação avançadas.</p><p class="mt-2"><span class="stat-highlight">Requisito: 10 de Focus (Foco).</span></p><p class="mt-2 text-sm text-steel">Efeito: Permite o uso de Bancadas de Trabalho para criar itens.</p></div>
+                </div>
+                <p class="mt-6">Agora que você compreende como Atributos, Recursos e Habilidades se conectam, você está pronto para forjar seu caminho. Experimente diferentes combinações, pratique suas manobras e torne-se uma lenda.</p>
+            </div>
+        </section>
+    </main>
+    <script src="Assets/js/main.js" defer></script>
+</body>
+</html> 

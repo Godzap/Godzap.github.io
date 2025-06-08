@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilda dos Aventureiros - Super Medieval Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-dark': '#121212',
+                        'stone-med': '#222222',
+                        'parchment': '#dcd4c8',
+                        'gold': '#c89f65',
+                        'gold-dark': '#a18052',
+                        'steel': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        header: ['Cinzel', 'Georgia', 'serif'],
+                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZHRoPSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
+                        'inner-dark': 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                    },
+                    textShadow: {
+                        'default': '1px 1px 2px rgba(0,0,0,0.7)',
+                        'gold': '0 0 8px rgba(200, 159, 101, 0.7)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
+    </style>
+    <style>
+        .guilda-theme {
+            background-color: #2A312B; /* Verde muito escuro para o fundo geral */
+            color: #dcd4c8; /* Cor de pergaminho para texto */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%236B6E70' fill-opacity='0.06'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .guilda-theme .header-text-guilda {
+            color: #dcd4c8; /* Texto do cabeçalho em pergaminho para contraste */
+            text-shadow: 0 0 8px rgba(220, 212, 200, 0.4);
+        }
+        .guilda-theme .card-guilda {
+            background-color: #4A4E52; /* Fundo do painel em cinza-aço escuro */
+            border: 1px solid #6B6E70; /* Borda de metal escuro */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(0,0,0,0.8);
+        }
+        .guilda-theme .button-guilda {
+            background-color: transparent;
+            color: #BCC6CC; /* Cinza claro para texto do botão */
+            border: 1px solid #8A8D8F; /* Borda de metal */
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .guilda-theme .button-guilda:hover {
+            background-color: rgba(188, 198, 204, 0.1);
+            color: #E0E6E9; /* Cinza mais claro no hover */
+            border-color: #BCC6CC;
+            box-shadow: 0 0 12px rgba(188, 198, 204, 0.3);
+            transform: translateY(-2px);
+        }
+        .guilda-theme .modal-content-guilda {
+            background-color: #383E42; /* Fundo do modal em cinza-aço escuro */
+            border: 2px solid #6B6E70; /* Borda de metal escuro */
+            color: #dcd4c8;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+        }
+        .guilda-theme .text-bronze { 
+             color: #BCC6CC; /* Cinza claro para destaques */
+        }
+        .guilda-theme .text-guilda-highlight {
+            color: #dcd4c8; /* Destaque principal como pergaminho */
+            font-weight: bold;
+        }
+        .guilda-theme .header-divider-guilda {
+            background: linear-gradient(to right, transparent, #8A8D8F, transparent);
+            opacity: 0.7;
+        }
+        .guilda-theme .quote-guilda {
+            border-left: 3px solid #8A8D8F; /* Borda da citação em cinza */
+            background-color: rgba(10, 10, 10, 0.2);
+            font-style: italic;
+            color: #dcd4c8;
+        }
+    </style>
+</head>
+<body class="font-body guilda-theme">
+    <!-- Header -->
+    <header class="py-6 px-4 relative">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center">
+                    <div class="text-2xl font-header tracking-wider flex flex-col">
+                        <a href="../index.html" class="hover:text-gold transition-colors">
+                            <span class="text-parchment">SUPER MEDIEVAL</span>
+                            <span class="text-gold mt-[-5px]">WIKI</span>
+                        </a>
+                    </div>
+                </div>
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment">
+                    <a href="index.html" class="hover:text-gold transition-colors font-medium tracking-wider">Home</a>
+                    <a href="armas.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
+                    <a href="classes.html" class="hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
+                    <a href="armaduras.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armaduras</a>
+                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Atributos</a>
+                </nav>
+                <div class="mobile-menu lg:hidden">
+                    <button id="mobileMenuToggle" class="text-parchment"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+            <div class="header-divider w-full h-px mt-3"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
+        <div class="container mx-auto p-8 h-full flex flex-col">
+            <div class="flex justify-end mb-16">
+                <button id="closeMobileMenu" class="text-parchment text-3xl"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="flex flex-col items-center space-y-8 text-xl">
+                 <a href="../index.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Home</a>
+                <a href="../armas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armas</a>
+                <a href="../classes.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Classes</a>
+                <a href="../armaduras.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
+                <a href="../atributos.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        <div class="max-w-4xl mx-auto p-6 rounded-lg card-guilda space-y-8">
+            
+            <div class="flex justify-center -mt-2 mb-4">
+                <img src="Assets/Imagens/GuildaDosAventureiross.png" alt="Símbolo da Guilda dos Aventureiros" class="w-40 h-auto">
+            </div>
+
+            <!-- Sobre a Facção -->
+            <section>
+                <h2 class="text-4xl font-header text-center header-text-guilda mb-4 tracking-wider">A Guilda dos Aventureiros</h2>
+                <div class="header-divider-guilda w-1/2 mx-auto mb-8"></div>
+                <p class="text-lg leading-relaxed mb-6 text-justify">
+                    Se você já cruzou as estradas de Veridia, provavelmente encontrou alguém usando um medalhão com o simbolo de uma espada na frente de uma rosa dos ventos. Talvez este indivíduo tenha ajudado a consertar sua carroça quebrada, oferecido proteção contra bandidos, ou simplesmente compartilhado histórias fascinantes sobre terras distantes ao redor de uma fogueira. Você acabou de conhecer um membro da Guilda dos Aventureiros – possivelmente a organização mais respeitada e, paradoxalmente, menos compreendida do continente.
+                </p>
+                <p class="text-lg leading-relaxed mb-6 text-justify">
+                   Diferente das outras grandes facções que dominam a política de Veridia, a Guilda dos Aventureiros não busca poder territorial, riquezas ou conversões ideológicas. Não possuem exércitos, não cobram impostos e não exigem juramentos de lealdade exclusiva. Em vez disso, oferecem algo cada vez mais raro neste mundo dividido: <strong class="text-guilda-highlight">ajuda sem julgamento, conhecimento sem censura, e um refúgio de neutralidade</strong> em tempos de conflito.
+                </p>
+                <p class="text-lg leading-relaxed text-justify quote-guilda p-4 rounded-lg">
+                    Fundada sobre os ensinamentos de All-mer – uma figura quase messiânica que muitos comparam a um santo que caminhou entre os mortais – a Guilda é uma irmandade de indivíduos dedicados a fazer o bem pelo bem, explorar o inexplorado, e preservar conhecimentos que outras facções poderiam considerar inconvenientes ou perigosos.
+                </p>
+            </section>
+
+            <!-- Botões para abrir Modais -->
+            <section>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <button data-modal-target="historia-modal" class="button-guilda w-full py-3 rounded text-center">
+                        <i class="fas fa-book-open mr-2"></i> História
+                    </button>
+                    <button data-modal-target="filosofia-modal" class="button-guilda w-full py-3 rounded text-center">
+                        <i class="fas fa-hand-holding-heart mr-2"></i> Recrutamento
+                    </button>
+                    <button data-modal-target="estrutura-modal" class="button-guilda w-full py-3 rounded text-center">
+                        <i class="fas fa-sitemap mr-2"></i> Hierarquia
+                    </button>  
+                    <button data-modal-target="atividades-modal" class="button-guilda w-full py-3 rounded text-center">
+                        <i class="fas fa-hiking mr-2"></i> Cultura
+                    </button>
+                    <button data-modal-target="relacoes-modal" class="button-guilda w-full py-3 rounded text-center">
+                        <i class="fas fa-users mr-2"></i> Relações
+                    </button>
+                    <button data-modal-target="recrutamento-modal" class="button-guilda w-full py-3 rounded text-center">
+                        <i class="fas fa-user-plus mr-2"></i> Objetivos
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="historia-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="historia-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">História e Fundação</h3>
+            <div class="space-y-6 text-justify">
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-seedling fa-fw mr-2"></i>As Raízes da Guilda</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">A Inspiração de All-mer <span class="font-light text-base text-gray-400">(150-180 D.I.)</span></h5>
+                    <p class="font-light text-base mb-3">A história da Guilda dos Aventureiros começa não com uma declaração formal ou um decreto real, mas com as jornadas de um único indivíduo extraordinário. Aproximadamente cinquenta anos após o fim da Era da Escuridão, quando o mundo ainda se recuperava do domínio vampírico e as novas facções começavam a consolidar poder, surgiu uma figura que seria conhecida simplesmente como <span class="text-bronze">All-mer</span>.</p>
+                    <p class="font-light text-base mb-3">Diferente dos líderes faccionários que buscavam território e seguidores, All-mer viajava sozinho ou com pequenos grupos temporários, oferecendo ajuda onde era necessária sem exigir lealdade ou pagamento. Relatos da época descrevem-no como um homem de aparência comum mas presença magnética, capaz de inspirar confiança imediata mesmo em estranhos.</p>
+                    <p class="font-light text-base mb-3">Durante aproximadamente três décadas, All-mer percorreu o continente, realizando atos que variavam do mundano ao aparentemente milagroso:</p>
+                    <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                        <li class="font-light text-base">Mediou conflitos entre comunidades divididas por lealdades faccionárias.</li>
+                        <li class="font-light text-base">Curou doentes quando médicos tradicionais haviam falhado.</li>
+                        <li class="font-light text-base">Ensinou técnicas de cultivo que permitiram colheitas em terras anteriormente estéreis.</li>
+                        <li class="font-light text-base">Defendeu vilarejos contra bandidos e criaturas selvagens.</li>
+                        <li class="font-light text-base">Preservou conhecimentos antigos que novas autoridades tentavam suprimir.</li>
+                    </ul>
+                    <p class="font-light text-base  mb-4">O mais notável era sua recusa em se alinhar com qualquer facção, mesmo quando oferecido posições de poder. "A verdadeira luz não pertence a nenhum templo específico," dizia ele, "assim como a verdadeira bondade não serve a nenhuma bandeira."</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">A Ascensão e o Legado <span class="font-light text-base text-gray-400">(180 D.I.)</span></h5>
+                    <p class="font-light text-base mb-3">Após décadas de serviço abnegado, All-mer reuniu seus seguidores mais próximos – um grupo diversificado de <span class="text-bronze">doze indivíduos</span> de todas as origens – em um local agora conhecido como <span class="text-bronze">Clareira da Ascensão</span>. Ali, segundo relatos preservados por seus discípulos, ele compartilhou uma visão perturbadora do futuro: ciclos de conflito que eventualmente levariam o mundo à beira da destruição.</p>
+                    <p class="font-light text-base  mb-3">"O que divido não pode ser unido," teria dito All-mer. "O que separo não pode ser reunido. Mas vocês, que escolheram caminhar entre os divididos, podem ser a ponte quando as margens parecerem mais distantes."</p>
+                    <p class="font-light text-base mb-3">Após transmitir seus ensinamentos finais, All-mer supostamente ascendeu ao plano astral em um pilar de luz suave, deixando para trás apenas suas vestes e um <span class="text-bronze">medalhão de bronze</span> simples – o primeiro medalhão da Guilda, que serviria de modelo para todos os subsequentes.</p>
+                    <p class="font-light text-base  mb-4">O que poucos sabem é que esta ascensão não foi sem consequências. Todos os defeitos e fraquezas de All-mer – as pequenas imperfeições que o tornavam humano – não puderam acompanhá-lo. Em vez disso, manifestaram-se fisicamente na forma de uma <span class="text-bronze">cruz</span>, um objeto que contém um mal primordial e que permanece escondido em algum lugar do mundo, possivelmente em <span class="text-bronze">Nornheim</span>.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Os Primeiros Aventureiros <span class="font-light text-base text-gray-400">(181-200 D.I.)</span></h5>
+                    <p class="font-light text-base mb-3">Os doze discípulos originais, inspirados pelo exemplo de All-mer e unidos por sua experiência compartilhada, formaram o núcleo do que viria a se tornar a Guilda dos Aventureiros. Inicialmente, não tinham estrutura formal ou nome oficial – eram simplesmente conhecidos como <span class="text-bronze">"Os Seguidores do Caminho"</span>, viajantes que continuavam o trabalho de seu mentor.</p>
+                    <p class="font-light text-base mb-3">Durante aproximadamente duas décadas, este grupo cresceu organicamente, atraindo outros que compartilhavam seus valores. Estabeleceram pequenos abrigos em encruzilhadas importantes e desenvolveram um sistema rudimentar de comunicação através de mensageiros dedicados.</p>
+                    <p class="font-light text-base mb-3">O nome <span class="text-bronze">"Guilda dos Aventureiros"</span> surgiu quase por acidente. Um cronista imperial, documentando a assistência prestada por estes indivíduos durante uma epidemia em <span class="text-bronze">198 D.I.</span>, referiu-se a eles como "uma guilda de aventureiros que não conhece fronteiras". O termo capturou a essência do grupo e foi gradualmente adotado por seus próprios membros.</p>
+                </div>
+    
+
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-landmark fa-fw mr-2"></i>Estabelecimento e Expansão</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">A Primeira Casa <span class="font-light text-base text-gray-400">(200-220 D.I.)</span></h5>
+                    <p class="font-light text-base mb-3">No ano <span class="text-bronze">200 D.I.</span>, os Seguidores do Caminho haviam crescido o suficiente para necessitar de uma base permanente. Usando recursos doados por comunidades agradecidas e seu próprio trabalho, construíram a primeira Casa dos Aventureiros, essa que futuramente viria a se tornar <span class="text-bronze">Bremem</span>, a capital da Guilda dos Aventureiros, um local estratégico próximo às fronteiras das principais facções emergentes.</p>
+                    <p class="font-light text-base mb-3">Esta primeira instalação, modesta em comparação com os padrões atuais, estabeleceu o modelo para todas as futuras Casas da Guilda:</p>
+                    <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                        <li class="font-light text-base">Um salão comunal onde viajantes podiam compartilhar refeições e histórias.</li>
+                        <li class="font-light text-base">Quartos simples mas confortáveis para membros em trânsito.</li>
+                        <li class="font-light text-base">Uma biblioteca para preservar conhecimentos e registros.</li>
+                        <li class="font-light text-base">Uma enfermaria para tratar feridos e doentes.</li>
+                        <li class="font-light text-base">Oficinas para manutenção de equipamentos.</li>
+                    </ul>
+                    <p class="font-light text-base  mb-4">Durante este período, a organização começou a formalizar suas práticas. O <span class="text-bronze">Juramento do Aventureiro</span> foi codificado, baseado em frases atribuídas a All-mer. O sistema de classificação de missões surgiu como uma ferramenta prática para distribuir tarefas de acordo com a dificuldade e experiência necessária.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">O Reconhecimento Oficial <span class="font-light text-base text-gray-400">(221 D.I.)</span></h5>
+                    <p class="font-light text-base mb-3">Um ponto de virada na história da Guilda ocorreu em <span class="text-bronze">221 D.I.</span>, quando membros da organização salvaram uma caravana imperial atacada por bandidos, entre cujos passageiros estava um <span class="text-bronze">Cardeal do Império do Sol</span> viajando incógnito.</p>
+                    <p class="font-light text-base  mb-4">Impressionado com a eficiência e o desinteresse dos salvadores, o Cardeal concedeu à Guilda reconhecimento oficial como entidade neutra – o primeiro de muitos acordos similares que eventualmente seriam firmados com todas as principais facções. Este reconhecimento trouxe legitimidade, mas também escrutínio. A Guilda teve que navegar cuidadosamente para manter sua independência enquanto estabelecia relações de trabalho com poderes frequentemente em conflito entre si.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">A Grande Expansão <span class="font-light text-base text-gray-400">(230-300 D.I.)</span></h5>
+                    <p class="font-light text-base mb4">As décadas seguintes viram a transformação da Guilda de um grupo relativamente pequeno de idealistas para uma rede continental de profissionais respeitados. Novas Casas foram estabelecidas em cidades importantes, e o sistema de Postos Avançados começou a conectar até mesmo as comunidades mais remotas. Durante este período, as três subfacções – <span class="text-bronze">Exploradores, Pesquisadores e Resolvedores</span> – emergiram organicamente conforme membros começaram a especializar-se em diferentes tipos de missões. O que começou como designações informais eventualmente evoluiu para as divisões estruturadas que existem hoje.</p>
+                </div>
+
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-crown fa-fw mr-2"></i>Lideranças e Lendas</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">A Ascensão de Bawnanable <span class="font-light text-base text-gray-400">(715 D.I.)</span></h5>
+                    <p class="font-light text-base mb-3">A história recente da Guilda foi marcada pela ascensão de seu atual Mestre, <span class="text-bronze">Bawnanable</span>. Anteriormente um Resolvedor de renome conhecido por sua habilidade em desatar os nós mais complexos de conflitos interpessoais e políticos, Bawnanable não buscava liderança.</p>
+                    <p class="font-light text-base mb-3">A oportunidade surgiu em circunstâncias trágicas. Em <span class="text-bronze">715 D.I.</span>, o então Mestre da Guilda, <span class="text-bronze">Orion Truthseeker</span>, liderou pessoalmente uma missão de ranque S para investigar relatos perturbadores de anomalias dimensionais nas fronteiras orientais. A equipe inteira desapareceu, posteriormente confirmada como a primeira vítima do que seria identificado como <span class="text-bronze">Nexus</span>, uma das entidades dimensionais.</p>
+                    <p class="font-light text-base  mb-4">Como membro mais antigo do conselho consultivo, Bawnanable assumiu liderança temporária durante a crise resultante. Sua calma inabalável e julgamento equilibrado durante este período tumultuado impressionaram tanto seus pares que, quando chegou o momento da eleição formal, foi escolhido por unanimidade – um evento sem precedentes na história da Guilda. Sob sua liderança, a Guilda tem navegado os desafios crescentes apresentados pelas manifestações de entidades dimensionais e o gradual declínio da <span class="text-bronze">Yggdrasil</span>, mantendo sua neutralidade enquanto adapta suas operações para enfrentar ameaças de escala sem precedentes.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Tartaruga e o Mistério de Nornheim <span class="font-light text-base text-gray-400">(720-Presente)</span></h5>
+                    <p class="font-light text-base mb-3">Nenhuma história moderna da Guilda estaria completa sem mencionar <span class="text-bronze">Tartaruga</span>, o lendário explorador que atualmente detém o raro ranque S. Seu apelido, derivado de sua abordagem metódica e resiliente, esconde uma figura de profundidade e mistério consideráveis.</p>
+                    <p class="font-light text-base mb-3">Tartaruga ganhou notoriedade inicialmente por suas explorações meticulosas de ruínas antigas e locais perigosos que outros consideravam inacessíveis. Seus mapas são considerados obras-primas de precisão, e seus relatórios de campo estabeleceram novos padrões para documentação.</p>
+                    <p class="font-light text-base mb-4">Nos últimos anos, entretanto, Tartaruga tem demonstrado um interesse quase obsessivo pelo arquipélago de <span class="text-bronze">Nornheim</span> – um interesse que precede os eventos catastróficos recentes e as manifestações das entidades dimensionais. Mais intrigante ainda é seu conhecimento aparentemente intuitivo do arquipélago, como se já tivesse estado lá antes, embora nenhum registro de tal viagem exista nos extensos arquivos da Guilda.</p>
+                    <p class="font-light text-base mb-4">Quando a expedição conjunta a Nornheim foi proposta durante a Grande Reunião, Tartaruga foi a escolha óbvia para liderar o contingente da Guilda. Sua familiaridade com o objetivo, combinada com sua reputação impecável entre todas as facções, fez dele o candidato ideal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="filosofia-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="filosofia-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Recrutamento</h3>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-user-plus fa-fw mr-2"></i>O Caminho do Recrutamento</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">O processo de ingresso na Guilda dos Aventureiros é notavelmente mais acessível que em outras facções, refletindo sua filosofia inclusiva.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Requisitos Básicos</h5>
+                    <p class="font-light text-base mb-3">Para ser considerado para associação, um candidato deve demonstrar:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Competência Mínima:</strong> Proficiência básica em pelo menos uma habilidade útil, seja combate, artesanato, conhecimento acadêmico ou qualquer outra aptidão prática.</li>
+                        <li class="font-light text-base"><strong>Alinhamento Ético:</strong> Disposição para seguir o código da Guilda, particularmente os princípios de <span class="text-bronze">ajuda desinteressada</span> e respeito pela diversidade.</li>
+                        <li class="font-light text-base"><strong>Autonomia:</strong> Capacidade de operar independentemente e tomar decisões responsáveis em campo.</li>
+                    </ul>
+                    <p class="font-light text-base mb-4 italic">Notavelmente ausentes estão requisitos relacionados a origem, status social, afiliações anteriores ou crenças religiosas – fatores que frequentemente determinam elegibilidade em outras facções.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">O Processo de Avaliação</h5>
+                    <p class="font-light text-base mb-3">A avaliação de candidatos é conduzida por Aventureiros de ranque B ou superior e tipicamente inclui:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Entrevista Inicial:</strong> Discussão sobre motivações, experiências passadas e expectativas.</li>
+                        <li class="font-light text-base"><strong>Demonstração Prática:</strong> O candidato deve demonstrar pelo menos uma habilidade útil para missões da Guilda. Exemplos incluem:
+                            <ul class="list-disc list-inside space-y-1 mt-1 ml-6">
+                                <li class="font-light text-sm">Combate: Capacidade de executar um rolamento evasivo, aparar um golpe, realizar uma defesa perfeita</li>
+                                <li class="font-light text-sm">Artesanato: Construir ou reparar um item útil</li>
+                                <li class="font-light text-sm">Magia: Trocar de instância em uma arma encantada</li>
+                                <li class="font-light text-sm">Conhecimento: Identificar corretamente plantas, criaturas ou fenômenos relevantes</li>
+                            </ul>
+                        </li>
+                        <li class="font-light text-base"><strong>Missão de Teste:</strong> Participação em uma missão de ranque D sob supervisão, para avaliar desempenho em condições reais.</li>
+                        <li class="font-light text-base"><strong>Revisão por Pares:</strong> Feedback de membros que interagiram com o candidato durante o processo.</li>
+                    </ul>
+                    <p class="font-light text-base mb-4 italic">Não existe uma "nota de aprovação" fixa – os avaliadores consideram o potencial geral e a compatibilidade com os valores da Guilda, não apenas habilidade técnica.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Cerimônia de Iniciação</h5>
+                    <p class="font-light text-base mb-3">Candidatos aprovados participam de uma cerimônia simples mas significativa:</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base">Recitam o <span class="text-bronze">Juramento do Aventureiro</span>: "Juro buscar a luz onde houver escuridão, trazer esperança onde houver desespero, e oferecer ajuda onde houver necessidade. Que minhas ações honrem o legado de All-mer e que minha coragem nunca falhe diante da adversidade."</li>
+                        <li class="font-light text-base">Recebem o <span class="text-bronze">medalhão de bronze da Guilda</span> e seu Certificado de Associação inicial (ranque D).</li>
+                        <li class="font-light text-base">Assinam o <span class="text-bronze">Livro dos Aventureiros</span>, um registro contínuo mantido desde a fundação da Guilda.</li>
+                        <li class="font-light text-base">Participam de uma refeição comunal com outros membros, simbolizando sua integração à irmandade.</li>
+                    </ol>
+                    <p class="font-light text-base italic">A cerimônia é intencionalmente acessível e desprovida de rituais elaborados ou dolorosos, contrastando com as iniciações frequentemente traumáticas de outras facções.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Outros Modais (Estrutura, Atividades, Relações, Recrutamento) com placeholders -->
+    <div id="estrutura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="estrutura-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Estrutura e Ranks</h3>
+            <div class="space-y-6 text-justify">
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-sitemap fa-fw mr-2"></i>Sistema de Classificação</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">A Guilda dos Aventureiros opera com um sistema duplo de classificação que avalia tanto os membros quanto as missões que realizam.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Ranques de Aventureiros</h5>
+                    <p class="font-light text-base mb-3">Os membros da Guilda são classificados em uma escala de <span class="text-bronze">D a S</span>, refletindo sua experiência, habilidade e confiabilidade:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Ranque D (Iniciante):</strong> Novatos que demonstraram aptidão básica, mas têm experiência limitada. Geralmente restrito a missões simples sob supervisão.</li>
+                        <li class="font-light text-base"><strong>Ranque C (Competente):</strong> Aventureiros que completaram com sucesso múltiplas missões de baixo risco e demonstraram confiabilidade. Podem operar independentemente em tarefas rotineiras.</li>
+                        <li class="font-light text-base"><strong>Ranque B (Veterano):</strong> Membros experientes com histórico comprovado de sucesso em missões variadas e algumas de risco moderado. Frequentemente lideram pequenas equipes.</li>
+                        <li class="font-light text-base"><strong>Ranque A (Elite):</strong> Aventureiros excepcionais capazes de lidar com missões de alto risco e complexidade. Participam na governança da Guilda e têm direito a voto nas eleições para Mestre.</li>
+                        <li class="font-light text-base"><strong>Ranque S (Lendário):</strong> O pináculo da excelência, reservado para aqueles cujas habilidades e realizações são verdadeiramente extraordinárias. Extremamente raros – atualmente apenas <span class="text-bronze">Tartaruga</span> e alguns outros possuem este ranque.</li>
+                    </ul>
+                    <p class="font-light text-base italic mb-4">A progressão entre ranques não é automática nem baseada simplesmente em tempo de serviço. Requer avaliação formal por membros de ranque superior e geralmente inclui testes práticos, além da análise do histórico de missões.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Classificação de Missões</h5>
+                    <p class="font-light text-base mb-3">As missões disponíveis na Guilda seguem a mesma escala de <span class="text-bronze">D a S</span>, indicando seu nível de dificuldade, risco e importância:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Missões D:</strong> Tarefas rotineiras com risco mínimo. Exemplos: escolta em rotas seguras, entrega de mensagens, coleta de ervas comuns, investigações simples.</li>
+                        <li class="font-light text-base"><strong>Missões C:</strong> Trabalhos com algum elemento de desafio ou perigo. Exemplos: proteção de caravanas em rotas com atividade de bandidos conhecida, recuperação de itens perdidos em ruínas superficiais, mediação em disputas menores.</li>
+                        <li class="font-light text-base"><strong>Missões B:</strong> Operações que exigem habilidade significativa e envolvem riscos consideráveis. Exemplos: caça a criaturas perigosas, exploração de ruínas profundas, recuperação de artefatos valiosos, negociações diplomáticas delicadas.</li>
+                        <li class="font-light text-base"><strong>Missões A:</strong> Empreendimentos de alto risco que podem ter impacto regional significativo. Exemplos: eliminação de ameaças monstruosas poderosas, exploração de áreas extremamente perigosas, intervenção em conflitos faccionários iminentes.</li>
+                        <li class="font-light text-base"><strong>Missões S:</strong> As mais perigosas e importantes, frequentemente com implicações continentais. Exemplos: investigação de fenômenos catastróficos, confronto com entidades dimensionais, expedições a locais lendários como <span class="text-bronze">Nornheim</span>.</li>
+                    </ul>
+                    <p class="font-light text-base italic mb-4">Como regra geral, aventureiros só podem aceitar missões de seu próprio ranque ou inferior. Exceções são feitas quando membros de ranque inferior participam como parte de uma equipe liderada por alguém de ranque apropriado.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Recompensas e Compensação</h5>
+                    <p class="font-light text-base mb-3">A Guilda mantém um sistema padronizado de recompensas baseado na classificação das missões:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base">Pagamento base em moeda, escalando exponencialmente com o ranque da missão.</li>
+                        <li class="font-light text-base">Acesso a recursos da Guilda (equipamentos, livros raros, consumíveis).</li>
+                        <li class="font-light text-base">Créditos para treinamento especializado.</li>
+                        <li class="font-light text-base">Para missões de ranque A e S, ocasionalmente direitos exclusivos sobre descobertas ou artefatos.</li>
+                    </ul>
+                    <p class="font-light text-base italic">Embora a Guilda valorize o altruísmo, reconhece que seus membros têm necessidades práticas. O sistema de compensação busca equilibrar recompensas justas com o princípio de "ajudar sem expectativa".</p>
+                </div>
+    
+                
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-users-cog fa-fw mr-2"></i>A Hierarquia Formal</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">O Mestre da Guilda</h5>
+                    <p class="font-light text-base mb-3">Atualmente <span class="text-bronze">Bawnanable</span>, o Mestre serve como líder administrativo e espiritual da organização. Suas responsabilidades incluem:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base">Representação da Guilda em negociações com outras facções.</li>
+                        <li class="font-light text-base">Aprovação final de missões de ranque A e S.</li>
+                        <li class="font-light text-base">Mediação de disputas internas que não podem ser resolvidas em níveis inferiores.</li>
+                        <li class="font-light text-base">Supervisão geral da alocação de recursos.</li>
+                        <li class="font-light text-base">Preservação e interpretação das tradições da Guilda.</li>
+                    </ul>
+                    <p class="font-light text-base italic mb-4">Embora o Mestre possua autoridade significativa, seu poder é limitado por tradição e estrutura. Decisões importantes tipicamente envolvem consulta com o Conselho de Veteranos, e mudanças fundamentais na estrutura ou código da Guilda requerem aprovação por maioria dos membros de ranque A e S.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">O Conselho de Veteranos</h5>
+                    <p class="font-light text-base mb-3">Todos que alcançam ranque A podem participar do conselho dos veteranos. Entre eles, alguns se destacam, tornando-se coordenadores:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Coordenador de Exploradores:</strong> Supervisiona operações de exploração e cartografia.</li>
+                        <li class="font-light text-base"><strong>Coordenador de Pesquisadores:</strong> Gerencia coleta e preservação de conhecimento.</li>
+                        <li class="font-light text-base"><strong>Coordenador de Resolvedores:</strong> Organiza missões de resolução de problemas e mediação.</li>
+                    </ul>
+                    <p class="font-light text-base italic mb-4">Posições adicionais são criadas conforme necessário para projetos específicos ou crises.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Mestres de Casa</h5>
+                    <p class="font-light text-base mb-4">Na Guilda dos Aventureiros, existe o sistema de casa: ao chegar ao <span class="text-bronze">ranque C</span>, você pode formar seu próprio grupo dentro da Guilda dos Aventureiros, recebendo um quarto e o apoio necessário. A partir disso, seu grupo se torna mais livre para pegar as missões que desejam ou agir como quiserem. Existe também um ranqueamento para cada casa.</p>
+                </div>
+    
+                
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-comments fa-fw mr-2"></i>Dinâmica Social Informal</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Relações Mentor-Aprendiz</h5>
+                    <p class="font-light text-base mb-4">Embora não formalmente requerido, é comum que aventureiros experientes tomem iniciantes sob sua tutela. Estas relações mentor-aprendiz frequentemente transcendem ranques formais e podem durar anos ou mesmo décadas. Um bom mentor é altamente valorizado na cultura da Guilda, e muitos dos laços mais fortes são formados através destas parcerias.</p>
+                </div>
+    
+               
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-puzzle-piece fa-fw mr-2"></i>Subfacções Especializadas</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">Embora a Guilda dos Aventureiros mantenha uma identidade unificada, reconhece que diferentes missões exigem diferentes conjuntos de habilidades. Para facilitar especialização e colaboração eficiente, a Guilda organiza seus membros em três subfacções principais:</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Exploradores</h5>
+                    <p class="font-light text-base mb-2">Os <span class="text-bronze">Exploradores</span> são os pioneiros da Guilda, especializados em cartografia, sobrevivência e navegação em territórios desconhecidos ou perigosos.</p>
+                    <p class="font-light text-base mb-2"><strong>Funções Principais:</strong></p>
+                    <ul class="list-disc list-inside space-y-1 mb-3 ml-4">
+                        <li class="font-light text-base">Mapeamento de regiões inexploradas.</li>
+                        <li class="font-light text-base">Descoberta de rotas seguras através de terrenos perigosos.</li>
+                        <li class="font-light text-base">Localização de recursos naturais valiosos.</li>
+                        <li class="font-light text-base">Documentação de novas espécies de flora e fauna.</li>
+                        <li class="font-light text-base">Estabelecimento de pontos de apoio em áreas remotas.</li>
+                    </ul>
+                    <p class="font-light text-base mb-4"><strong>Treinamento Especializado:</strong> Exploradores recebem instrução em orientação celestial, técnicas avançadas de sobrevivência, primeiros socorros em campo, e métodos de documentação precisa. Muitos também desenvolvem conhecimento sobre climas extremos e adaptações necessárias para diferentes biomas.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Pesquisadores</h5>
+                    <p class="font-light text-base mb-2">Os <span class="text-bronze">Pesquisadores</span> são os estudiosos e investigadores da Guilda, dedicados à coleta e preservação de conhecimento.</p>
+                    <p class="font-light text-base mb-2"><strong>Funções Principais:</strong></p>
+                    <ul class="list-disc list-inside space-y-1 mb-3 ml-4">
+                        <li class="font-light text-base">Estudo de artefatos e ruínas antigas.</li>
+                        <li class="font-light text-base">Investigação de fenômenos naturais e sobrenaturais.</li>
+                        <li class="font-light text-base">Documentação de culturas, línguas e tradições.</li>
+                        <li class="font-light text-base">Análise de materiais e substâncias desconhecidas.</li>
+                        <li class="font-light text-base">Manutenção dos Salões de História da Guilda.</li>
+                    </ul>
+                    <p class="font-light text-base mb-4"><strong>Treinamento Especializado:</strong> Pesquisadores são versados em múltiplas línguas (incluindo algumas extintas), técnicas de preservação de documentos, métodos investigativos, e frequentemente possuem conhecimento especializado em campos como alquimia, astronomia, história antiga ou teologia comparada.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Resolvedores</h5>
+                    <p class="font-light text-base mb-2">Os <span class="text-bronze">Resolvedores</span> (tradução adotada para "Fixers") são os solucionadores de problemas versáteis da Guilda, especialistas em completar missões que não se encaixam claramente nas outras categorias.</p>
+                    <p class="font-light text-base mb-2"><strong>Funções Principais:</strong></p>
+                    <ul class="list-disc list-inside space-y-1 mb-3 ml-4">
+                        <li class="font-light text-base">Escolta e proteção de pessoas ou bens valiosos.</li>
+                        <li class="font-light text-base">Recuperação de itens perdidos ou roubados.</li>
+                        <li class="font-light text-base">Mediação de conflitos e negociações.</li>
+                        <li class="font-light text-base">Investigação de mistérios e resolução de problemas locais.</li>
+                        <li class="font-light text-base">Realização de tarefas que exigem discrição ou diplomacia.</li>
+                    </ul>
+                    <p class="font-light text-base mb-4"><strong>Treinamento Especializado:</strong> Resolvedores desenvolvem um conjunto diversificado de habilidades, incluindo combate, negociação, disfarce, primeiros socorros e conhecimento básico de leis e costumes de diferentes regiões. São treinados para improvisar e adaptar-se rapidamente a situações inesperadas.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Colaboração e Fluidez</h5>
+                    <p class="font-light text-base mb-3">Importante notar que estas subfacções não são divisões rígidas:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base">Membros podem participar de múltiplas subfacções se possuírem as habilidades necessárias.</li>
+                        <li class="font-light text-base">Equipes para missões complexas frequentemente incluem membros de todas as três especialidades.</li>
+                        <li class="font-light text-base">Transferências entre subfacções são comuns conforme aventureiros desenvolvem novos interesses ou habilidades.</li>
+                    </ul>
+                    <p class="font-light text-base italic">Esta fluidez reflete o valor que a Guilda coloca na adaptabilidade e crescimento pessoal, em contraste com as estruturas mais rígidas de outras facções.</p>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    <div id="atividades-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="atividades-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Relações</h3>
+            <div class="space-y-6 text-justify">
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-handshake fa-fw mr-2"></i>Relações com Outras Facções</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">A posição única da Guilda como intermediária neutra cria relações fascinantes com as outras grandes potências do mundo:</p>
+    
+                    <ul class="list-disc list-inside space-y-4 mb-4 ml-4">
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Império do Sol:</strong> <span class="italic">Relação ambivalente.</span> A hierarquia imperial desconfia da neutralidade da Guilda e tenta frequentemente converter seus membros, mas reconhece o valor prático de seus serviços, especialmente em regiões fronteiriças. A <span class="text-bronze">Inquisição</span> mantém vigilância sobre as atividades da Guilda, particularmente preocupada com sua tendência a preservar conhecimentos que o Império consideraria heréticos.
+                        </li>
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Corte Carmesim:</strong> <span class="italic">Surpreendentemente cordial.</span> Os vampiros valorizam a discrição e neutralidade da Guilda, frequentemente contratando seus membros para tarefas que exigem viagens durante o dia ou interação com comunidades hostis a criaturas noturnas. A Guilda, por sua vez, é uma das poucas organizações que trata os membros da Corte como indivíduos em vez de monstros.
+                        </li>
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Herdeiros de Malzahir:</strong> <span class="italic">Pragmaticamente amigável.</span> Os Herdeiros veem a Guilda como parceiros comerciais valiosos e fontes confiáveis de informação sobre terras distantes. Existe um respeito mútuo pelo conhecimento, embora os Herdeiros considerem a abordagem da Guilda ao compartilhamento de informações perigosamente liberal.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="relacoes-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="relacoes-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Cultura</h3>
+            <div class="space-y-6 text-justify">
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-handshake fa-fw mr-2"></i>A Essência da Guilda</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">A cultura da Guilda dos Aventureiros é construída sobre um conjunto de valores fundamentais que permeiam todos os aspectos de sua existência. Mais que simples ideais abstratos, estes princípios manifestam-se concretamente nas práticas diárias, rituais e interações entre membros.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">O Código do Aventureiro</h5>
+                    <p class="font-light text-base mb-3">Embora menos rígido que os dogmas religiosos do Império do Sol ou as leis de sangue da Corte Carmesim, o <span class="text-bronze">Código do Aventureiro</span> serve como bússola moral para todos os membros da Guilda:</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Ajuda Sem Expectativa</strong> - "A verdadeira recompensa está no ato, não no reconhecimento." O valor de uma ação é medido pelo bem que produz, não pela recompensa que traz. Membros são encorajados a ajudar mesmo quando não há pagamento ou vantagem pessoal envolvida.</li>
+                        <li class="font-light text-base"><strong>Conhecimento Compartilhado</strong> - "Uma tocha não perde sua chama ao acender outra." Informação e sabedoria devem circular livremente, não ser acumuladas como tesouro. Descobertas significativas pertencem à Guilda como um todo, não ao indivíduo que as fez.</li>
+                        <li class="font-light text-base"><strong>Respeito pela Diversidade</strong> - "Muitos caminhos, uma jornada." Diferentes culturas, crenças e abordagens todas têm valor e merecem ser preservadas. A uniformidade é vista como estagnação, enquanto a diversidade traz resiliência e adaptabilidade.</li>
+                        <li class="font-light text-base"><strong>Coragem Compassiva</strong> - "Bravura sem bondade é apenas brutalidade." A verdadeira coragem não está em buscar glória ou domínio, mas em arriscar-se para aliviar o sofrimento alheio e defender aqueles que não podem se defender.</li>
+                        <li class="font-light text-base"><strong>Neutralidade Ativa</strong> - "Ficar parado na encruzilhada não é neutralidade, mas indiferença." Ser neutro não significa abster-se de agir, mas agir de acordo com princípios consistentes independentemente das afiliações dos envolvidos.</li>
+                    </ol>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Manifestações Práticas</h5>
+                    <p class="font-light text-base mb-3">Estes valores não são apenas recitados em cerimônias, mas ativamente incorporados na vida cotidiana da Guilda:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base"><strong>Sistema de Pagamento Flexível:</strong> Embora a Guilda cobre por seus serviços para manter-se, os preços são ajustados conforme a necessidade do cliente. Não é incomum que aventureiros realizem trabalhos gratuitamente para aqueles verdadeiramente necessitados.</li>
+                        <li class="font-light text-base"><strong>Bibliotecas Abertas:</strong> Diferente de outras facções que restringem acesso ao conhecimento, as bibliotecas da Guilda são abertas a todos os membros independentemente de ranque, e muitas seções são acessíveis até mesmo a não-membros.</li>
+                        <li class="font-light text-base"><strong>Equipes Diversificadas:</strong> A Guilda intencionalmente forma equipes com membros de diferentes origens, habilidades e perspectivas, valorizando a complementaridade sobre a uniformidade.</li>
+                        <li class="font-light text-base"><strong>Intervenção Humanitária:</strong> Quando desastres naturais ou conflitos ameaçam civis, a Guilda frequentemente mobiliza recursos para evacuação, assistência médica e reconstrução, independentemente das afiliações políticas das vítimas.</li>
+                        <li class="font-light text-base"><strong>Mediação Imparcial:</strong> Aventureiros são treinados para mediar conflitos baseando-se em princípios de justiça e bem-estar comum, não em lealdades faccionárias ou ganho pessoal.</li>
+                    </ul>
+                </div>
+    
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-scroll fa-fw mr-2"></i>Rituais e Tradições</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">A Guilda mantém um conjunto de rituais e tradições que fortalecem os laços entre seus membros e reafirmam seus valores compartilhados. Diferente das cerimônias elaboradas e frequentemente intimidadoras de outras facções, os rituais da Guilda tendem a ser acessíveis e focados em conexão humana.</p>
+    
+                    <h5 class="text-xl font-header text-guilda-highlight mb-2">Cerimônias de Passagem</h5>
+                    <h6 class="text-lg font-header text-guilda-highlight mb-2 ml-4">Iniciação</h6>
+                    <p class="font-light text-base mb-3 ml-4">A cerimônia de iniciação de novos membros é intencionalmente simples, mas significativa:</p>
+                    <ol class="list-decimal list-inside space-y-2 mb-4 ml-8">
+                        <li class="font-light text-base">O candidato é apresentado por seu mentor ou avaliador principal.</li>
+                        <li class="font-light text-base">Um breve resumo de suas qualificações e o processo de avaliação é compartilhado.</li>
+                        <li class="font-light text-base">O candidato recita o <span class="text-bronze">Juramento do Aventureiro</span>.</li>
+                        <li class="font-light text-base">O <span class="text-bronze">medalhão de bronze da Guilda</span> é colocado ao redor do pescoço do novo membro.</li>
+                        <li class="font-light text-base">O iniciado assina o <span class="text-bronze">Livro dos Aventureiros</span>, um registro contínuo mantido desde a fundação da Guilda.</li>
+                        <li class="font-light text-base">Uma refeição comunal é compartilhada, onde cada membro presente oferece um breve conselho ou boas-vindas.</li>
+                    </ol>
+                    <p class="font-light text-base italic ml-4">A ausência de dor física, juramentos de lealdade exclusiva ou rituais secretos contrasta fortemente com as iniciações de outras facções, refletindo a filosofia inclusiva da Guilda.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="recrutamento-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="recrutamento-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Objetivos da Guilda</h3>
+            <div class="space-y-6 text-justify">
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-guilda-highlight mb-3"><i class="fas fa-bullseye fa-fw mr-2"></i>Nornheim: A Missão Principal</h4>
+                    <div class="header-divider-guilda w-1/4 mb-4 opacity-50"></div>
+                    <p class="font-light text-base mb-4">Com o surgimento de monstros nas fronteiras e os sinais de que algo catastrófico se aproxima, a Guilda dos Aventureiros participa ativamente da expedição conjunta ao arquipélago de <span class="text-bronze">Nornheim</span>.</p>
+    
+                    <p class="font-light text-base mb-3">Enquanto outras facções buscam poder ou artefatos específicos, a Guilda tem objetivos mais <span class="text-bronze">pragmáticos</span>:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Encontrar Soluções:</strong> Buscar qualquer coisa associada a <span class="text-bronze">All-mer</span> que possa ser usada contra as ameaças atuais.
+                        </li>
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Documentar e Estudar:</strong> Investigar e registrar os fenômenos estranhos e criaturas do arquipélago.
+                        </li>
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Segurança e Apoio:</strong> Estabelecer rotas seguras e pontos de refúgio para todos os membros da expedição.
+                        </li>
+                        <li class="font-light text-base">
+                            <strong class="text-bronze">Cooperação Interfacções:</strong> Facilitar comunicação e colaboração entre as facções tradicionalmente rivais.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalTriggers = document.querySelectorAll('[data-modal-target]');
+            const modalCloses = document.querySelectorAll('[data-modal-close]');
+
+            modalTriggers.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                        modal.classList.add('flex');
+                    }
+                });
+            });
+
+            modalCloses.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-close');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                    }
+                });
+            });
+
+            // Close modal on outside click
+            window.addEventListener('click', (event) => {
+                if (event.target.matches('.fixed.inset-0')) {
+                    document.querySelectorAll('.fixed.inset-0').forEach(modal => {
+                        if (modal.classList.contains('flex')) {
+                            modal.classList.add('hidden');
+                            modal.classList.remove('flex');
+                        }
+                    });
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileNav = document.getElementById('mobileNav');
+
+            if(mobileMenuToggle && mobileNav) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileNav.classList.remove('hidden');
+                });
+            }
+
+            if(closeMobileMenu && mobileNav) {
+                closeMobileMenu.addEventListener('click', () => {
+                    mobileNav.classList.add('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

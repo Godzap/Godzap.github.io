@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Medieval</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-dark': '#121212',
+                        'stone-med': '#222222',
+                        'parchment': '#3a2e24',
+                        'parchment-light': '#dcd4c8',
+                        'gold': '#c89f65',
+                        'gold-dark': '#a18052',
+                        'steel': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        header: ['Cinzel', 'Georgia', 'serif'],
+                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1czy0iLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
+                        'inner-dark': 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                    },
+                    textShadow: {
+                        'default': '1px 1px 2px rgba(0,0,0,0.7)',
+                        'gold': '0 0 8px rgba(200, 159, 101, 0.7)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+        
+        .header-text-shadow {
+            text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 2px 2px 5px rgba(0,0,0,0.8);
+        }
+        
+        body {
+            color: #3a2e24;
+            background-image: url('Assets/imagens/background_papiro.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        .warning-banner {
+            background: #a18052;
+            background: linear-gradient(to right, #4d3a1a, #2a200e);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #c89f65;
+            text-shadow: 1px 1px 2px rgba(0,0,0,1);
+        }
+        
+        .nav-button {
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+        }
+        
+        .nav-button:hover {
+            background: rgba(200, 159, 101, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(200, 159, 101, 0.2), inset 0 0 8px rgba(200, 159, 101, 0.3);
+            border-color: #c89f65;
+        }
+        
+        .icon-image {
+            -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover .icon-image {
+            -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.9));
+            filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.9));
+            transform: scale(1.05);
+        }
+
+        .icon-label {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        }
+        
+        .game-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #444;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), inset 0 2px 8px rgba(0,0,0,0.6);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #c89f65, #a18052);
+            z-index: 2;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(200, 159, 101, 0.3), inset 0 2px 8px rgba(0,0,0,0.6);
+            border-color: #c89f65;
+        }
+        
+        .quote {
+            font-style: italic;
+            position: relative;
+            padding: 10px 20px;
+            background: rgba(34, 34, 34, 0.9);
+            border-left: 3px solid #c89f65;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .button-buy {
+            background: linear-gradient(to right, #c89f65, #a18052);
+            transition: all 0.3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        
+        .button-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(200, 159, 101, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .stat-highlight {
+            background: rgba(200, 159, 101, 0.15);
+            border: 1px dashed #c89f65;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #dcd4c8;
+        }
+        
+        .news-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #444;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .editor-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #444;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .editor-card img {
+            border: 1px solid #a18052;
+            box-shadow: 0 0 10px rgba(200, 159, 101, 0.5);
+        }
+        
+        .header-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #c89f65, transparent);
+            opacity: 0.7;
+        }
+        
+
+        .header-bg {
+            background-image: url('Assets/imagens/header.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .content-box {
+            background-image: url('Assets/imagens/fundo-marrom-grunge-com-espaco-para-texto-ou-imagem_196038-9472.png');
+            background-size: cover;
+            background-position: center;
+            border: none;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), inset 0 2px 8px rgba(0,0,0,0.6);
+            color: #dcd4c8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        
+        .footer {
+            background: rgba(10, 10, 10, 0.9);
+            border-top: 1px solid #333;
+        }
+        
+        .grid-cols-auto {
+            grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        @media (max-width: 1023px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="font-body">
+    <!-- Warning Banner -->
+
+
+    <!-- Header with Navigation -->
+    <header class="py-4 px-4 header-bg sticky top-0 z-40 shadow-xl border-b-4 border-stone-dark">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-4xl font-header tracking-wider header-text-shadow">
+                        <span class="text-parchment-light">Super Medieval</span> <span class="text-gold">WIKI</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment-light header-text-shadow">
+                    <a href="https://discord.gg/43uf8t7Pyb" class="hover:text-gold transition-colors font-medium tracking-wider">Discord</a>
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3140166045" class="hover:text-gold transition-colors font-medium tracking-wider">Coleção</a>
+                    <a href="" class="hover:text-gold transition-colors font-medium tracking-wider">Youtube</a>
+                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Reddit</a>
+                    <a href="https://x.com/Super_Medieval" class="hover:text-gold transition-colors font-medium tracking-wider">Twitter</a>
+                    
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="mobile-menu lg:hidden">
+                    <button id="mobileMenuToggle" class="text-parchment">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Mobile Navigation (Hidden by default) -->
+    <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
+        <div class="container mx-auto p-8 h-full flex flex-col">
+            <div class="flex justify-end mb-16">
+                <button id="closeMobileMenu" class="text-parchment text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col items-center space-y-8 text-xl">
+                <a href="index.html" class="text-parchment-light hover:text-gold text-2xl font-header tracking-widest">Home</a>
+                <a href="armas.html" class="text-parchment-light hover:text-gold text-2xl font-header tracking-widest">Armas</a>
+                <a href="classes.html" class="text-parchment-light hover:text-gold text-2xl font-header tracking-widest">Classes</a>
+                <a href="armaduras.html" class="text-parchment-light hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
+                <a href="atributos.html" class="text-parchment-light hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
+                <a href="#mecanicas" class="text-parchment-light hover:text-gold text-2xl font-header tracking-widest">Mecânicas</a>
+                <button class="bg-gold px-6 py-2 rounded text-parchment-light text-xl font-header tracking-wider mt-8">Contribute to Wiki</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-4 pb-8 relative z-10">
+        <div>
+            <div class="content-box max-w-5xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-header tracking-wider text-center mb-4 header-text">
+                    Bem vindo a  <span class="text-gold">Wiki do Super medieval</span>
+                </h1>
+                <div class="max-w-4xl mx-auto text-lg space-y-6 text-justify">
+                    <p class="font-header text-3xl text-gold text-center tracking-wider mb-8">Bem-vindo a um Mundo Despedaçado</p>
+                    
+                    <p class="font-body leading-relaxed">
+                        As antigas canções de Midgard falavam de um equilíbrio eterno, mas essas canções se perderam em ecos de desespero. O mundo que você conhecia não existe mais. Um evento cataclísmico, sussurrado com medo e chamado de <strong class="text-gold">A Ruptura</strong>, rasgou o véu da realidade. Das fendas abertas, emergiram hordas de monstros famintos e desastres avassaladores varreram as nações, deixando apenas ruína e silêncio em seu rastro.
+                    </p>
+                
+                    <p class="font-body leading-relaxed">
+                        Encurraladas contra o mar impiedoso, as três grandes facções de Midgard, antes rivais, agora compartilham o mesmo destino sombrio: a beira da aniquilação. A terra natal está perdida, consumida pela <strong class="text-gold">Tormenta</strong>.
+                    </p>
+                    
+                    <div class="header-divider w-1/3 mx-auto my-6 opacity-50"></div>
+                
+                    <p class="font-body leading-relaxed">
+                        Mas mesmo na mais profunda escuridão, uma centelha de esperança resiste. Uma única e audaciosa alternativa resta: uma expedição suicida para o desconhecido, rumo ao místico e inexplorado arquipélago de <strong class="text-gold">Nornheim</strong>. Uma terra envolta em névoa e lendas, que tanto pode ser a salvação da civilização quanto uma tumba aquática para os últimos sobreviventes.
+                    </p>
+                
+                    <p class="text-center font-header text-2xl tracking-widest text-gold py-4">
+                        É aqui que a sua história começa.
+                    </p>
+                
+                    <p class="font-body leading-relaxed">
+                        No <strong class="text-gold">SuperMedieval</strong>, você não é um mero espectador da história. Você é o autor. Este é um mundo moldado pelas suas escolhas, um servidor de Roleplay onde cada ação, cada aliança forjada e cada conflito iniciado deixará uma cicatriz permanente no destino de Nornheim. O futuro da sua facção – e talvez de toda a humanidade – repousa sobre os seus ombros. Suas decisões irão ecoar pela eternidade.
+                    </p>
+                
+                    <p class="font-body leading-relaxed">
+                        Esta Wiki será sua bússola e seu grimório. Consulte-a para desvendar os segredos de um passado esquecido, para compreender as facções e suas ambições, e para conhecer as criaturas que agora reivindicam este mundo. O conhecimento é uma arma tão vital quanto o aço.
+                    </p>
+                </div>
+
+                    <p class="text-parchment-light font-header tracking-widest text-center">
+                        "Não importa o custo você fará o necessário para sobreviver."
+                    </p>
+                    <p class="text-center mt-4 text-gold italic text-xl font-header tracking-wider">
+                        - Até aonde você irá?
+                    </p>
+
+            </div>
+        </div>
+        <div class="content-box max-w-6xl mx-auto mt-12">
+            <!-- Game Cards Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+                <!-- Fear & Hunger 1 Card -->
+                <div class="game-card p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6">
+                        <h2 class="text-2xl md:text-3xl font-header text-parchment-light tracking-wider">
+                            Wiki de <span class="text-gold">Sistemas</span>
+                        </h2>
+                    </div>
+                    
+                    <div class="quote mb-6">
+                        <p class="text-parchment-light">
+                            "Designida especialmente para os nerds de exatas!"
+                        </p>
+                    </div>
+                    
+                    <p class="text-parchment-light mb-4">
+                        Abaixo terão links que irão te levar  para explicação e formula de cada um de nossos sistemas, bom proveito!.
+                    </p>
+                    
+                    
+                    <h3 class="text-xl font-header text-parchment-light mb-4 tracking-wider">Links</h3>
+                    <div class="grid grid-cols-auto gap-4">
+                        <!-- Navigation buttons -->
+                        <a href="classes.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/Classes.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold">Classes</span>
+                        </a>
+                        <a href="armas.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2>">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/armas.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold">Armas</span>
+                        </a>
+                        <a href="armaduras.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/armaduras.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold">Armaduras</span>
+                        </a>
+                        <a href="atributos.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/Atributos.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold">Atributos</span>
+                            
+                        </a>
+                        </a>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Termina Card -->
+                <div class="game-card p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6">
+                        <h2 class="text-2xl md:text-3xl font-header text-parchment-light tracking-wider">
+                            Wiki da <span class="text-gold">historia</span>
+                        </h2>
+                    </div>
+                    
+                    <div class="quote mb-6">
+                        <p class="text-parchment-light italic">
+                            "Escrita espcialmente para os nerds de humanas!"
+                        </p>
+                    </div>
+                    
+                    <p class="text-parchment-light mb-4">
+                        Abaixo terão links que irão te levar para cada informação de lore que seja de conhecimento comúm no servidor
+                    </p>
+                    
+
+                    <h3 class="text-xl font-header text-parchment-light mb-4 tracking-wider">Links</h3>
+                    <div class="grid grid-cols-auto gap-4">
+                        <!-- Navigation buttons -->
+                        <a href="corte_carmesim.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/CultoCarmesim.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold text-center">Corte<br>Carmesim</span>
+                        </a>
+                     
+                        <a href="sultanato_banu_malzahir.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/Sultanato.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold text-center">Sultanato<br>Malzahir</span>
+                        </a>
+                        <a href="imperio_do_sol.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/Imperiodosol.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold text-center">Império do<br>Sol</span>
+                        </a>
+                     
+                        <a href="guilda_dos_aventureiros.html" class="nav-button rounded-lg flex flex-col items-center justify-center p-2">
+                            <div class="icon-image w-20 h-20 rounded-full bg-center bg-cover" style="background-image: url('Assets/imagens/GuildaDosAventureiros.png')"></div>
+                            <span class="icon-label text-sm mt-1 text-parchment-light font-bold text-center">Guilda dos<br>Aventureiros</span>
+                        </a>                
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wiki Content Sections -->
+
+
+
+    <script src="Assets/js/main.js" defer></script>
+</body>
+</html>
