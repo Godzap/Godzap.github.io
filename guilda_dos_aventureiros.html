@@ -40,7 +40,7 @@
     </script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
-        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
+        html{scroll-behavior:smooth;font-size:20px}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
     </style>
     <style>
         .guilda-theme {
@@ -181,7 +181,7 @@
                     <button data-modal-target="relacoes-modal" class="button-guilda w-full py-3 rounded text-center">
                         <i class="fas fa-users mr-2"></i> Relações
                     </button>
-                    <button data-modal-target="recrutamento-modal" class="button-guilda w-full py-3 rounded text-center">
+                    <button data-modal-target="objetivos-modal" class="button-guilda w-full py-3 rounded text-center">
                         <i class="fas fa-user-plus mr-2"></i> Objetivos
                     </button>
                 </div>
@@ -323,7 +323,7 @@
     <div id="hierarquia-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
         <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close="estrutura-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Estrutura e Ranks</h3>
+            <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Hierarquia</h3>
             <div class="space-y-6 text-justify">
     
                 <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
@@ -542,7 +542,7 @@
     </div>
     <div id="objetivos-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
         <div class="modal-content-guilda max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close="recrutamento-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
+            <button data-modal-close="objetivos-modal" class="absolute top-4 right-4 text-gray-400 hover:text-bronze text-3xl">&times;</button>
             <h3 class="text-3xl font-header header-text-guilda mb-6 text-center tracking-wider">Objetivos da Guilda</h3>
             <div class="space-y-6 text-justify">
     

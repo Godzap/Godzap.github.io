@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Império do Sol - Super Medieval Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -19,10 +20,10 @@
                         'steel': '#7a7a7a',
                     },
                     fontFamily: {
-                        header: ['Cinzel', 'Georgia', 'serif'],
-                        body: ['EB Garamond', 'Georgia', 'serif'],
-                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
-                    },
+    header: ['IM Fell English', 'serif'],
+    body: ['IM Fell English', 'serif'],
+    grotesk: ['IM Fell English', 'serif']
+},
                     backgroundImage: {
                         'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
                     },
@@ -40,65 +41,232 @@
     </script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
-        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
+        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#52a177;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
     </style>
-    <style>
-        /* Imperio do Sol Theme - Baseado na paleta do símbolo */
-        .imperio-theme {
-            background-color: #4A1C1C; /* Vermelho Imperial Profundo */
-            color: #EAE0D1;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath fill='%232a201a' fill-opacity='0.4' d='M0,26a26,26 0 1,0 52,0a26,26 0 1,0 -52,0'/%3E%3C/svg%3E");
-        }
-        .imperio-theme .header-text-imperio {
-            color: #E0AB45; /* Ouro Imperial */
-            text-shadow: 0 0 10px rgba(218, 181, 111, 0.7), 0 0 25px rgba(139, 0, 0, 0.8);
-        }
-        .imperio-theme .card-imperio {
-            background-color: #75160F; /* Vermelho Escuro Translúcido */
-            border: 1px solid #8B0000; /* Carmesim Imperial */
-            box-shadow: 0 0 25px rgba(139, 0, 0, 0.2), inset 0 0 15px rgba(0,0,0,0.6);
-        }
-        .imperio-theme .button-imperio {
-            background-color: transparent;
-            color: #DAB56F; /* Ouro Imperial */
-            border: 1px solid #8B0000;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        .imperio-theme .button-imperio:hover {
-            background-color: #8B0000;
-            color: #EAE0D1; /* Tom Pergaminho para melhor contraste no hover */
-            box-shadow: 0 0 15px rgba(218, 181, 111, 0.5);
-            transform: translateY(-2px);
-        }
-        .imperio-theme .modal-content-imperio {
-            background-color: #2A1515; /* Vermelho Imperial (Fundo do Modal) */
-            border: 2px solid #8B0000;
-            color: #EAE0D1;
-            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
-        }
-        .imperio-theme .text-gold-solar {
-             color: #E0AB45; /* Ouro Imperial */
-        }
-        .imperio-theme .text-imperio-highlight {
-            color: #DAB56F; /* Ouro Imperial */
-            font-weight: bold;
-        }
-        .imperio-theme .header-divider-imperio {
-            background: linear-gradient(to right, transparent, #8B0000, transparent);
-            opacity: 0.6;
-        }
-        .imperio-theme .quote-imperio {
-            border-left: 3px solid #DAB56F; /* Ouro Imperial */
-            background-color: rgba(218, 181, 111, 0.1);
-            font-style: italic;
-            color: #EAE0D1;
-        }
-    </style>
+<style>
+    /* ATUALIZADO: Tema com cores invertidas (Amarelo principal, Vermelho destaque) */
+    /* Nomes das classes foram MANTIDOS para compatibilidade com seu HTML. */
+    .imperio-theme {
+        color: #eae9d1;
+        background-image: url('https://wallpapers.com/images/hd/beige-background-rcn5tlxpsgifr9rv.jpg');
+
+/* --- ADICIONE ESTAS 3 LINHAS --- */
+
+/* 1. Centraliza a imagem horizontalmente e verticalmente */
+background-position: center;
+
+/* 2. Garante que a imagem não se repita */
+background-repeat: no-repeat;
+
+/* 3. Redimensiona a imagem para cobrir toda a área do elemento,
+   mantendo a proporção (pode cortar as bordas se necessário) */
+background-size: cover;
+
+/* Defina uma altura para o painel para que a imagem seja visível */
+
+    }
+    .imperio-theme .header-text-imperio {
+        color: #DAB56F; /* Títulos agora em Vermelho Fogo */
+        text-shadow: 0 0 10px rgba(220, 20, 60, 0.7), 0 0 25px rgba(139, 0, 0, 0.8);
+    }
+    .imperio-theme .card-imperio {
+        background-color: rgba(184, 134, 11, 0.15); /* Fundo do card em Dourado Translúcido */
+        box-shadow: 0 0 25px rgba(218, 181, 111, 0.2), inset 0 0 15px rgba(0,0,0,0.6);
+        background-image: url('Assets/imagens/fundosol.png');
+    }
+    .imperio-theme .button-imperio {
+    /* --- 1. IMAGEM DE FUNDO --- */
+    background-image: url('Assets/Imagens/imperiomodal.png'); /* Use a sua imagem limpa! */
+    background-size: 100% 100%; /* Faz a imagem esticar para preencher todo o botão */
+    background-repeat: no-repeat;
+
+    /* --- 2. DIMENSÕES DO BOTÃO --- */
+    /* Defina um tamanho fixo para evitar distorção da imagem de fundo */
+    display: inline-block; /* Permite definir largura e altura */
+    width: 330px;  /* LARGURA - ajuste para bater com a proporção da sua imagem */
+    height: 225px; /* ALTURA - ajuste para bater com a proporção da sua imagem */
+    
+    /* --- 3. ALINHAMENTO DO TEXTO --- */
+    /* Centraliza o texto perfeitamente no meio do botão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* --- 4. ESTILO DO TEXTO --- */
+    color: #EAE0B8; /* Cor Dourado Antigo sugerida anteriormente */
+    font-family: 'IM Fell English', serif; /* Fonte de título sugerida */
+    font-size: 1.25rem; /* Tamanho do texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para legibilidade */
+    text-decoration: none; /* Remove o sublinhado do link */
+    
+    /* --- 5. EFEITOS E AJUSTES FINAIS --- */
+    border: none; /* Remove a borda CSS, pois a borda já está na imagem */
+    transition: all 0.2s ease-out;
+}
+
+.button-imperio:hover {
+    /* Efeito sutil ao passar o mouse */
+    transform: scale(1.44); 
+    filter: brightness(1.55);
+    cursor: pointer;
+}.painel-hero-imperio {
+    /* --- 1. IMAGEM DE FUNDO ATUALIZADA --- */
+    position: relative;
+    background-image: url('Assets/Imagens/fundosol.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+    background-position-x: 370px;
+    /* --- 2. ALINHAMENTO AJUSTADO --- */
+    display: flex;
+    flex-direction: column;
+    font-family: 'IM Fell English', serif;
+
+    /* MUDANÇA PRINCIPAL: Alinha o conteúdo no TOPO do painel */
+    justify-content: flex-start;
+    
+    align-items: center;
+
+    /* --- 3. AJUSTE FINO DA POSIÇÃO --- */
+    min-height: 90vh;
+    
+    /* Empurra o conteúdo para baixo a partir do topo. AJUSTE ESTE VALOR! */
+    padding-top: 7vh; /* Ex: 15% da altura da tela */
+    
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+body {
+    position: relative; /* Essencial para o posicionamento */
+    min-height: 00vh;  /* Garante que a página tenha altura total */
+    margin: 0;
+}
+
+/*
+ * 2. Crie uma classe genérica para o estilo de posicionamento.
+ * Você pode adicionar essa classe aos seus botões ou aplicar
+ * o estilo diretamente nos IDs.
+ */
+.botao-posicionado {
+    position: absolute; /* Posição absoluta em relação ao body */
+    bottom: 20px;       /* Distância da parte inferior */
+    width: 180px;       /* Largura fixa, já que removemos o w-full */
+    
+    /* As classes que você já tinha (py-3, rounded, etc.) cuidam do resto */
+}
+
+
+/*
+ * 3. Use os IDs para definir o lado de cada botão.
+ */
+#botao-canto-esquerdo {
+    position: relative;
+    bottom: 20px;
+    left: 20px;
+    width: 300px; /* Alinha à esquerda */
+}
+#botao-canto-esquerdo-superior {
+    position: absolute;
+    bottom: 600px;
+    left: 75px;
+    width: 250px;
+    height: 200px; /* Alinha à direita */
+}
+#botao-canto-direito-superior {
+    position: absolute;
+    bottom: 600px;
+    right: 60px;
+    width: 250px;
+    height: 200px; 
+}
+#botao-canto-esquerdo-meio {
+    position: absolute;
+    bottom: 340px;
+    left: 5px;
+    width: 250px;
+    height: 200px;  /* Alinha à direita */
+}
+#botao-canto-direito-meio {
+    position: absolute;
+    bottom:340px;
+    right: 0px;
+    width: 250px;
+    height: 200px;  /* Alinha à direita */
+}
+#botao-canto-esquerdo-inferior {
+    position: absolute;
+    bottom: 80px;
+    left: 115px; /* Alinha à direita */
+    width: 250px;
+    height: 200px; 
+}
+
+
+#botao-canto-direito-inferior {
+    position: absolute;
+    bottom: 80px;
+    right: 115px; /* Alinha à direita */
+    width: 250px;
+    height: 200px;  /* Defina uma largura adequada */
+}
+
+header {
+    /* 1. Adiciona uma camada preta com 50% de opacidade.
+      2. Adiciona sua imagem por baixo.
+    */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), 
+        url('assets/imagens/headersol.png');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+}
+/* Classe auxiliar para o texto dentro do painel-hero */
+.painel-hero-imperio .conteudo-centralizado {
+    text-align: center;
+    max-width: 75%; /* Limita a largura do conteúdo para melhor leitura sobre a imagem */
+    /* Adiciona uma sombra sutil ao texto para melhorar a legibilidade contra o fundo */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+    .imperio-theme .button-imperio:hover {
+        background-color: #DAB56F; /* Fundo Dourado no hover */
+        color: #DAB56F; /* Texto Vermelho Escuro para contraste */
+        box-shadow: 0 0 15px rgba(178, 34, 34, 0.6); /* Brilho avermelhado */
+        transform: translateY(-2px);
+    }
+    .imperio-theme .modal-content-imperio {
+        background-color: #3D2E14; /* Fundo do Modal Dourado escuro */
+        border: 2px solid #E0AB45; /* Borda Dourada */
+        color: #EAE0D1;
+        box-shadow: 0 0 30px rgba(218, 181, 111, 0.4); /* Sombra Dourada */
+    }
+    /* ATENÇÃO: O nome da classe é "text-gold-solar", mas a cor agora é VERMELHA */
+    .imperio-theme .text-gold-solar {
+         color: #B22222;
+    }
+    .imperio-theme .text-imperio-highlight {
+        color: #DAB56F; /* Destaque principal agora Dourado */
+        font-weight: bold;
+    }
+    .imperio-theme .header-divider-imperio {
+        background: linear-gradient(to right, transparent, #DAB56F, transparent); /* Gradiente Dourado */
+        opacity: 0.6;
+    }
+    .imperio-theme .quote-imperio {
+        border-left: 3px solid #B22222; /* Borda da citação agora Vermelha */
+        background-color: rgba(139, 0, 0, 0.1); /* Fundo com tom avermelhado */
+        font-style: italic;
+        color: #EAE0D1;
+    }
+</style>
 </head>
 <body class="font-body imperio-theme">
     <!-- Header -->
-    <header class="py-6 px-4 relative">
+    <header class="py-1 px-4  header">
         <div class="container mx-auto">
             <div class="flex justify-between items-center mb-2">
                 <div class="flex items-center">
@@ -141,49 +309,87 @@
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 relative z-10">
-        <div class="max-w-4xl mx-auto p-6 rounded-lg card-imperio space-y-8">
+    <main class="container mx-auto px-4 py-2 relative z-10 position: relative;">
+
             
-            <div class="flex justify-center -mt-2 mb-4">
-                <img src="Assets/Imagens/Imperiodosol.png" alt="Símbolo do Império do Sol" class="w-40 h-auto">
-            </div>
+
 
             <!-- Sobre a Facção -->
-            <section>
-                <h2 class="text-4xl font-header text-center header-text-imperio mb-4 tracking-wider">O Império do Sol</h2>
-                <div class="header-divider-imperio w-1/2 mx-auto mb-8"></div>
-                <p class="text-lg leading-relaxed mb-6 text-justify">
-                    Se seus olhos já contemplaram as majestosas torres douradas de Solaria ou a marcha disciplinada dos Cavaleiros do Sol, você conhece o poder do Império do Sol. Uma teocracia absolutista onde fé e estado são inseparáveis, e a luz do sol é venerada como manifestação divina. Governado por um Papa manipulado por um Conselho de Cardeais, a sociedade é rigidamente ordenada em torno da devoção.
-                </p>
-                <p class="text-lg leading-relaxed mb-6 text-justify">
-                   Sua força reside em três pilares: os <strong class="text-imperio-highlight">Cavaleiros do Sol</strong>, a elite militar; a temida <strong class="text-imperio-highlight">Inquisição</strong>, que mantém a pureza doutrinária; e a <strong class="text-imperio-highlight">Legião</strong>, o exército com milhares de homens. A motivação declarada do Império é espalhar a luz e a ordem, eliminando a escuridão e a heresia, nutrindo um ódio ancestral pela Corte Carmesim.
-                </p>
-                <p class="text-lg leading-relaxed text-justify quote-imperio p-4 rounded-lg">
-                    Viajante, ao pisar nos domínios do Império do Sol, lembre-se: a luz que ilumina também pode cegar. Observe suas palavras, pois os olhos da Inquisição estão sempre vigilantes, e a heresia é purificada com fogo.
-                </p>
-            </section>
+            <div class="painel-hero-imperio">
+
+                <div class="max-w-md"> <section>
+                        <h2 class="text-4xl  text-center header-text-imperio mb-4 tracking-wider">O Império do Sol</h2>
+                        
+                        <div class="header-divider-imperio w-1/2 mx-auto mb-8"></div>
+                        
+                        <p class="text-lg leading-relaxed mb-6 text-center">
+                            Se seus olhos já contemplaram as majestosas torres douradas de Solaria ou a marcha disciplinada dos Cavaleiros do Sol, você conhece o poder do Império do Sol. Uma teocracia absolutista onde fé e estado são inseparáveis, e a luz do sol é venerada como manifestação divina. Governado por um Papa com a ajuda de um Conselho de Cardeais, a sociedade é rigidamente ordenada em torno da devoção.
+                        </p>
+                        <p class="text-lg leading-relaxed mb-6 text-center">
+                            Sua força reside em três pilares: os <strong class="text-imperio-highlight">Cavaleiros do Sol</strong>, a elite militar; a temida <strong class="text-imperio-highlight">Inquisição</strong>, que mantém a pureza doutrinária; e a <strong class="text-imperio-highlight">Legião</strong>, o exército com milhares de homens. A motivação declarada do Império é espalhar a luz e a ordem, eliminando a escuridão e a heresia, nutrindo um ódio ancestral pela Corte Carmesim.
+                        </p>
+                        
+                    </section>
+            
+                </div>
+            </div>
 
             <!-- Botões para abrir Modais -->
             <section>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button data-modal-target="relacoes-modal" class="button-imperio w-full py-3 rounded text-center">
+            
+                    <button data-modal-target="relacoes-modal" class="button-imperio w-full py-3 rounded text-center" style="display: none;">
                         <i class="fas fa-book-open mr-2"></i> Relações
                     </button>
-                    <button data-modal-target="recrutamento-modal" class="button-imperio w-full py-3 rounded text-center">
+            
+                    <button id="botao-canto-esquerdo-superior" data-modal-target="relacoes-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fa-solid fa-handshake"></i> Relações
+                    </button>
+            
+                    <button data-modal-target="recrutamento-modal" class="button-imperio w-full py-3 rounded text-center" style="display: none;">
                         <i class="fas fa-book-open mr-2"></i> Recrutamento
                     </button>
-                    <button data-modal-target="historia-modal" class="button-imperio w-full py-3 rounded text-center">
+            
+                    <button data-modal-target="historia-modal" class="button-imperio w-full py-3 rounded text-center" style="display: none;">
                         <i class="fas fa-book-open mr-2"></i> Ver História
                     </button>  
-                    <button data-modal-target="cultura-modal" class="button-imperio w-full py-3 rounded text-center">
-                        <i class="fas fa-sun mr-2"></i> Cultura
+            
+                    <button data-modal-target="cultura-modal" class="button-imperio w-full py-3 rounded text-center" style="display: none;">
+                        <i class="fas fa-sitemap mr-2"></i> Cultura
                     </button>
-                    <button data-modal-target="estrutura-modal" class="button-imperio w-full py-3 rounded text-center">
+            
+                    <button data-modal-target="estrutura-modal" class="button-imperio w-full py-3 rounded text-center" style="display: none;">
                         <i class="fas fa-sitemap mr-2"></i> Hierarquia
                     </button>
-                    <button data-modal-target="objetivos-modal" class="button-imperio w-full py-3 rounded text-center">
+            
+                    <button data-modal-target="objetivos-modal" class="button-imperio w-full py-3 rounded text-center" style="display: none;">
                         <i class="fas fa-crosshairs mr-2"></i> Objetivos
                     </button>
+            
+                    <button id="botao-canto-esquerdo-superior" data-modal-target="relacoes-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-book-open mr-2"></i> Relações
+                    </button>
+            
+                    <button id="botao-canto-esquerdo-meio" data-modal-target="historia-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-crosshairs mr-2"></i> Historia
+                    </button>
+            
+                    <button id="botao-canto-esquerdo-inferior" data-modal-target="cultura-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-crosshairs mr-2"></i> Cultura
+                    </button>
+            
+                    <button id="botao-canto-direito-inferior" data-modal-target="estrutura-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-crosshairs mr-2"></i> Hierarquia
+                    </button>
+            
+                    <button id="botao-canto-direito-meio" data-modal-target="objetivos-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-crosshairs mr-2"></i> Objetivos
+                    </button>
+            
+                    <button id="botao-canto-direito-superior" data-modal-target="recrutar-modal" class="button-imperio w-full py-3 rounded text-center">
+                        <i class="fas fa-user-plus mr-2"></i> Recrutar
+                    </button>
+                    
                 </div>
             </section>
         </div>
@@ -201,23 +407,29 @@
                 <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
                     <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-fist-raised fa-fw mr-2"></i>O Iluminado e a Alvorada</h4>
                     <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
-                    <p class="font-light text-base">Este santo, cujo nome verdadeiro foi perdido e hoje é chamado de <strong class="text-imperio-highlight">"O Iluminado"</strong>, confrontou o Primogênito em uma batalha épica de nove dias. Ao fim, O Iluminado derrotou o senhor dos vampiros, amaldiçoando-o e a todos os seus descendentes a queimar sob a luz do sol.</p>
+                    <p class="font-light text-base">Este santo, cujo nome verdadeiro foi perdido com o tempo e agora é simplesmente chamado de <strong class="text-imperio-highlight">"O Iluminado"</strong>, confrontou o Primogênito em uma batalha épica que durou nove dias e nove noites. Ao final do confronto, O Iluminado conseguiu derrotar o senhor dos Voraths, impondo sobre ele e todos os seus descendentes a maldição de queimar sob a luz do sol.</p>
                 </div>
 
                 <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
                     <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-book-open fa-fw mr-2"></i>O Legado e o Desaparecimento</h4>
                      <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
                      <div class="font-light text-base space-y-3">
-                        <p>O Iluminado, no entanto, não buscava adoração. Ele ensinou que o sol era a manifestação física do poder divino. Após estabelecer os primeiros templos e treinar discípulos, ele desapareceu misteriosamente, assim como o Primogênito.</p>
-                        <p>Alguns dizem que ambos pereceram de ferimentos mútuos, outros acreditam que transcenderam para continuar sua batalha eterna em outro plano de existência.</p>
+                        <p>Com a derrota do Primogênito, a escuridão perpétua foi dissipada, e o sol voltou a brilhar sobre o mundo. As pessoas, que haviam vivido em terror por gerações, saíram de seus esconderijos e viram o sol pela primeira vez. Muitos caíram de joelhos em adoração, não apenas ao astro celeste, mas ao homem que o havia trazido de volta.</p>
+                        <p>O Iluminado, no entanto, não buscava adoração para si. Ele ensinou que o sol era a manifestação física do poder divino, uma fonte de vida, pureza e verdade que deveria ser venerada. Estabeleceu os primeiros templos solares e treinou discípulos para espalhar seus ensinamentos.
+                        </p>
                      </div>
                 </div>
 
                 <div class="p-4 rounded-lg border border-yellow-700/30 bg-black/20">
                     <h4 class="text-2xl font-header text-imperio-highlight mb-3"><i class="fas fa-chess-rook fa-fw mr-2"></i>A Ascensão do Império</h4>
                     <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
-                    <p class="font-light text-base">Os discípulos continuaram seu trabalho, transformando o culto solar em uma religião organizada. Com o crescimento de sua influência e poder político, a Igreja Solar e o Estado se fundiram, dando origem ao Império do Sol como é conhecido hoje.</p>
+                    <p class="font-light text-base">Após estabelecer as bases do que viria a se tornar a religião solar, O Iluminado desapareceu misteriosamente, assim como o Primogênito que havia derrotado. Alguns dizem que ambos pereceram de ferimentos mútuos, outros acreditam que transcenderam para outro plano de existência, continuando sua batalha eterna em outro reino.</p>
+                    <p class="font-light text-base">
+                        Os discípulos do Iluminado continuaram seu trabalho, gradualmente transformando o culto solar em uma religião organizada com hierarquia, rituais e dogmas. À medida que sua influência crescia, também crescia seu poder político, até que eventualmente a Igreja Solar e o Estado se fundiram, dando origem ao Império do Sol como é conhecido hoje.</p>
                 </div>
+                <blockquote class="text-lg leading-relaxed text-center quote-imperio p-4 rounded-lg bg-black/20">
+                    Viajante, ao pisar nos domínios do Império do Sol, lembre-se: a luz que ilumina também pode cegar. Observe suas palavras, pois os olhos da Inquisição estão sempre vigilantes, e a heresia é purificada com fogo.
+                </blockquote>
             </div>
         </div>
     </div>
@@ -261,7 +473,7 @@
                     <div class="header-divider-imperio w-1/4 mb-4 opacity-50"></div>
                     <ul class="space-y-3 text-base font-light">
                         <li class="flex items-start"><i class="fas fa-moon fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Rituais Noturnos:</strong> Qualquer ritual religioso realizado à noite é considerado potencialmente herético e sujeito à investigação pela Inquisição.</p></li>
-                        <li class="flex items-start"><i class="fas fa-skull-crossbones fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Simpatia Vampírica:</strong> Expressar simpatia ou fascínio por vampiros ou pela Corte Carmesim é um crime grave, punido com execução pública.</p></li>
+                        <li class="flex items-start"><i class="fas fa-skull-crossbones fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Simpatia Vampírica:</strong> Expressar simpatia ou fascínio por Voraths ou pela Corte Carmesim é um crime grave, punido com execução pública.</p></li>
                         <li class="flex items-start"><i class="fas fa-question-circle fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Questionamento Doutrinário:</strong> Desafiar publicamente os ensinamentos oficiais da Igreja Solar é heresia, com punições que vão da penitência forçada à execução.</p></li>
                         <li class="flex items-start"><i class="fas fa-eye-slash fa-fw mr-3 mt-1 text-gold-solar/70"></i><p><strong class="text-imperio-highlight">Ocultação da Marca Solar:</strong> Tentar esconder ou remover a marca da conversão é um ato de apostasia, tratado com extrema severidade.</p></li>
                     </ul>
@@ -306,7 +518,7 @@
                     <div class="space-y-4">
                         <div class="p-3 rounded-lg bg-black/20 border-l-2 border-gold-solar/50">
                             <strong class="block text-xl text-gold-solar"><i class="fas fa-shield-alt fa-fw mr-2"></i>Cavaleiros do Sol</strong>
-                            <p class="font-light text-base mt-1 pl-7">A elite militar do Império, liderada por <strong class="font-semibold text-parchment">Rodrigo Melo</strong>. São guerreiros que combinam habilidades marciais com fervor religioso, usando armaduras douradas e especializados no combate a ameaças sobrenaturais, como vampiros.</p>
+                            <p class="font-light text-base mt-1 pl-7">A elite militar do Império, liderada por <strong class="font-semibold text-parchment">Rodrigo Melo</strong>. São guerreiros que combinam habilidades marciais com fervor religioso, usando armaduras douradas e especializados no combate a ameaças sobrenaturais, como Voraths.</p>
                         </div>
                          <div class="p-3 rounded-lg bg-black/20 border-l-2 border-gold-solar/50">
                             <strong class="block text-xl text-gold-solar"><i class="fas fa-search fa-fw mr-2"></i>Inquisição Solar</strong>
@@ -335,8 +547,8 @@
                         <h4 class="text-2xl font-header text-imperio-highlight mb-2">Corte Carmesim</h4>
                         <div class="header-divider-imperio w-1/4 mb-3 opacity-50"></div>
                         <div class="space-y-2 text-base font-light leading-relaxed">
-                            <p>A relação com a Corte Carmesim é de ódio aberto e irreconciliável. O Império vê os vampiros como abominações que representam a antítese de tudo o que consideram sagrado. A doutrina imperial ensina que os vampiros são criaturas corrompidas que devem ser purificadas pelo fogo sagrado do sol.</p>
-                            <p>Caçadores de vampiros são heróis celebrados na cultura imperial, com ordens religiosas inteiras dedicadas à localização e destruição de ninhos vampíricos. Qualquer cidadão imperial suspeito de colaborar com vampiros enfrenta a Inquisição e, quase invariavelmente, execução pública.</p>
+                            <p>A relação com a Corte Carmesim é de ódio aberto e irreconciliável. O Império vê os Voraths como abominações que representam a antítese de tudo o que consideram sagrado. A doutrina imperial ensina que os Voraths são criaturas corrompidas que devem ser purificadas pelo fogo sagrado do sol.</p>
+                            <p>Caçadores de Voraths são heróis celebrados na cultura imperial, com ordens religiosas inteiras dedicadas à localização e destruição de ninhos vampíricos. Qualquer cidadão imperial suspeito de colaborar com Voraths enfrenta a Inquisição e, quase invariavelmente, execução pública.</p>
                             <p>A participação conjunta na expedição a Nornheim foi aceita apenas com extrema relutância e após intensos debates no Conselho Cardinalício, com a justificativa de que "até as trevas podem servir à luz quando devidamente controladas".</p>
                         </div>
                     </div>
