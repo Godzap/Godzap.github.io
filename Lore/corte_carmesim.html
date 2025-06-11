@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corte Carmesim - Super Medieval Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-dark': '#121212',
+                        'stone-med': '#222222',
+                        'parchment': '#dcd4c8',
+                        'gold': '#c89f65',
+                        'gold-dark': '#a18052',
+                        'steel': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        header: ['Cinzel', 'Georgia', 'serif'],
+                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
+                        'inner-dark': 'inset 0 2px 8px rgba(0, 0, 0, 0.6)',
+                    },
+                    textShadow: {
+                        'default': '1px 1px 2px rgba(0,0,0,0.7)',
+                        'gold': '0 0 8px rgba(200, 159, 101, 0.7)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
+    </style>
+    <style>
+        /* Corte Carmesim Theme v2 - Dark & Focused */
+        .corte-theme {
+            background-color: #0d0d0d; /* Um preto ainda mais profundo */
+            color: #E0D8C0;
+        }
+        .corte-theme .header-text-carmesim {
+            color: #8B0000;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.8);
+        }
+        .corte-theme .card-carmesim {
+            background-color: #1A1715;
+            border: 1px solid #8B0000;
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.3);
+        }
+        .corte-theme .button-carmesim {
+            background-color: transparent;
+            color: #E0D8C0;
+            border: 1px solid #8B0000;
+            transition: all 0.3s ease;
+        }
+        .corte-theme .button-carmesim:hover {
+            background-color: #8B0000;
+            color: #E0D8C0;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
+            transform: translateY(-2px);
+        }
+        .corte-theme .modal-content-carmesim {
+            background-color: #1A1715;
+            border: 1px solid #8B0000;
+            color: #E0D8C0;
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+        }
+        .corte-theme .text-lunar {
+             color: #E0D8C0;
+        }
+        .corte-theme .text-carmesim-highlight {
+            color: #B00000;
+            font-weight: bold;
+        }
+        .corte-theme .header-divider-carmesim {
+            background: linear-gradient(to right, transparent, #8B0000, transparent);
+            opacity: 0.6;
+        }
+        .corte-theme .quote-carmesim {
+            border-left: 2px solid #8B0000;
+            background-color: rgba(139, 0, 0, 0.1);
+            font-style: italic;
+        }
+        .bat-bg {
+            background-color: #0d0d0d;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Cg fill='%238B0000' fill-opacity='0.1'%3E%3Cpath d='M13.2,32.3c0.7,0,1.4,0.1,2,0.4c0.7,0.3,1.3,0.7,1.8,1.3c-0.3-1.2-0.5-2.5-0.5-3.8c0-1.6,0.2-3.1,0.7-4.6 c-0.8,0.3-1.7,0.5-2.5,0.5c-1.3,0-2.6-0.3-3.8-0.8c-1.2-0.5-2.3-1.2-3.2-2.1c-0.2-0.2-0.4-0.3-0.6-0.5c-0.2-0.1-0.5-0.2-0.7-0.2 c-0.3,0-0.5,0.1-0.7,0.2c-0.2,0.1-0.4,0.3-0.5,0.5c-0.9,0.9-1.9,1.7-3.1,2.2c-1.2,0.5-2.5,0.8-3.9,0.8c-0.8,0-1.7-0.2-2.5-0.5 c0.5,1.5,0.7,3,0.7,4.6c0,1.3-0.2,2.6-0.5,3.8c0.5-0.5,1.1-1,1.8-1.3c0.7-0.3,1.3-0.4,2-0.4c0.8,0,1.6,0.2,2.3,0.5 c0.7,0.3,1.4,0.8,2,1.4c0.6-0.6,1.3-1.1,2-1.4C11.6,32.4,12.4,32.3,13.2,32.3z M13.2,33.8c-0.5,0-0.9,0.1-1.3,0.3 c-0.4,0.2-0.8,0.4-1.1,0.8c0.8,0.4,1.6,0.6,2.5,0.6c0.8,0,1.7-0.2,2.5-0.6c-0.3-0.4-0.7-0.6-1.1-0.8C14.1,33.9,13.7,33.8,13.2,33.8z'%3E%3C/path%3E%3Cpath d='M86.8,32.3c0.7,0,1.4,0.1,2,0.4c0.7,0.3,1.3,0.7,1.8,1.3c-0.3-1.2-0.5-2.5-0.5-3.8c0-1.6,0.2-3.1,0.7-4.6 c-0.8,0.3-1.7,0.5-2.5,0.5c-1.3,0-2.6-0.3-3.8-0.8c-1.2-0.5-2.3-1.2-3.2-2.1c-0.2-0.2-0.4-0.3-0.6-0.5c-0.2-0.1-0.5-0.2-0.7-0.2 c-0.3,0-0.5,0.1-0.7,0.2c-0.2,0.1-0.4,0.3-0.5,0.5c-0.9,0.9-1.9,1.7-3.1,2.2c-1.2,0.5-2.5,0.8-3.9,0.8c-0.8,0-1.7-0.2-2.5-0.5 c0.5,1.5,0.7,3,0.7,4.6c0,1.3-0.2,2.6-0.5,3.8c0.5-0.5,1.1-1,1.8-1.3c0.7-0.3,1.3-0.4,2-0.4c0.8,0,1.6,0.2,2.3,0.5 c0.7,0.3,1.4,0.8,2,1.4c0.6-0.6,1.3-1.1,2-1.4C85.2,32.4,86,32.3,86.8,32.3z M86.8,33.8c-0.5,0-0.9,0.1-1.3,0.3 c-0.4,0.2-0.8,0.4-1.1,0.8c0.8,0.4,1.6,0.6,2.5,0.6c0.8,0,1.7-0.2,2.5-0.6c-0.3-0.4-0.7-0.6-1.1-0.8C87.7,33.9,87.3,33.8,86.8,33.8z'%3E%3C/path%3E%3Cpath d='M50,40.3c1.9,0,3.7,0.4,5.4,1.1c1.7,0.7,3.2,1.8,4.5,3.1c1.3-1.3,2.8-2.3,4.5-3.1c1.7-0.7,3.5-1.1,5.4-1.1 c2.2,0,4.4,0.5,6.3,1.5c1.9,1,3.6,2.4,4.9,4.1c1.3,1.7,2.3,3.7,2.9,5.8c0.6,2.1,0.9,4.3,0.9,6.5c0,3.5-0.8,6.9-2.3,10.1 c-0.2,0.4-0.4,0.8-0.7,1.1c-0.3,0.3-0.7,0.6-1.1,0.7c-0.4,0.2-0.9,0.3-1.3,0.3c-0.5,0-0.9-0.1-1.3-0.3c-0.4-0.2-0.7-0.4-1.1-0.7 c-0.3-0.3-0.5-0.7-0.7-1.1c-1.5-3.2-2.3-6.6-2.3-10.1c0-2.3,0.3-4.4,0.9-6.5c0.6-2.1,1.6-4.1,2.9-5.8c-1.1,1.5-2.5,2.7-4.1,3.6 c-1.6,0.9-3.4,1.4-5.2,1.4c-1.2,0-2.3-0.2-3.4-0.7c-1.1-0.5-2.1-1.1-3-1.9c-0.9,0.8-1.9,1.4-3,1.9c-1.1,0.5-2.2,0.7-3.4,0.7 c-1.8,0-3.6-0.5-5.2-1.4c-1.6-0.9-3-2.1-4.1-3.6c1.3,1.7,2.3,3.7,2.9,5.8c0.6,2.1,0.9,4.3,0.9,6.5c0,3.5-0.8,6.9-2.3,10.1 c-0.2,0.4-0.4,0.8-0.7,1.1c-0.3,0.3-0.7,0.6-1.1,0.7c-0.4,0.2-0.9,0.3-1.3,0.3c-0.5,0-0.9-0.1-1.3-0.3c-0.4-0.2-0.7-0.4-1.1-0.7 c-0.3-0.3-0.5-0.7-0.7-1.1c-1.5-3.2-2.3-6.6-2.3-10.1c0-2.3,0.3-4.4,0.9-6.5c0.6-2.1,1.6-4.1,2.9-5.8c1.3-1.7,3-3.1,4.9-4.1 C45.6,40.8,47.8,40.3,50,40.3z M50,42.3c-1.6,0-3.2,0.4-4.6,1.1c-1.4,0.7-2.7,1.7-3.7,3c1.4,0.5,2.9,0.8,4.3,0.8 c1.5,0,3-0.3,4.3-0.8c-1-1.3-2.3-2.3-3.7-3C53.2,42.6,51.6,42.3,50,42.3z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+        }
+        .card-carmesim {
+            background-color: #2d1a22;
+            background-image: url('Assets/imagens/fundoculto.png');
+            background-blend-mode: multiply;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-body corte-theme bat-bg">
+    <!-- Header -->
+    <header class="py-6 px-4 relative">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center">
+                    <div class="text-2xl font-header tracking-wider flex flex-col">
+                        <a href="index.html" class="hover:text-gold transition-colors">
+                            <span class="text-parchment">SUPER MEDIEVAL</span>
+                            <span class="text-gold mt-[-5px]">WIKI</span>
+                        </a>
+                    </div>
+                </div>
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment">
+                    <a href="index.html" class="hover:text-gold transition-colors font-medium tracking-wider">Home</a>
+                    <a href="armas.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
+                    <a href="classes.html" class="hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
+                    <a href="armaduras.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armaduras</a>
+                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Atributos</a>
+                </nav>
+                <div class="mobile-menu lg:hidden">
+                    <button id="mobileMenuToggle" class="text-parchment"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+            <div class="header-divider w-full h-px mt-3"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
+        <div class="container mx-auto p-8 h-full flex flex-col">
+            <div class="flex justify-end mb-16">
+                <button id="closeMobileMenu" class="text-parchment text-3xl"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="flex flex-col items-center space-y-8 text-xl">
+                <a href="index.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Home</a>
+                <a href="armas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armas</a>
+                <a href="classes.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Classes</a>
+                <a href="armaduras.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
+                <a href="atributos.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container  mx-auto px-4 py-8 relative z-10">
+        <div class="max-w-4xl mx-auto p-6 rounded-lg card-carmesim  space-y-8">
+            
+            <!-- Sobre a Facção -->
+            <section>
+                <h2 class="text-4xl font-header text-center header-text-carmesim mb-4 tracking-wider">
+                    A Corte Carmesim
+                </h2>
+                <div class="flex justify-center my-6">
+                    <img src="Assets/imagens/CultoCarmesim.png" alt="Símbolo da Corte Carmesim" class="w-32 h-32 object-contain rounded-full border-2 border-red-900/50 shadow-lg shadow-red-800/20">
+                </div>
+                <div class="header-divider-carmesim w-1/2 mx-auto mb-8"></div>
+                <p class="text-lg leading-relaxed mb-6 text-justify">
+                    Se seus passos o levarem às sombras agourentas das Montanhas Carmesim, ou talvez aos salões ecoantes e opulentos de Sanguerubra, a capital esculpida na rocha escura, você inevitavelmente sentirá a presença fria e antiga da Corte Carmesim. Longe de serem meros contos de monstros noturnos, eles representam uma das sociedades mais antigas e enigmáticas de Veridia, uma complexa tapeçaria tecida com fios de imortalidade vampírica e mortalidade humana.
+                </p>
+                <p class="text-lg leading-relaxed mb-6 text-justify">
+                    A Corte é governada por um conselho de Voraths, vampiros aristocráticos cujas vidas se estendem por séculos, descendentes de uma linhagem poderosa e amaldiçoada. Sob seu domínio vivem os Thralls, humanos que abdicaram de sua liberdade em troca de poder ou proteção, servindo como intermediários e aspirantes à imortalidade, e uma população surpreendentemente estável de Civis humanos, que optam por pagar seus impostos em sangue em vez de ouro, vivendo sob a ordem sombria da Corte.
+                </p>
+            </section>
+
+            <!-- Botões para abrir Modais -->
+            <section>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button data-modal-target="historia-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
+                        <i class="fas fa-book-open mr-2 text-lunar"></i> Ver História
+                    </button>
+                    <button data-modal-target="cultura-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
+                        <i class="fas fa-theater-masks mr-2 text-lunar"></i> Cultura
+                    </button>
+                    <button data-modal-target="estrutura-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
+                        <i class="fas fa-sitemap mr-2 text-lunar"></i> Estrutura Social
+                    </button>
+                    <button data-modal-target="relacoes-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
+                        <i class="fas fa-users mr-2 text-lunar"></i> Relações
+                    </button>
+                    <button data-modal-target="recrutamento-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
+                        <i class="fas fa-users mr-2 text-lunar"></i> Recrutamento
+                    </button>
+                    <button data-modal-target="objetivos-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
+                        <i class="fas fa-users mr-2 text-lunar"></i> Objetivos
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modais -->
+    <!-- História Modal -->
+    <div id="historia-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="historia-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">História da Corte Carmesim</h3>
+            <div class="text-lg leading-relaxed space-y-4 text-justify">
+                <p>A história da <strong class="text-carmesim-highlight">Corte Carmesim</strong> é uma crônica de poder avassalador, queda catastrópica e uma sobrevivência tenaz nas sombras do mundo. Suas raízes estão entrelaçadas com um dos eventos mais traumáticos da história registrada: a <strong class="text-carmesim-highlight">Era da Escuridão</strong>.</p>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-2"><i class="fas fa-moon fa-fw mr-2"></i>Origens na Escuridão <span class="font-light text-base text-gray-400">(c. 1000 A.I. - 0 A.I./D.I.)</span></h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>Milênios antes da ascensão do Iluminado, em um período envolto em lendas e fragmentos históricos, surgiu uma figura de poder incomparável conhecida apenas como o <strong class="text-carmesim-highlight">Primogênito</strong>. As circunstâncias exatas são obscuras, mas os contos concordam que ele fez um pacto com um deus de poder imenso. Este ato o transformou no primeiro de sua espécie, um ser de poder noturno inimaginável, dando origem à linhagem vampírica.</p>
+                    <p>Embriagado por seu novo poder e talvez pela própria natureza corruptora do pacto, o Primogênito e seus descendentes diretos rapidamente subjugaram vastas regiões do continente. Assim começou a <strong class="text-carmesim-highlight">Era da Escuridão</strong>, um período de quase mil anos onde o sol parecia uma memória distante, o mundo era governado pela noite e as linhagens vampíricas reinavam supremas. Foi uma era de opulência sombria para os senhores da noite, mas de medo e servidão para as populações humanas.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-2"><i class="fas fa-sun fa-fw mr-2"></i>A Alvorada Fraturada <span class="font-light text-base text-gray-400">(0 D.I.)</span></h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>A Era da Escuridão chegou a um fim abrupto e violento com o surgimento do <strong class="text-carmesim-highlight">  Iluminado</strong>. Imbuído do poder do sol, ele ergueu-se como um farol de esperança contra a noite perpétua. A campanha do Iluminado contra as forças do Primogênito foi longa e árdua, culminando em uma batalha cataclísmica no local hoje conhecido como <strong class="text-carmesim-highlight">Planalto da Alvorada Fraturada</strong>.</p>
+                    <p>O confronto entre os dois foi um evento que marcou o mundo. O poder solar do iluminado chocou-se contra a escuridão lunar do Primogênito. No final, a luz prevaleceu: o Iluminado marcou o Primogênito com uma maldição, ele e toda sua linhagem estavam fadados a pegarem fogo sempre que forem expostos ao sol. O Primogênito não foi destruído – talvez sua imortalidade fosse absoluta demais – mas foi gravemente ferido e quebrado. Ele fugiu do campo de batalha, desaparecendo nas sombras mais profundas do mundo. O Iluminado, exausto e talvez transformado por sua própria vitória, não o perseguiu, partindo em sua própria jornada em busca de iluminação espiritual e também desaparecendo dos registros históricos.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-2"><i class="fas fa-mask fa-fw mr-2"></i>A Caça e o Refúgio <span class="font-light text-base text-gray-400">(c. 1 D.I. - 200 D.I.)</span></h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>Com a derrota do Primogênito e o retorno gradual da luz do sol, o pêndulo do poder oscilou violentamente. As populações humanas e as novas ordens que surgiam, como o nascente <strong class="text-carmesim-highlight">Império do Sol</strong>, voltaram-se contra os vampiros com fúria vingativa. Seguiu-se um período brutal conhecido como a <strong class="text-carmesim-highlight">Grande Caça</strong>, onde as linhagens vampíricas foram perseguidas implacavelmente, seus redutos destruídos e seu número drasticamente reduzido.</p>
+                    <p>Os remanescentes da nobreza vampírica, os <strong class="text-carmesim-highlight">Voraths</strong> sobreviventes, foram forçados a se esconder. Liderados por figuras pragmáticas e resilientes que priorizavam a sobrevivência acima de tudo, eles buscaram um refúgio seguro. Encontraram-no nas profundezas das isoladas <strong class="text-carmesim-highlight">Montanhas Carmesim</strong>, onde começaram a esculpir a cidade secreta de <strong class="text-carmesim-highlight">Sanguerubra</strong> em rocha viva, um bastião oculto do mundo exterior.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-2"><i class="fas fa-eye-slash fa-fw mr-2"></i>Séculos nas Sombras <span class="font-light text-base text-gray-400">(c. 200 D.I. - 700 D.I.)</span></h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>Pelos séculos seguintes, a Corte Carmesim operou nas sombras. Abandonando as ambições de domínio mundial de seu progenitor, focaram-se na reconstrução, na consolidação do poder interno e na maestria da discrição. Desenvolveram sua estrutura social hierárquica, aperfeiçoaram a <strong class="text-carmesim-highlight">Alquimia Sanguínea</strong> como fonte de poder e conhecimento, e estabeleceram uma rede de influência sutil através de <strong class="text-carmesim-highlight">Thralls</strong> e agentes humanos.</p>
+                    <p>Foi um período de recuperação lenta e cautelosa, marcado por intrigas internas entre as Casas Vorath sobreviventes e uma vigilância constante contra ameaças externas. A memória da Grande Caça moldou sua filosofia: a sobrevivência dependia do sigilo, da força controlada e da manipulação inteligente.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-2"><i class="fas fa-hourglass-half fa-fw mr-2"></i>O Presente Conturbado <span class="font-light text-base text-gray-400">(700 D.I. - Atual)</span></h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>Nos últimos anos, com o surgimento das catástrofes e dos monstros, a Corte Carmesim viu-se forçada a sair parcialmente das sombras.</p>
+                    <p>A crescente instabilidade mundial e a ameaça existencial representada pelas entidades levaram a um evento impensável: a participação da Corte na <strong class="text-carmesim-highlight">Grande Reunião</strong> das facções.</p>
+                    <p>A Corte Carmesim entra nesta nova era com uma mistura de apreensão e oportunidade. Eles possuem conhecimento antigo e poder arcano que podem ser vitais, mas sua história e natureza os tornam aliados desconfiados. Seu futuro, como o do próprio mundo, paira em um equilíbrio precário.</p>
+                </div>
+                <div id="objetivos-corte-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+    <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+        <button data-modal-close="objetivos-corte-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+        <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Objetivos da Corte Carmesim</h3>
+        <div class="text-lg leading-relaxed space-y-4 text-justify">
+            <p>Com o surgimento de monstros nas fronteiras e os sinais de que algo catastrófico se aproxima, a <strong class="text-carmesim-highlight">Corte Carmesim</strong> estabeleceu objetivos específicos, alguns declarados publicamente e outros mantidos em segredo.</p>
+
+            <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-bullseye fa-fw mr-2"></i>Objetivo Declarado</h4>
+                <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                <p>O objetivo declarado da Corte Carmesim para participar da expedição a <strong class="text-carmesim-highlight">Nornheim</strong> é recuperar antigas receitas de alquimia e um sangue ancião. Antigos pergaminhos dizem que o motivo do primogênito ter se tornado um vampiro está lá.</p>
+                <p>Acredita-se que essas receitas e esse sangue ancião poderiam acabar com a maldição dos vampiros e produzir alguém tão forte quanto o primogênito.</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    <!-- Cultura Modal -->
+    <div id="cultura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="cultura-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Cultura da Corte Carmesim</h3>
+            <div class="text-lg leading-relaxed space-y-4 text-justify">
+                <p>A cultura da <strong class="text-carmesim-highlight">Corte Carmesim</strong> é uma mistura fascinante de elegância aristocrática, pragmatismo sombrio e segredos arcanos. A vida é regida por tradições antigas e leis estritas que garantem a sobrevivência e a ordem da sociedade vampírica.</p>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-hand-sparkles fa-fw mr-2"></i>Rituais e Tradições Principais</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-lunar mb-2">O Baile das Máscaras</h5>
+                    <p>O evento social mais importante do calendário da Corte Carmesim, o <strong class="text-carmesim-highlight">Baile das Máscaras</strong> ocorre anualmente durante a noite mais longa do ano. Todos os participantes, vampiros e humanos alike, usam máscaras elaboradas que ocultam sua identidade, teoricamente permitindo interação livre de restrições hierárquicas.</p>
+                    <p>O Baile serve múltiplos propósitos: celebração cultural, arena política onde alianças são formadas e rivalidades expressas através de dança e conversação codificada, e ocasionalmente oportunidade para <strong class="text-carmesim-highlight">Voraths</strong> observarem potenciais candidatos para transformação em <strong class="text-carmesim-highlight">Thralls</strong>.</p>
+                    <p>A tradição inclui uma série de danças ritualizadas cujos padrões remontam à <strong class="text-carmesim-highlight">Era da Escuridão</strong>, representando simbolicamente a história da Corte. O ponto culminante é a "Dança do Primogênito", performance solene que honra o fundador ausente da linhagem vampírica.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">Alquimia Sanguínea</h5>
+                    <p>A Corte Carmesim desenvolveu uma tradição sofisticada de alquimia baseada nas propriedades místicas do sangue. Esta prática vai muito além da simples nutrição vampírica, explorando como diferentes tipos de sangue, quando processados através de métodos específicos, podem produzir efeitos extraordinários.</p>
+                    <p>Laboratórios alquímicos em <strong class="text-carmesim-highlight">Sanguerubra</strong> produzem uma variedade impressionante de substâncias: tintas que nunca desbotam, poções que aceleram a cura natural.</p>
+                    <p>O conhecimento alquímico é cuidadosamente guardado, com aprendizes passando por décadas de treinamento antes de serem confiados com fórmulas mais avançadas. Certos processos são conhecidos apenas pelos líderes de laboratórios e seus assistentes mais próximos, particularmente aqueles relacionados à preservação e potencialização do raro <strong class="text-carmesim-highlight">sangue Vorath</strong>.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">Rituais de Transformação</h5>
+                    <p>Cerimônias solenes e raras marcam a transformação de humanos em <strong class="text-carmesim-highlight">Thralls</strong> ou, mais raramente ainda, a ascensão de um Thrall a <strong class="text-carmesim-highlight">Vorath</strong>. São eventos significativos que reforçam a hierarquia e a natureza da sociedade.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-gavel fa-fw mr-2"></i>Leis e Costumes Fundamentais</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-lunar mb-2">O Imposto Sanguíneo</h5>
+                    <p>O sistema que substituiu a predação caótica da Era da Escuridão, o <strong class="text-carmesim-highlight">imposto sanguíneo</strong> é uma instituição fundamental da sociedade moderna da Corte Carmesim. Cada cidadão adulto deve contribuir com uma pequena quantidade de sangue regularmente (tipicamente mensalmente), coletado em instalações médicas especializadas sob supervisão de profissionais treinados.</p>
+                    <p>O processo é surpreendentemente civilizado: doadores são examinados para garantir saúde adequada, a quantidade coletada é cuidadosamente medida para evitar efeitos debilitantes, e um período de recuperação com nutrição apropriada é fornecido após cada doação.</p>
+                    <p>O sangue coletado é processado, preservado e distribuído de acordo com um sistema complexo que considera hierarquia, necessidade e mérito. <strong class="text-carmesim-highlight">Voraths</strong> recebem alocações maiores e de melhor qualidade, enquanto <strong class="text-carmesim-highlight">Thralls</strong> recebem porções menores complementadas por uma dieta normal.</p>
+                    <p>Este sistema é frequentemente citado pelos apologistas da Corte como evidência de sua civilidade evoluída em comparação com a brutalidade da Era da Escuridão. Críticos, particularmente do <strong class="text-carmesim-highlight">Império do Sol</strong>, o veem como mera fachada sofisticada para exploração continuada.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">Manutenção do Segredo</h5>
+                    <p>A sobrevivência da Corte depende de manter seus segredos – especialmente sobre suas fraquezas e a <strong class="text-carmesim-highlight">Alquimia Sanguínea</strong> – longe de olhos externos. A indiscrição é severamente punida.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">Respeito à Hierarquia</h5>
+                    <p>A estrutura <strong class="text-carmesim-highlight">Vorath > Thrall > Civil</strong> é inquestionável. Desafiar a autoridade ou desrespeitar um superior pode ter consequências fatais.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">Lealdade</h5>
+                    <p>A traição à Corte, a uma Casa ou a um mestre <strong class="text-carmesim-highlight">Vorath</strong> é o crime mais grave, punido exemplarmente.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">Controle</h5>
+                    <p>A caça descontrolada é proibida. A Corte valoriza a ordem e a discrição acima de tudo.</p>
+                </div>
+                <p>A cultura da Corte é uma de dualidade: beleza e perigo, ordem e intriga, vida prolongada e morte súbita. É um mundo onde a etiqueta pode ser tão mortal quanto uma lâmina e onde o conhecimento do sangue é a chave para o poder.</p>
+            </div>
+        </div>
+    </div>
+    <div id="recrutamento-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="afiliacao-corte-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Afiliação e Estrutura Social</h3>
+            <div class="text-lg leading-relaxed space-y-4 text-justify">
+                <p>Ao contrário de exércitos que recrutam soldados ou guildas que aceitam membros, a afiliação à <strong class="text-carmesim-highlight">Corte Carmesim</strong> é uma questão de existência dentro de sua esfera de influência, definida por nascimento, residência ou, mais dramaticamente, pela transformação sobrenatural. A sociedade da Corte é rigidamente estratificada, com cada nível possuindo deveres, privilégios e perigos distintos.</p>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-users-cog fa-fw mr-2"></i>A Estrutura Social</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+    
+                    <h5 class="text-xl font-header text-lunar mb-2">1. Cidadãos Humanos</h5>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li>
+                            <strong class="text-carmesim-highlight">Como se Tornar:</strong> A forma mais comum de interação com a Corte é simplesmente viver em seus territórios, como a imponente cidade de <strong class="text-carmesim-highlight">Sanguerubra</strong> ou vilarejos sob seu controle. Não há uma cerimônia formal de adesão; a cidadania é uma condição de residência e submissão às leis da Corte.
+                        </li>
+                        <li>
+                            <strong class="text-carmesim-highlight">O Pacto:</strong> Em troca da ordem e proteção oferecidas pela vigilância implacável da Corte (e talvez acesso a certos avanços alquímicos ou segurança contra ameaças externas), os cidadãos humanos aceitam o domínio <strong class="text-carmesim-highlight">Vorath</strong> e participam do sistema único do <strong class="text-carmesim-highlight">"Imposto Sanguíneo"</strong>. Periodicamente, uma pequena e controlada quantidade de sangue é coletada de cada cidadão. Para a Corte, é um recurso vital; para o cidadão, é o preço da coexistência.
+                        </li>
+                        <li>
+                            <strong class="text-carmesim-highlight">Papel:</strong> Formam a base da sociedade, trabalhando em ofícios comuns, comércio e agricultura, sustentando a economia da Corte. Embora vivam sob o olhar atento dos imortais, muitos desfrutam de uma vida relativamente estável, se comparada ao caos de outras regiões – desde que cumpram as regras e paguem seus impostos.
+                        </li>
+                    </ul>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">2. Thralls (Servos Vinculados)</h5>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li>
+                            <strong class="text-carmesim-highlight">Como se Tornar:</strong> Ascender de cidadão a <strong class="text-carmesim-highlight">Thrall</strong> é um passo significativo e irreversível. Geralmente ocorre quando um humano demonstra grande utilidade, lealdade excepcional, ou se encontra em dívida (literal ou figurativa) com um <strong class="text-carmesim-highlight">Vorath</strong>. A transformação envolve um ritual de sangue, onde o humano consome uma pequena quantidade do sangue de seu futuro mestre Vorath. Este ato cria um vínculo sobrenatural.
+                        </li>
+                        <li>
+                            <strong class="text-carmesim-highlight">O Vínculo:</strong> Thralls ganham força e sentidos aprimorados, longevidade estendida (embora não a imortalidade plena) e uma lealdade inabalável e muitas vezes não natural ao seu mestre. Eles perdem grande parte de sua autonomia e vontade própria, tornando-se extensões da vontade de seu Vorath.
+                        </li>
+                        <li>
+                            <strong class="text-carmesim-highlight">Papel:</strong> Servem como a espinha dorsal da administração e segurança da Corte. Atuam como guardas pessoais, assistentes de pesquisa para alquimistas, espiões, administradores de propriedades Vorath, ou soldados de elite nas legiões da Corte. Seu status está acima dos cidadãos comuns, mas completamente subordinado aos Voraths. A competição entre Thralls por favor e reconhecimento de seus mestres pode ser feroz.
+                        </li>
+                    </ul>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">3. Voraths (Nobreza Vampírica)</h5>
+                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                        <li>
+                            <strong class="text-carmesim-highlight">Como se Tornar:</strong> A transformação em um <strong class="text-carmesim-highlight">Vorath</strong> de sangue puro é o ápice da hierarquia e um evento de extrema raridade. Não é algo que se busca ativamente; é concedido. Geralmente, requer séculos de serviço impecável como <strong class="text-carmesim-highlight">Thrall</strong>, demonstrações extraordinárias de poder e lealdade, e, mais importante, a decisão estratégica de um Vorath existente (geralmente com a aprovação tácita ou explícita do Conselho) de compartilhar seu sangue transformador. Este ato, conhecido como o <strong class="text-carmesim-highlight">"Abraço Sombrio"</strong>, confere imortalidade, poderes vampíricos plenos e um lugar na complexa política da nobreza.
+                        </li>
+                        <li>
+                            <strong class="text-carmesim-highlight">A Hierarquia Interna:</strong> Os Voraths não são monolíticos. Existem <strong class="text-carmesim-highlight">Casas</strong> nobres distintas (como <strong class="text-carmesim-highlight">Sanguenoite, Mortis</strong>, etc.), cada uma com sua própria história, especialização e influência dentro do Conselho que governa a Corte. A política interna é um jogo sutil e muitas vezes letal de alianças, rivalidades e ambição secular.
+                        </li>
+                        <li>
+                            <strong class="text-carmesim-highlight">Papel:</strong> São os governantes, estrategistas, diplomatas e guardiões do conhecimento arcano da Corte. Eles supervisionam os territórios, comandam os Thralls, conduzem a diplomacia com o mundo exterior e perpetuam a existência de sua sociedade através de planejamento cuidadoso e controle implacável.
+                        </li>
+                    </ul>
+                    <p>Compreender essa estrutura é fundamental para navegar nas interações com a <strong class="text-carmesim-highlight">Corte Carmesim</strong>. Cada nível tem suas próprias motivações e limitações, e o sangue – seja como imposto, vínculo ou poder transformador – flui como a corrente vital que define esta sociedade sombria e resiliente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estrutura Modal -->
+    <div id="estrutura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="estrutura-social-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Estrutura Social e Hierarquia</h3>
+            <div class="text-lg leading-relaxed space-y-4 text-justify">
+                <p>A sociedade da <strong class="text-carmesim-highlight">Corte Carmesim</strong> é rigidamente estratificada em três classes principais:</p>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-crown fa-fw mr-2"></i>Voraths</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>A alta casta vampírica, composta por descendentes diretos do <strong class="text-carmesim-highlight">Primogênito</strong> ou vampiros excepcionalmente antigos e poderosos. Os <strong class="text-carmesim-highlight">Voraths</strong> formam a aristocracia governante, cada um controlando território específico e linhagem de vampiros subordinados.</p>
+                    <p>Após a queda do Primogênito, o sangue necessário para criar novos Voraths tornou-se extremamente raro, tornando esta classe uma elite fechada. A criação de um novo Vorath é um evento extraordinário que ocorre talvez uma vez por século, tipicamente quando um <strong class="text-carmesim-highlight">Thrall</strong> demonstra lealdade e valor excepcionais.</p>
+                    <p>Os Voraths são reconhecíveis por sua pele extremamente pálida com leve tonalidade azulada, olhos que mudam de cor conforme seu estado emocional, e uma aura quase palpável de poder antigo. Cada Vorath desenvolve habilidades únicas baseadas em sua linhagem e personalidade - alguns especializam-se em manipulação mental, outros em transformação física, outros ainda em <strong class="text-carmesim-highlight">alquimia sanguínea avançada</strong>.</p>
+    
+                    <h5 class="text-xl font-header text-lunar mt-4 mb-2">O Sistema de Casas</h5>
+                    <p>A sociedade vampírica é organizada em <strong class="text-carmesim-highlight">Casas</strong> - linhagens quase familiares baseadas não em parentesco biológico, mas em quem transformou quem. Cada Vorath pode estabelecer sua própria Casa após receber permissão do Conselho, criando uma estrutura hierárquica de Thralls e vampiros subordinados.</p>
+                    <p class="mb-2">As três Casas mais poderosas atualmente são:</p>
+                    <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                        <li><strong class="text-carmesim-highlight">Casa Noctis:</strong> Focada em diplomacia, espionagem e administração civil.</li>
+                        <li><strong class="text-carmesim-highlight">Casa Vitae:</strong> Dedicada à alquimia, medicina e pesquisa.</li>
+                        <li><strong class="text-carmesim-highlight">Casa Mortis:</strong> Especializada em guerra, segurança e treinamento marcial.</li>
+                    </ul>
+                    <p>Cada Casa mantém estética, tradições e especialidades distintas. Membros tipicamente exibem símbolos de sua Casa em vestuário e adornos pessoais, e a lealdade à Casa frequentemente supera outros laços sociais.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-3"><i class="fas fa-hand-holding-heart fa-fw mr-2"></i>Thralls/Zumbis</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>Servos diretos dos <strong class="text-carmesim-highlight">Voraths</strong>, os <strong class="text-carmesim-highlight">Thralls</strong> são humanos que abdicaram voluntariamente de sua liberdade em troca de benefícios como longevidade estendida, força aumentada, e posição privilegiada na hierarquia social. Embora tecnicamente ainda humanos, Thralls consumiram sangue vampírico em rituais específicos que os transformaram parcialmente.</p>
+                    <p>Thralls mantêm consciência e personalidade completas, mas desenvolvem uma lealdade sobrenatural ao Vorath que os transformou. Esta lealdade não é controle mental direto, mas uma compulsão psicológica profunda semelhante a um vício intenso.</p>
+                    <p>Thralls particularmente leais e competentes podem eventualmente ascender à condição de Vorath, embora tais promoções sejam extremamente raras. Mais comumente, servem como administradores, guerreiros de elite, diplomatas, ou especialistas em campos valorizados pela Corte.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-3"><i class="fas fa-users fa-fw mr-2"></i>Civis</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>A base da pirâmide social, os <strong class="text-carmesim-highlight">civis</strong> são humanos comuns que vivem sob proteção e domínio da <strong class="text-carmesim-highlight">Corte Carmesim</strong>. Diferente da <strong class="text-carmesim-highlight">Era da Escuridão</strong>, quando humanos eram tratados como mero gado, os civis na sociedade atual têm direitos definidos e proteções legais.</p>
+                    <p>O mais notável aspecto da vida civil sob a Corte Carmesim é o sistema de <strong class="text-carmesim-highlight">"imposto sanguíneo"</strong> - em vez de pagar tributos em ouro ou produtos, cada cidadão adulto deve fornecer uma pequena quantidade de sangue regularmente. Este processo é altamente regulamentado, com médicos treinados garantindo que a coleta seja segura e não debilitante.</p>
+                    <p>Surpreendentemente, muitos humanos preferem este arranjo a viver sob outras facções. A Corte Carmesim oferece benefícios significativos a seus cidadãos humanos: proteção militar eficaz, acesso a tratamentos médicos avançados desenvolvidos através de séculos de estudo da fisiologia humana, e uma sociedade relativamente meritocrática onde talento é frequentemente reconhecido independente de nascimento.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Relações Modal -->
+    <div id="relacoes-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="relacoes-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Relações com Outras Facções</h3>
+            <div class="text-lg leading-relaxed space-y-4 text-justify">
+                <p>As <strong class="text-carmesim-highlight">Relações da Corte Carmesim</strong> com as demais potências são um complexo jogo de poder, necessidade e desconfiança histórica, moldado por séculos de convivência e conflito.</p>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-sun fa-fw mr-2"></i>Império do Sol</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>A animosidade entre a <strong class="text-carmesim-highlight">Corte Carmesim</strong> e o <strong class="text-carmesim-highlight">Império do Sol</strong> é profunda e histórica, enraizada no conflito fundamental entre o <strong class="text-carmesim-highlight">Primogênito</strong> e o <strong class="text-carmesim-highlight">Iluminado</strong>. Embora hostilidades abertas sejam raras na era moderna, uma tensão constante persiste, ocasionalmente explodindo em escaramuças fronteiriças ou incidentes diplomáticos.</p>
+                    <p>O Império do Sol oficialmente considera todos os vampiros abominações a serem purificadas, enquanto a Corte vê os imperiais como fanáticos perigosos obcecados com ortodoxia religiosa. Na prática, certo nível de comércio clandestino e comunicação diplomática limitada ocorre por necessidade pragmática.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-3"><i class="fas fa-hand-holding-usd fa-fw mr-2"></i>Herdeiros de Malzahir</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>As relações com os <strong class="text-carmesim-highlight">Herdeiros de Malzahir</strong> são complexas, mas geralmente cordiais. Ambas as facções valorizam conhecimento, tradição e uma abordagem sofisticada para governança, criando uma base para respeito mútuo apesar de diferenças filosóficas fundamentais.</p>
+                    <p>Acordos comerciais formais existem entre <strong class="text-carmesim-highlight">Sanguerubra</strong> e <strong class="text-carmesim-highlight">Al-Madinat</strong>, com caravanas regularmente transportando bens entre os territórios. Os Herdeiros particularmente valorizam tintas e pigmentos alquímicos produzidos pela Corte, enquanto os vampiros apreciam especiarias raras e têxteis luxuosos dos Herdeiros.</p>
+                    <p>Tensões ocasionais surgem relacionadas a diferenças religiosas e culturais, particularmente quando missionários dos Herdeiros tentam converter cidadãos da Corte. No entanto, estas disputas tipicamente permanecem no âmbito diplomático em vez de escalar para conflito aberto.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mt-4 mb-3"><i class="fas fa-users-line fa-fw mr-2"></i>Guilda dos Aventureiros</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>A <strong class="text-carmesim-highlight">Corte Carmesim</strong> mantém uma relação pragmática com a <strong class="text-carmesim-highlight">Guilda dos Aventureiros</strong>, reconhecendo o valor de ter um intermediário neutro para certas negociações e trocas de informação. Aventureiros individuais são geralmente bem-vindos em <strong class="text-carmesim-highlight">Sanguerubra</strong>, desde que respeitem as leis e costumes locais.</p>
+                    <p>Alguns <strong class="text-carmesim-highlight">Voraths</strong> cultivam contatos específicos dentro da Guilda, utilizando-os como fontes de informação sobre territórios distantes ou como agentes para transações que requerem discrição. Em troca, oferecem acesso a conhecimento alquímico selecionado ou artefatos raros.</p>
+                    <p>A principal fonte de atrito é a tendência ocasional de membros da Guilda de "resgatar" humanos que, na visão da Corte, são cidadãos legítimos ou servos contratados. Estes incidentes são tipicamente resolvidos caso a caso, frequentemente com compensação negociada.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="objetivos-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="objetivos-corte-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Objetivos da Corte Carmesim</h3>
+            <div class="text-lg leading-relaxed space-y-4 text-justify">
+                <p>Com o surgimento de monstros nas fronteiras e os sinais de que algo catastrófico se aproxima, a <strong class="text-carmesim-highlight">Corte Carmesim</strong> estabeleceu objetivos específicos, alguns declarados publicamente e outros mantidos em segredo.</p>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                    <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-bullseye fa-fw mr-2"></i>Objetivo Declarado</h4>
+                    <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                    <p>O objetivo declarado da Corte Carmesim para participar da expedição a <strong class="text-carmesim-highlight">Nornheim</strong> é recuperar antigas receitas de alquimia e um sangue ancião. Antigos pergaminhos dizem que o motivo do primogênito ter se tornado um vampiro está lá.</p>
+                    <p>Acredita-se que essas receitas e esse sangue ancião poderiam acabar com a maldição dos vampiros e produzir alguém tão forte quanto o primogênito.</p>
+                </div>
+    
+                <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
+                     <h4 class="text-2xl font-header text-lunar mt-4 mb-3"><i class="fas fa-user-secret fa-fw mr-2"></i>Objetivos Secretos</h4>
+                     <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
+                     <p>Não consegui encontrar informações sobre objetivos secretos da Corte Carmesim na expedição a Nornheim.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+
+    <script src="Assets/js/main.js" defer></script>
+</body>
+</html> 
