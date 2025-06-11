@@ -109,6 +109,10 @@
     position: relative;
     background-image: url('Assets/imagens/3.jpg');
     background-size: contain;
+}.conteudo-painel {
+  /* Outros estilos que você já tem... */
+  box-shadow: 0px 0px 100px 50px rgba(0, 0, 0, 0.7);
+  /* Isso cria uma sombra preta com 70% de opacidade, 100px de desfoque (blur) e 50px de propagação (spread) */
 }
 /* 4. (Opcional) Mudando a cor do polegar ao passar o mouse */
 .modal-content-carmesim::-webkit-scrollbar-thumb:hover {
@@ -125,24 +129,33 @@
         #botao-canto-direito-inferior { top: 55%; right: 13%; }
         /* Painel central com escudo */
         .painel-central {
-            position: relative;
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 800px;
-        }
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 800px; /* Sua altura definida */
+    
+    /* A imagem de fundo do painel continua aqui, via style="..." no HTML ou movida para cá */
+
+    /* --- A MÁGICA ACONTECE AQUI --- */
+    mask-image: radial-gradient(ellipse 80% 65% at center, black, transparent);
+    
+    /* 2. Versão com prefixo para máxima compatibilidade com navegadores (Chrome, Safari, Edge) */
+    -webkit-mask-image: radial-gradient(ellipse 2000% 2000% at center, black, transparent);
+    /* 1. Máscara com gradiente radial para esfumaçar TODAS as bordas */
+
+}
     </style>
 </head>
 
 <body class="font-body corte-theme fundocarmesim">
     <!-- Header -->
-    <header class="py-12 px-4 relative">
+    <header class="py-12 px-4 relative relative bottom-7">
         <div class="container mx-auto">
             <div class="flex items-center mb-2">
                 
-                <div class="flex items-center flex-shrink-0 relative bottom-10 right-64 ml-64">
+                <div class="flex items-center flex-shrink-0 relative bottom-5 right-64 ml-64">
                     <div class="text-2xl font-header tracking-wider flex flex-col">
                         <a href="index.html" class="hover:text-gold transition-colors">
                             <span class="text-parchment">SUPER MEDIEVAL</span>
@@ -150,7 +163,7 @@
                         </a>
                     </div>
                 </div>
-                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative bottom-10 left-[35%]">
+                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative bottom-5 left-[35%]">
                     <a href="index.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Home</a>
                     <a href="armas.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
                     <a href="classes.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
@@ -167,7 +180,7 @@
     <!-- Main Content -->
     <main class="relative w-full h-screen">
         <!-- Painel central com escudo -->
-        <div class="painel-central" style="background-image: url('Assets/imagens/fundoculto.png'); background-repeat: no-repeat; background-position: center top; background-size: contain">
+        <div class="painel-central conteudo-painel" style="background-image: url('Assets/imagens/fundoculto.png'); background-repeat: no-repeat; background-position: center top; background-size: contain">
 
             <div class="w-full max-w-4xl mx-auto px-15 py-20 relative bottom-32">
     

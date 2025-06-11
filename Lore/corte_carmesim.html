@@ -106,7 +106,7 @@
 </head>
 <body class="font-body corte-theme bat-bg">
     <!-- Header -->
-    <header class="py-6 px-4 relative">
+    <header class="py-6 px-4 sm:px-6 lg:px-8 relative">
         <div class="container mx-auto">
             <div class="flex justify-between items-center mb-2">
                 <div class="flex items-center">
@@ -150,15 +150,15 @@
 
     <!-- Main Content -->
     <main class="container  mx-auto px-4 py-8 relative z-10">
-        <div class="max-w-4xl mx-auto p-6 rounded-lg card-carmesim  space-y-8">
+        <div class="max-w-4xl mx-auto p-4 sm:p-8 rounded-lg card-carmesim  space-y-8">
             
             <!-- Sobre a Facção -->
             <section>
-                <h2 class="text-4xl font-header text-center header-text-carmesim mb-4 tracking-wider">
+                <h2 class="text-3xl sm:text-4xl font-header text-center header-text-carmesim mb-4 tracking-wider">
                     A Corte Carmesim
                 </h2>
                 <div class="flex justify-center my-6">
-                    <img src="Assets/imagens/CultoCarmesim.png" alt="Símbolo da Corte Carmesim" class="w-32 h-32 object-contain rounded-full border-2 border-red-900/50 shadow-lg shadow-red-800/20">
+                    <img src="Assets/imagens/CultoCarmesim.png" alt="Símbolo da Corte Carmesim" class="w-24 h-24 sm:w-32 sm:h-32 object-contain rounded-full border-2 border-red-900/50 shadow-lg shadow-red-800/20">
                 </div>
                 <div class="header-divider-carmesim w-1/2 mx-auto mb-8"></div>
                 <p class="text-lg leading-relaxed mb-6 text-justify">
@@ -171,7 +171,7 @@
 
             <!-- Botões para abrir Modais -->
             <section>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <button data-modal-target="historia-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
                         <i class="fas fa-book-open mr-2 text-lunar"></i> Ver História
                     </button>
@@ -185,10 +185,10 @@
                         <i class="fas fa-users mr-2 text-lunar"></i> Relações
                     </button>
                     <button data-modal-target="recrutamento-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
-                        <i class="fas fa-users mr-2 text-lunar"></i> Recrutamento
+                        <i class="fas fa-user-plus mr-2 text-lunar"></i> Recrutamento
                     </button>
                     <button data-modal-target="objetivos-modal" class="button-carmesim w-full py-3 rounded font-semibold text-center">
-                        <i class="fas fa-users mr-2 text-lunar"></i> Objetivos
+                        <i class="fas fa-bullseye mr-2 text-lunar"></i> Objetivos
                     </button>
                 </div>
             </section>
@@ -198,9 +198,9 @@
     <!-- Modais -->
     <!-- História Modal -->
     <div id="historia-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-4 sm:p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close="historia-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">História da Corte Carmesim</h3>
+            <h3 class="text-2xl sm:text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">História da Corte Carmesim</h3>
             <div class="text-lg leading-relaxed space-y-4 text-justify">
                 <p>A história da <strong class="text-carmesim-highlight">Corte Carmesim</strong> é uma crônica de poder avassalador, queda catastrópica e uma sobrevivência tenaz nas sombras do mundo. Suas raízes estão entrelaçadas com um dos eventos mais traumáticos da história registrada: a <strong class="text-carmesim-highlight">Era da Escuridão</strong>.</p>
     
@@ -239,32 +239,14 @@
                     <p>A crescente instabilidade mundial e a ameaça existencial representada pelas entidades levaram a um evento impensável: a participação da Corte na <strong class="text-carmesim-highlight">Grande Reunião</strong> das facções.</p>
                     <p>A Corte Carmesim entra nesta nova era com uma mistura de apreensão e oportunidade. Eles possuem conhecimento antigo e poder arcano que podem ser vitais, mas sua história e natureza os tornam aliados desconfiados. Seu futuro, como o do próprio mundo, paira em um equilíbrio precário.</p>
                 </div>
-                <div id="objetivos-corte-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-    <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
-        <button data-modal-close="objetivos-corte-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-        <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Objetivos da Corte Carmesim</h3>
-        <div class="text-lg leading-relaxed space-y-4 text-justify">
-            <p>Com o surgimento de monstros nas fronteiras e os sinais de que algo catastrófico se aproxima, a <strong class="text-carmesim-highlight">Corte Carmesim</strong> estabeleceu objetivos específicos, alguns declarados publicamente e outros mantidos em segredo.</p>
-
-            <div class="p-4 rounded-lg border border-gray-700/30 bg-black/20">
-                <h4 class="text-2xl font-header text-lunar mb-3"><i class="fas fa-bullseye fa-fw mr-2"></i>Objetivo Declarado</h4>
-                <div class="header-divider-carmesim w-1/4 mb-4 opacity-50"></div>
-                <p>O objetivo declarado da Corte Carmesim para participar da expedição a <strong class="text-carmesim-highlight">Nornheim</strong> é recuperar antigas receitas de alquimia e um sangue ancião. Antigos pergaminhos dizem que o motivo do primogênito ter se tornado um vampiro está lá.</p>
-                <p>Acredita-se que essas receitas e esse sangue ancião poderiam acabar com a maldição dos vampiros e produzir alguém tão forte quanto o primogênito.</p>
-            </div>
-
-
-        </div>
-    </div>
-</div>
             </div>
         </div>
     </div>
     <!-- Cultura Modal -->
     <div id="cultura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-4 sm:p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close="cultura-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Cultura da Corte Carmesim</h3>
+            <h3 class="text-2xl sm:text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Cultura da Corte Carmesim</h3>
             <div class="text-lg leading-relaxed space-y-4 text-justify">
                 <p>A cultura da <strong class="text-carmesim-highlight">Corte Carmesim</strong> é uma mistura fascinante de elegância aristocrática, pragmatismo sombrio e segredos arcanos. A vida é regida por tradições antigas e leis estritas que garantem a sobrevivência e a ordem da sociedade vampírica.</p>
     
@@ -313,9 +295,9 @@
         </div>
     </div>
     <div id="recrutamento-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close="afiliacao-corte-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Afiliação e Estrutura Social</h3>
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-4 sm:p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="recrutamento-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-2xl sm:text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Afiliação e Estrutura Social</h3>
             <div class="text-lg leading-relaxed space-y-4 text-justify">
                 <p>Ao contrário de exércitos que recrutam soldados ou guildas que aceitam membros, a afiliação à <strong class="text-carmesim-highlight">Corte Carmesim</strong> é uma questão de existência dentro de sua esfera de influência, definida por nascimento, residência ou, mais dramaticamente, pela transformação sobrenatural. A sociedade da Corte é rigidamente estratificada, com cada nível possuindo deveres, privilégios e perigos distintos.</p>
     
@@ -369,9 +351,9 @@
 
     <!-- Estrutura Modal -->
     <div id="estrutura-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close="estrutura-social-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Estrutura Social e Hierarquia</h3>
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-4 sm:p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="estrutura-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-2xl sm:text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Estrutura Social e Hierarquia</h3>
             <div class="text-lg leading-relaxed space-y-4 text-justify">
                 <p>A sociedade da <strong class="text-carmesim-highlight">Corte Carmesim</strong> é rigidamente estratificada em três classes principais:</p>
     
@@ -414,9 +396,9 @@
 
     <!-- Relações Modal -->
     <div id="relacoes-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-4 sm:p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
             <button data-modal-close="relacoes-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Relações com Outras Facções</h3>
+            <h3 class="text-2xl sm:text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Relações com Outras Facções</h3>
             <div class="text-lg leading-relaxed space-y-4 text-justify">
                 <p>As <strong class="text-carmesim-highlight">Relações da Corte Carmesim</strong> com as demais potências são um complexo jogo de poder, necessidade e desconfiança histórica, moldado por séculos de convivência e conflito.</p>
     
@@ -446,9 +428,9 @@
         </div>
     </div>
     <div id="objetivos-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
-        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-8 relative max-h-[90vh] overflow-y-auto">
-            <button data-modal-close="objetivos-corte-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
-            <h3 class="text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Objetivos da Corte Carmesim</h3>
+        <div class="modal-content-carmesim max-w-3xl w-full rounded-lg p-4 sm:p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button data-modal-close="objetivos-modal" class="absolute top-4 right-4 text-lunar hover:text-carmesim-highlight text-3xl">&times;</button>
+            <h3 class="text-2xl sm:text-3xl font-header header-text-carmesim mb-6 text-center tracking-wider">Objetivos da Corte Carmesim</h3>
             <div class="text-lg leading-relaxed space-y-4 text-justify">
                 <p>Com o surgimento de monstros nas fronteiras e os sinais de que algo catastrófico se aproxima, a <strong class="text-carmesim-highlight">Corte Carmesim</strong> estabeleceu objetivos específicos, alguns declarados publicamente e outros mantidos em segredo.</p>
     
