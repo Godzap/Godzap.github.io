@@ -6,6 +6,9 @@
     <title>Sultanato Banu Malzahir - Super Medieval Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra&family=MedievalSharp&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -19,9 +22,9 @@
                         'steel': '#7a7a7a',
                     },
                     fontFamily: {
-                        header: ['Cinzel', 'Georgia', 'serif'],
-                        body: ['EB Garamond', 'Georgia', 'serif'],
-                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                        header: ['MedievalSharp', 'serif'],
+                        body: ['Almendra', 'serif'],
+                        grotesk: ['Almendra', 'sans-serif']
                     }
                 }
             }
@@ -39,8 +42,7 @@
         .ml-6 {
             margin-left: 1.5rem;
         }
-        @import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&family=Almarai:wght@400;700&display=swap');
-
+        
         header {
             background-image: 
                 linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), 
@@ -93,7 +95,7 @@
             justify-content: center;
             align-items: center;
             color: #EAE0B8;
-            font-family: 'Cinzel Decorative', serif;
+            font-family: 'MedievalSharp', serif;
             font-size: 1.25rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
             border: none;
@@ -183,7 +185,7 @@
                         </a>
                     </div>
                 </div>
-                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative left-[25%]">
+                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative left-[35%] font-header">
                     <a href="index.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Home</a>
                     <a href="armas.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
                     <a href="classes.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Classes</a>

@@ -16,19 +16,20 @@
     <!-- Open Graph (usado pelo Discord, Facebook, etc.) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://godzap.github.io/index.html">
-    <meta property="og:title" content="Wiki do Super Medieval">
-    <meta property="og:description" content="Sua fonte de conhecimento para sobreviver e prosperar no mundo de Nornheim.">
-    <meta property="og:image" content="URL_COMPLETA_DA_IMAGEM_AQUI">
+    <meta property="og:title" content="Bem-vindo à Wiki do Super Medieval">
+    <meta property="og:description" content="Um Mundo Despedaçado Vos Aguarda">
+    <meta property="og:image" content="https://godzap.github.io/Assets/imagens/imagemparadiscord.png">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://godzap.github.io/index.html">
-    <meta name="twitter:title" content="Wiki do Super Medieval">
-    <meta name="twitter:description" content="Sua fonte de conhecimento para sobreviver e prosperar no mundo de Nornheim.">
-    <meta name="twitter:image" content="URL_COMPLETA_DA_IMAGEM_AQUI">
-
+    <meta name="twitter:title" content="Bem-vindo à Wiki do Super Medieval">
+    <meta name="twitter:description" content="Um Mundo Despedaçado Vos Aguarda">
+    <meta name="twitter:image" content="https://godzap.github.io/Assets/imagens/imagemparadiscord.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra&family=MedievalSharp&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -43,8 +44,8 @@
                         'steel': '#7a7a7a',
                     },
                     fontFamily: {
-                        header: ['Cinzel', 'Georgia', 'serif'],
-                        body: ['EB Garamond', 'Georgia', 'serif'],
+                        header: ['MedievalSharp', 'serif'],
+                        body: ['Almendra', 'serif'],
                         grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
                     },
                     backgroundImage: {
@@ -235,9 +236,12 @@
         
 
         .header-bg {
-            background-image: url('Assets/imagens/header.jpg');
-            background-size: cover;
+            background-image: url('Assets/imagens/headeriggg (1).png');
+            background-size: auto;
             background-position: center;
+            background-repeat: no-repeat;
+            height: 112px;
+            width: 1920px;
         }
         .text-gold {
   color: #c2a502e8; /* Cor dourada para títulos principais */
@@ -261,7 +265,7 @@
 
 /* Estilo para LOCAIS (Viridia, Nornheim, etc.) */
 .location-link {
-  color: #5bff5bb2; /* Verde escuro e legível no fundo marrom */
+  color: 	#c58a55; /* Verde escuro e legível no fundo marrom */
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 .location-link:hover {
@@ -278,16 +282,22 @@
   text-shadow: 0 0 5px rgba(227, 202, 255, 0.5); /* Adiciona um brilho no hover */
 }        
         .content-box {
-            background-image: url('Assets/imagens/fundo-marrom-grunge-com-espaco-para-texto-ou-imagem_196038-9472.png');
-            background-size: cover;
+            background-image: url('Assets/imagens/fundoeeeeygg.png');
             background-position: center;
-            border: none;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), inset 0 2px 8px rgba(0,0,0,0.6);
             color: #dcd4c8;
+            background-size: auto;
+            background-repeat: no-repeat;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            padding: 50px 200px 80px 200px;
         }
+        .content-box2 {
+            background-image: url('Assets/imagens/fundo-marrom-grunge-com-espaco-para-texto-ou-imagem_196038-9472.png');
+            background-position: center;
+            color: #dcd4c8;
+            background-size: auto;
+            background-repeat: no-repeat;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            }
         
         .footer {
             background: rgba(10, 10, 10, 0.9);
@@ -318,7 +328,7 @@
 
 
     <!-- Header with Navigation -->
-    <header class="py-4 px-4 header-bg sticky top-0 z-40 shadow-xl border-b-4 border-stone-dark">
+    <header class=" header-bg sticky py-0 z-40 ">
         <div class="container mx-auto">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
@@ -328,17 +338,16 @@
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment-light header-text-shadow">
+                <nav class="desktop-nav hidden lg:flex items-center justify-center space-x-8 text-parchment-light font-header pr-16">
                     <a href="https://discord.gg/43uf8t7Pyb" class="hover:text-gold transition-colors font-medium tracking-wider">Discord</a>
                     <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3140166045" class="hover:text-gold transition-colors font-medium tracking-wider">Coleção</a>
                     <a href="" class="hover:text-gold transition-colors font-medium tracking-wider">Youtube</a>
-                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Reddit</a>
                     <a href="https://x.com/Super_Medieval" class="hover:text-gold transition-colors font-medium tracking-wider">Twitter</a>
                     
                 </nav>
                 
                 <!-- Mobile Menu Toggle -->
-                <div class="mobile-menu lg:hidden">
+                <div class="mobile-menu lg:hidden justify-self-end">
                     <button id="mobileMenuToggle" class="text-parchment">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
@@ -369,27 +378,27 @@
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 pt-4 pb-8 relative z-10">
-        <div>
-            <div class="content-box max-w-5xl mx-auto">
+    <main class="pt-29 pb-8 relative z-10">
+        <div class="flex justify-center">
+            <div class="content-box px-120 py-64">
                 <h1 class="text-4xl md:text-5xl font-header tracking-wider text-center mb-4 header-text">
                     Bem-vindo à Wiki do <span class="text-gold">Super Medieval</span>
                 </h1>
-                <div class="max-w-4xl mx-auto text-lg space-y-6 text-justify">
+                <div class="text-lg space-y-6 text-justify">
                     <p class="font-header text-3xl text-golds  text-center tracking-wider mb-8">Um Mundo Despedaçado Vos Aguarda</p>
                     
-                    <p class="font-body">
+                    <p class="font-body px-60 py-0">
                         As antigas canções de <a href="viridia.html" class="lore-link location-link" data-tippy-content-id="virdia-content">Viridia</a> falavam de um continente próspero e tranquilo, mas essas melodias se perderam, tornando-se meros ecos em meio ao desespero. O mundo que um dia conheceram já não existe. Um evento apocalíptico, sussurrado em temor e conhecido como o <a href="cataclisma.html" class="lore-link dimensional-link" data-tippy-content-id="cataclisma-content">Cataclisma</a>, iniciou uma lenta e constante transformação do continente, trazendo consigo desastres e anomalias climáticas de uma forma nunca antes vista.
                     </p>
                     
-                    <p class="font-body">
+                    <p class="font-body px-60 py-0">
                         Como se a agonia do mundo não bastasse, portais dimensionais se rasgaram na realidade. Deles, emergiram hordas de monstros famintos, cujo único propósito é a destruição total. Diante de uma aniquilação iminente, as grandes facções de Viridia, outrora rivais ferrenhas, agora encaram o mesmo destino sombrio.
                     </p>
                     
 
     
                     
-                    <p class="font-body leading-relaxed">
+                    <p class="font-body leading-relaxed px-60 py-0">
                         Contudo, mesmo na mais profunda escuridão, uma centelha de esperança resiste. Resta uma única e audaciosa alternativa: uma expedição suicida rumo ao desconhecido, em direção ao místico e inexplorado arquipélago de <a href="nornheim.html"class="lore-link location-link" data-tippy-content-id="nornheim-content">Nornheim</a>. Uma terra envolta em névoa e lendas, que tanto pode ser a salvação da civilização quanto uma tumba aquática para os seus últimos sobreviventes.
                     </p>
                 
@@ -397,11 +406,11 @@
                         É aqui que a sua história começa.
                     </p>
                 
-                    <p class="font-body leading-relaxed">
+                    <p class="font-body leading-relaxed px-60 py-0">
                         No <strong class="text-gold">SuperMedieval</strong>, você não é um mero espectador, mas o autor de sua própria saga. Este é um servidor de Roleplay onde cada ação, cada aliança forjada e cada conflito iniciado deixará uma marca indelével no destino de Nornheim. O futuro da sua facção – e talvez de toda a humanidade – repousa sobre os seus ombros. Suas decisões ecoarão pela eternidade.
                     </p>
                 
-                    <p class="font-body leading-relaxed">
+                    <p class="font-body leading-relaxed px-60 py-0  ">
                         Esta Wiki será sua bússola e seu grimório. Consulte-a para desvendar os segredos de um passado esquecido, para compreender as facções e suas ambições, e para se preparar para as criaturas que agora reivindicam este mundo. Lembre-se: o conhecimento é uma arma tão vital quanto o aço.
                     </p>
                 </div>
@@ -420,11 +429,11 @@
     </main>
 
 
-        <div class="content-box max-w-6xl mx-auto mt-12">
+        <div class=" max-w-6xl mx-auto 2 mt-12 px-12 py-8">
             <!-- Game Cards Section -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                 <!-- Fear & Hunger 1 Card -->
-                <div class="game-card p-6 rounded-lg">
+                <div class="game-card p-6 content-box rounded-lg">
                     <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6">
                         <h2 class="text-2xl md:text-3xl font-header text-parchment-light tracking-wider">
                             Wiki de <span class="text-gold">Sistemas</span>
@@ -468,8 +477,8 @@
                 </div>
                 
                 <!-- Termina Card -->
-                <div class="game-card p-6 rounded-lg">
-                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6">
+                <div class="game-card p-6 rounded-lg content-box">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4  mb-6">
                         <h2 class="text-2xl md:text-3xl font-header text-parchment-light tracking-wider">
                             Wiki da <span class="text-gold">historia</span>
                         </h2>

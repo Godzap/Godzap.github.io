@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classes - Wiki</title>
+    <title>Classes - Super Medieval Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra&family=MedievalSharp&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -19,12 +22,12 @@
                         'steel': '#7a7a7a',
                     },
                     fontFamily: {
-                        header: ['Cinzel', 'Georgia', 'serif'],
+                        header: ['MedievalSharp', 'Cinzel', 'Georgia', 'serif'],
                         body: ['EB Garamond', 'Georgia', 'serif'],
                         grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
                     },
                     backgroundImage: {
-                        'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
+                        'main-bg': "url('Assets/imagens/fundoforja.png')"
                     },
                     boxShadow: {
                         'gold-glow': '0 0 15px rgba(200, 159, 101, 0.3)',
@@ -39,22 +42,174 @@
         }
     </script>
     <style type="text/css">
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
-        html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#a18052;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.game-card{background:rgba(20,20,20,0.8);border:1px solid #444;box-shadow:0 8px 32px rgba(0,0,0,0.5), inset 0 2px 8px rgba(0,0,0,0.6);transition:all 0.4s ease;position:relative;overflow:hidden;border-radius:4px}.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right, #c89f65, #a18052);z-index:2}.game-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.7), 0 0 20px rgba(200,159,101,0.3), inset 0 2px 8px rgba(0,0,0,0.6);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.button-buy{background:linear-gradient(to right, #c89f65, #a18052);transition:all 0.3s;text-shadow:1px 1px 2px rgba(0,0,0,0.5);box-shadow:0 2px 4px rgba(0,0,0,0.4)}.button-buy:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(200,159,101,0.4);filter:brightness(1.1)}.stat-highlight{background:rgba(200,159,101,0.15);border:1px dashed #c89f65;padding:2px 8px;border-radius:4px;color:#dcd4c8}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.editor-card{background:rgba(20,20,20,0.9);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.editor-card img{border:1px solid #a18052;box-shadow:0 0 10px rgba(200,159,101,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.grid-cols-auto{grid-template-columns:repeat(auto-fit, minmax(75px, 1fr))}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}.header-bg{background-image:url('Assets/imagens/istockphoto-619260624-612x612.jpg');background-size:cover;background-position:center}
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&family=MedievalSharp&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #dcd4c8;
+            background-image: url("Assets/imagens/fundoforja.png");
+            background-attachment: fixed;
+            overflow-x: hidden;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .warning-banner {
+            background: #a18052;
+            background: linear-gradient(to right, #4d3a1a, #2a200e);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #c89f65;
+            text-shadow: 1px 1px 2px rgba(0,0,0,1);
+        }
+        
+        .nav-button {
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+        }
+        
+        .nav-button:hover {
+            background: rgba(200, 159, 101, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(200, 159, 101, 0.2), inset 0 0 8px rgba(200, 159, 101, 0.3);
+            border-color: #c89f65;
+        }
+        
+        .game-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #444;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 2px 8px rgba(0,0,0,0.6);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #c89f65, #a18052);
+            z-index: 2;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.7), 0 0 20px rgba(200, 159, 101, 0.3), inset 0 2px 8px rgba(0,0,0,0.6);
+            border-color: #c89f65;
+        }
+        
+        .quote {
+            font-style: italic;
+            position: relative;
+            padding: 10px 20px;
+            background: rgba(34, 34, 34, 0.7);
+            border-left: 3px solid #c89f65;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .button-buy {
+            background: linear-gradient(to right, #c89f65, #a18052);
+            transition: all 0.3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        
+        .button-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(200, 159, 101, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .stat-highlight {
+            background: rgba(200, 159, 101, 0.15);
+            border: 1px dashed #c89f65;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #dcd4c8;
+        }
+        
+        .news-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #444;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .editor-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #444;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .editor-card img {
+            border: 1px solid #a18052;
+            box-shadow: 0 0 10px rgba(200, 159, 101, 0.5);
+        }
+        
+        .header-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #c89f65, transparent);
+            opacity: 0.7;
+        }
+        
+        .header-text {
+            text-shadow: 0 0 12px rgba(200, 159, 101, 0.8);
+        }
+        
+        .footer {
+            background: rgba(10, 10, 10, 0.9);
+            border-top: 1px solid #333;
+        }
+        
+        .grid-cols-auto {
+            grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        .header-bg {
+            background-image: url('Assets/imagens/fundoforjaa-Photoroom.png');
+            background-size: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            
+        }
+        
+        @media (max-width: 1023px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body class="font-body">
-    <header class="py-4 px-4 header-bg sticky top-0 z-40 shadow-xl border-b-4 border-stone-dark">
+    <!-- Header with Navigation -->
+    <header class="px-4 header-bg flex items-center h-24">
         <div class="container mx-auto">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="text-4xl font-header tracking-wider header-text-shadow">
-                        <a href="index.html" class="text-parchment-light">Super Medieval</span> <span class="text-gold">WIKI</span>
+                    <div class="text-4xl font-header tracking-wider header-text-shadow relative left-80 bottom-5">
+                        <a href="index.html" class="text-parchment-light">Super Medieval <span class="header-text">WIKI</span></a>
                     </div>
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment-light header-text-shadow">
+                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment-light header-text-shadow relative right-80 bottom-5">
                     <a href="https://discord.gg/43uf8t7Pyb" class="hover:text-gold transition-colors font-medium tracking-wider">Discord</a>
                     <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3140166045" class="hover:text-gold transition-colors font-medium tracking-wider">Coleção</a>
                     <a href="" class="hover:text-gold transition-colors font-medium tracking-wider">Youtube</a>
@@ -74,10 +229,13 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation (Hidden by default) -->
     <div id="mobileNav" class="fixed inset-0 bg-stone-dark z-50 hidden">
         <div class="container mx-auto p-8 h-full flex flex-col">
             <div class="flex justify-end mb-16">
-                <button id="closeMobileMenu" class="text-parchment text-3xl"><i class="fas fa-times"></i></button>
+                <button id="closeMobileMenu" class="text-parchment text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <nav class="flex flex-col items-center space-y-8 text-xl">
                 <a href="index.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Home</a>
@@ -86,9 +244,12 @@
                 <a href="armaduras.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Armaduras</a>
                 <a href="atributos.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Atributos</a>
                 <a href="mecanicas.html" class="text-parchment hover:text-gold text-2xl font-header tracking-widest">Mecânicas</a>
+                <button class="bg-gold px-6 py-2 rounded text-parchment text-xl font-header tracking-wider mt-8">Contribute to Wiki</button>
             </nav>
         </div>
     </div>
+
+    <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 relative z-10">
         <section id="classes">
             <h2 class="text-4xl font-header text-center text-parchment mb-6 tracking-wider header-text">O Chamado do Herói: Classes e Especializações</h2>
@@ -148,7 +309,7 @@
         </section>
     </main>
 
-
+    <!-- Footer -->
     <script src="Assets/js/main.js" defer></script>
 </body>
 </html> 

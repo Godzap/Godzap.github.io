@@ -6,6 +6,9 @@
     <title>Corte Carmesim - Super Medieval Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra&family=MedievalSharp&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -19,9 +22,9 @@
                         'steel': '#7a7a7a',
                     },
                     fontFamily: {
-                        header: ['Cinzel', 'Georgia', 'serif'],
-                        body: ['EB Garamond', 'Georgia', 'serif'],
-                        grotesk: ['Barlow Condensed', 'Arial', 'sans-serif']
+                        header: ['MedievalSharp', 'serif'],
+                        body: ['Almendra', 'serif'],
+                        grotesk: ['Almendra', 'sans-serif']
                     }
                 }
             }
@@ -163,7 +166,7 @@
                         </a>
                     </div>
                 </div>
-                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative bottom-5 left-[35%]">
+                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative bottom-5 left-[35%] font-header">
                     <a href="index.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Home</a>
                     <a href="armas.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
                     <a href="classes.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
@@ -193,7 +196,7 @@
                 <p class=" leading-relaxed mb-6 text-justify font-size-8
                            
                             px-60" >
-                            A corte representa uma das sociedades mais antigas e enigmáticas de Veridia, é governada por um conselho de Voraths, vampiros aristocráticos cujas vidas se estendem por séculos, descendentes de uma linhagem poderosa e amaldiçoada. Sob seu domínio vivem os Thralls, humanos que abdicaram de sua liberdade em troca de poder ou proteção, servindo como intermediários e aspirantes à imortalidade.
+                            A corte representa uma das sociedades mais antigas e enigmáticas de Veridia, é governada por um conselho de Voraths, vampiros aristocráticos cujas vidas se estendem por séculos, descendentes de uma linhagem poderosa e amaldiçoada. Sob seu domínio vivem os Thralls, humanos que abdicaram de sua liberdade em troca de poder ou proteção, servindo como intermediários e aspirantes à imortalidade.
                 </p>
             </div>
         </div>
@@ -422,7 +425,7 @@
 
             <h5 class="text-xl font-header text-lunar mt-4 mb-2">O Sistema de Casas</h5>
             <p>A sociedade vampírica é organizada em <strong class="text-carmesim-highlight">Casas</strong> - linhagens quase familiares baseadas não em parentesco biológico, mas em quem transformou quem. Cada Vorath pode estabelecer sua própria Casa após receber permissão do Conselho, criando uma estrutura hierárquica de Thralls e vampiros subordinados.</p>
-            <p class="mb-2">As três Casas mais poderosas atualmente são:</p>
+            <p>As três Casas mais poderosas atualmente são:</p>
             <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
                 <li><strong class="text-carmesim-highlight">Casa Noctis:</strong> Focada em diplomacia, espionagem e administração civil.</li>
                 <li><strong class="text-carmesim-highlight">Casa Vitae:</strong> Dedicada à alquimia, medicina e pesquisa.</li>

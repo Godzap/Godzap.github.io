@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Império do Sol - Super Medieval Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra&family=MedievalSharp&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -20,10 +22,10 @@
                         'steel': '#7a7a7a',
                     },
                     fontFamily: {
-    header: ['IM Fell English', 'serif'],
-    body: ['IM Fell English', 'serif'],
-    grotesk: ['IM Fell English', 'serif']
-},
+                        header: ['MedievalSharp', 'serif'],
+                        body: ['Almendra', 'serif'],
+                        grotesk: ['Almendra', 'sans-serif']
+                    },
                     backgroundImage: {
                         'main-bg': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJzY3JhdGNoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1encyPSIwLjUiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVEaXNwbGFjZW1lbnRJbiA9IlNvdXJjZUdyYXBoaWMiIHNjYWxlPSI1MCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxMjEyMTIiLz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjc2NyYXRjaCkiIG9wYWNpdHk9IjAuMDciLz48L3N2Zz4=')"
                     },
@@ -40,7 +42,7 @@
         }
     </script>
     <style type="text/css">
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Almendra&display=swap');
         html{scroll-behavior:smooth}body{background-color:#121212;color:#dcd4c8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='scratch'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' stitchTiles='stitch'/%3E%3CfeDisplacementMapIn in='SourceGraphic' scale='50'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23scratch)' opacity='0.07'/%3E%3C/svg%3E");background-attachment:fixed;overflow-x:hidden;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.warning-banner{background:#52a177;background:linear-gradient(to right, #4d3a1a, #2a200e);box-shadow:0 4px 6px rgba(0,0,0,0.5);border-bottom:1px solid #c89f65;text-shadow:1px 1px 2px rgba(0,0,0,1)}.nav-button{background:rgba(26,26,26,0.7);border:1px solid #444;transition:all 0.3s ease;cursor:pointer;box-shadow:inset 0 0 5px rgba(0,0,0,0.5)}.nav-button:hover{background:rgba(200,159,101,0.1);transform:translateY(-3px);box-shadow:0 5px 15px rgba(200,159,101,0.2), inset 0 0 8px rgba(200,159,101,0.3);border-color:#c89f65}.quote{font-style:italic;position:relative;padding:10px 20px;background:rgba(34,34,34,0.7);border-left:3px solid #c89f65;box-shadow:inset 0 2px 4px rgba(0,0,0,0.5)}.news-card{background:rgba(26,26,26,0.8);border:1px solid #444;box-shadow:0 4px 6px rgba(0,0,0,0.3), inset 0 2px 4px rgba(0,0,0,0.5)}.header-divider{height:1px;background:linear-gradient(to right, transparent, #c89f65, transparent);opacity:0.7}.header-text{text-shadow:0 0 12px rgba(200,159,101,0.8)}.footer{background:rgba(10,10,10,0.9);border-top:1px solid #333}.mobile-menu{display:none}@media (max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
     </style>
 <style>
@@ -277,12 +279,12 @@ header {
                         </a>
                     </div>
                 </div>
-                <nav class="desktop-nav hidden lg:flex items-center space-x-8 text-parchment">
-                    <a href="index.html" class="hover:text-gold transition-colors font-medium tracking-wider">Home</a>
-                    <a href="armas.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
-                    <a href="classes.html" class="hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
-                    <a href="armaduras.html" class="hover:text-gold transition-colors font-medium tracking-wider">Armaduras</a>
-                    <a href="atributos.html" class="hover:text-gold transition-colors font-medium tracking-wider">Atributos</a>
+                <nav class="desktop-nav hidden lg:flex items-center space-x-10 text-parchment relative bottom-5 left-[35%] font-header">
+                    <a href="index.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Home</a>
+                    <a href="armas.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Armas</a>
+                    <a href="classes.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Classes</a>
+                    <a href="armaduras.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Armaduras</a>
+                    <a href="atributos.html" class="whitespace-nowrap hover:text-gold transition-colors font-medium tracking-wider">Atributos</a>
                 </nav>
                 <div class="mobile-menu lg:hidden">
                     <button id="mobileMenuToggle" class="text-parchment"><i class="fas fa-bars text-2xl"></i></button>
