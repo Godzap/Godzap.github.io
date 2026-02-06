@@ -330,9 +330,12 @@
         <section class="flex flex-wrap justify-center gap-3 mb-10">
             <a href="#comecando" class="nav-pill text-parchment"><i class="fas fa-play mr-2"></i>Começando</a>
             <a href="#ingredientes" class="nav-pill text-parchment"><i class="fas fa-carrot mr-2"></i>Ingredientes</a>
+            <a href="#carnes" class="nav-pill text-parchment"><i class="fas fa-drumstick-bite mr-2"></i>Carnes</a>
+            <a href="#crafts" class="nav-pill text-parchment"><i class="fas fa-hammer mr-2"></i>Crafts</a>
             <a href="#containers" class="nav-pill text-parchment"><i class="fas fa-bowl-food mr-2"></i>Recipientes</a>
             <a href="#cozinhando" class="nav-pill text-parchment"><i class="fas fa-fire mr-2"></i>Cozinhando</a>
             <a href="#raridade" class="nav-pill text-parchment"><i class="fas fa-star mr-2"></i>Raridade</a>
+            <a href="#taverna" class="nav-pill text-parchment"><i class="fas fa-wine-glass mr-2"></i>Taverna</a>
         </section>
 
         <!-- Main Content Card -->
@@ -478,6 +481,253 @@
                     <p class="text-sm text-parchment"><i
                             class="fas fa-info-circle text-cook-orange mr-2"></i><strong>Dica:</strong> Combine
                         ingredientes de diferentes atributos para criar refeições com múltiplos buffs!</p>
+                </div>
+            </section>
+
+            <!-- Carnes Section -->
+            <section id="carnes">
+                <h2 class="text-3xl font-header text-cook-orange mb-2 flex items-center">
+                    <i class="fas fa-drumstick-bite mr-3 text-gold"></i>Carnes e Proteínas
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">As carnes são ingredientes especiais vindos de animais. Existem dois tipos
+                    principais:</p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Carne Branca -->
+                    <div class="section-card p-5 border-l-4 border-yellow-500">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-feather text-yellow-400 text-2xl mr-3"></i>
+                            <div>
+                                <h3 class="text-xl font-header text-parchment">Carne Branca</h3>
+                                <span class="stat-tag tag-agility">+Destreza</span>
+                            </div>
+                        </div>
+                        <p class="text-steel mb-3">Obtida de aves e animais pequenos. Leve e ideal para pratos que
+                            exigem precisão.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="text-gold border-b border-cook-brown/50">
+                                        <th class="text-left p-2">Tier</th>
+                                        <th class="text-center p-2">Buff</th>
+                                        <th class="text-center p-2">Duração</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-steel">
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-1">T1</span></td>
+                                        <td class="text-center">+3 Dex</td>
+                                        <td class="text-center">60s</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-2">T2</span></td>
+                                        <td class="text-center">+6 Dex</td>
+                                        <td class="text-center">120s</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-3">T3</span></td>
+                                        <td class="text-center">+9 Dex</td>
+                                        <td class="text-center">180s</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-4">T4</span></td>
+                                        <td class="text-center">+12 Dex</td>
+                                        <td class="text-center">240s</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-5">T5</span></td>
+                                        <td class="text-center">+15 Dex</td>
+                                        <td class="text-center">300s</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Carne Vermelha -->
+                    <div class="section-card p-5 border-l-4 border-red-600">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-bacon text-red-400 text-2xl mr-3"></i>
+                            <div>
+                                <h3 class="text-xl font-header text-parchment">Carne Vermelha</h3>
+                                <span class="stat-tag"
+                                    style="background: rgba(220,50,50,0.2); color: #f87171; border: 1px solid #b91c1c;">+Força</span>
+                            </div>
+                        </div>
+                        <p class="text-steel mb-3">Obtida de animais de caça grandes. Pesada e nutritiva, ideal para
+                            guerreiros.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="text-gold border-b border-cook-brown/50">
+                                        <th class="text-left p-2">Tier</th>
+                                        <th class="text-center p-2">Buff</th>
+                                        <th class="text-center p-2">Duração</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-steel">
+                                    <tr class="opacity-50">
+                                        <td class="p-2"><span class="tier-badge tier-1">T1-T3</span></td>
+                                        <td class="text-center" colspan="2"><i>Não disponível</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-4">T4</span></td>
+                                        <td class="text-center">+12 Str</td>
+                                        <td class="text-center">240s</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2"><span class="tier-badge tier-5">T5</span></td>
+                                        <td class="text-center">+15 Str</td>
+                                        <td class="text-center">300s</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs text-cook-orange mt-3 italic"><i
+                                class="fas fa-exclamation-triangle mr-1"></i>Carnes vermelhas só existem em tiers altos
+                            - vindas de criaturas perigosas!</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 info-box">
+                    <p class="text-sm text-parchment"><i
+                            class="fas fa-skull text-red-400 mr-2"></i><strong>Cuidado:</strong> Consumir ingredientes
+                        <strong class="text-red-400">crus</strong> tem 20% de chance de causar
+                        <strong>Leishmaniose</strong>! Sempre prepare antes de comer.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Crafts Section -->
+            <section id="crafts">
+                <h2 class="text-3xl font-header text-cook-orange mb-2 flex items-center">
+                    <i class="fas fa-hammer mr-3 text-gold"></i>Receitas de Crafting
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">Todos os itens de culinária são craftados na <strong class="text-gold">Mesa
+                        de Culinária</strong>. Primeiro, você precisa fazer a própria mesa!</p>
+
+                <!-- Mesa de Cozinha -->
+                <div class="section-card p-5 mb-6 border-l-4 border-gold">
+                    <h3 class="text-xl font-header text-gold mb-3"><i class="fas fa-table mr-2"></i>Estação de Culinária
+                    </h3>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <div class="flex items-center bg-stone-dark/50 px-4 py-2 rounded">
+                            <span class="text-parchment mr-2">4×</span>
+                            <span class="text-cook-orange">Componente de Madeira</span>
+                        </div>
+                        <span class="text-steel">+</span>
+                        <div class="flex items-center bg-stone-dark/50 px-4 py-2 rounded">
+                            <span class="text-parchment mr-2">2×</span>
+                            <span class="text-orange-400">Lingote de Cobre</span>
+                        </div>
+                        <span class="text-gold text-xl">→</span>
+                        <div class="flex items-center bg-cook-orange/20 px-4 py-2 rounded border border-cook-orange">
+                            <i class="fas fa-utensils text-cook-orange mr-2"></i>
+                            <span class="text-parchment font-bold">Estação de Culinária</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-steel mt-3"><i class="fas fa-info-circle mr-1"></i>Nível 0 de Culinária.
+                        Feito na bancada de crafting genérica.</p>
+                </div>
+
+                <!-- Recipientes -->
+                <h3 class="text-xl font-header text-parchment mb-4"><i
+                        class="fas fa-box mr-2 text-cook-orange"></i>Receitas de Recipientes</h3>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Espeto -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Espeto</span>
+                            <span class="tier-badge tier-1">Nv.0</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">1× Comp. Madeira</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente básico (2 ing)</p>
+                    </div>
+
+                    <!-- Embrulho de Folha -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Embrulho</span>
+                            <span class="tier-badge tier-1">Nv.1</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">2× Comp. Linho</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente T1 (2 ing)</p>
+                    </div>
+
+                    <!-- Pão Rústico -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Pão Rústico</span>
+                            <span class="tier-badge tier-1">Nv.2</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">1× Sal + 1× Ovo</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente T1 (2 ing)</p>
+                    </div>
+
+                    <!-- Sopa -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Sopa</span>
+                            <span class="tier-badge tier-2">Nv.4</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">1× Sal + 1× Tomate Cortado</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente T2 (3 ing)</p>
+                    </div>
+
+                    <!-- Pizza -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Massa de Pizza</span>
+                            <span class="tier-badge tier-2">Nv.5</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">2× Sal + 2× Ovo</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente T2 (3 ing, ×1.2 buff)</p>
+                    </div>
+
+                    <!-- Torta -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Torta</span>
+                            <span class="tier-badge tier-3">Nv.6</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">1× Sal + 3× Ovo</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente T3 (3 ing, ×2.0 dur)</p>
+                    </div>
+
+                    <!-- Pastelão -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Pastelão</span>
+                            <span class="tier-badge tier-4">Nv.8</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">2× Farinha de Arroz + 2× Leite</p>
+                        <p class="text-xs text-cook-orange">→ Recipiente T4 (4 ing)</p>
+                    </div>
+
+                    <!-- Empadão -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header">Empadão</span>
+                            <span class="tier-badge tier-5">Nv.12</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">3× Far. Trigo Dourado + 2× Leite + 1× Sal</p>
+                        <p class="text-xs text-yellow-400">→ Recipiente T5 (5 ing, ×1.6 buff)</p>
+                    </div>
+
+                    <!-- Copo -->
+                    <div class="recipe-card p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-parchment font-header"><i class="fas fa-wine-glass mr-1"></i>Copo</span>
+                            <span class="tier-badge tier-1">Nv.0</span>
+                        </div>
+                        <p class="text-sm text-steel mb-2">1× Lingote de Cobre</p>
+                        <p class="text-xs text-purple-400">→ Para transportar líquidos</p>
+                    </div>
                 </div>
             </section>
 
@@ -709,6 +959,163 @@
                     <p class="text-sm text-parchment"><i class="fas fa-trophy text-yellow-400 mr-2"></i><strong>Exemplo
                             Máximo:</strong> Empadão (×1.6 buff, ×3.5 dur) + Lendário (×3.0) + Ingrediente (+3 stat,
                         60s) = <strong class="text-yellow-400">+14.4 stat por 630 segundos!</strong></p>
+                </div>
+            </section>
+
+            <!-- Taverna Section -->
+            <section id="taverna">
+                <h2 class="text-3xl font-header text-cook-orange mb-2 flex items-center">
+                    <i class="fas fa-wine-glass mr-3 text-gold"></i>Sistema de Taverna
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">Além de cozinhar, você pode criar <strong class="text-gold">bebidas, sucos e
+                        coquetéis</strong> usando o sistema de líquidos. Bebidas concedem <strong
+                        class="text-purple-400">buffs de Inteligência</strong> e efeitos especiais!</p>
+
+                <!-- Fluxo de Produção -->
+                <div class="section-card p-5 mb-6">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-diagram-project mr-2"></i>Fluxo de
+                        Produção de Bebidas</h3>
+
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-center">
+                        <div class="bg-stone-dark/60 p-4 rounded-lg border border-cook-brown/50 w-40">
+                            <i class="fas fa-apple-alt text-green-400 text-2xl mb-2"></i>
+                            <p class="text-parchment text-sm font-header">1. Fruta</p>
+                            <p class="text-xs text-steel">Colhida da fazenda</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-cook-orange text-xl"></i>
+                        <div class="bg-stone-dark/60 p-4 rounded-lg border border-cook-brown/50 w-40">
+                            <i class="fas fa-compress text-amber-400 text-2xl mb-2"></i>
+                            <p class="text-parchment text-sm font-header">2. Prensa</p>
+                            <p class="text-xs text-steel">Pule em cima!</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-cook-orange text-xl"></i>
+                        <div class="bg-stone-dark/60 p-4 rounded-lg border border-cook-brown/50 w-40">
+                            <i class="fas fa-droplet text-orange-400 text-2xl mb-2"></i>
+                            <p class="text-parchment text-sm font-header">3. Extrato</p>
+                            <p class="text-xs text-steel">100mL por fruta</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-cook-orange text-xl"></i>
+                        <div class="bg-stone-dark/60 p-4 rounded-lg border border-purple-500/50 w-40">
+                            <i class="fas fa-glass-water text-purple-400 text-2xl mb-2"></i>
+                            <p class="text-parchment text-sm font-header">4. Suco</p>
+                            <p class="text-xs text-steel">Misture com água</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prensa -->
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="section-card p-5">
+                        <h3 class="text-xl font-header text-cook-orange mb-3"><i class="fas fa-compress mr-2"></i>Prensa
+                            de Frutas</h3>
+                        <p class="text-steel mb-3">Coloque frutas dentro do baú da prensa e <strong
+                                class="text-gold">pule em cima repetidamente</strong>. Cada pulo esmaga uma fruta e gera
+                            100mL de extrato.</p>
+
+                        <div class="bg-stone-dark/50 p-3 rounded text-sm">
+                            <p class="text-parchment mb-2"><i class="fas fa-seedling text-green-400 mr-2"></i>Frutas
+                                suportadas:</p>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-orange-900/50 px-2 py-1 rounded">Laranja</span>
+                                <span class="bg-green-900/50 px-2 py-1 rounded">Maçã Verde</span>
+                                <span class="bg-yellow-900/50 px-2 py-1 rounded">Abacaxi</span>
+                                <span class="bg-yellow-700/50 px-2 py-1 rounded">Banana</span>
+                                <span class="bg-green-800/50 px-2 py-1 rounded">Pera</span>
+                                <span class="bg-purple-900/50 px-2 py-1 rounded">Figo</span>
+                                <span class="bg-red-900/50 px-2 py-1 rounded">Maçã Vermelha</span>
+                                <span class="bg-lime-900/50 px-2 py-1 rounded">Uva Verde</span>
+                                <span class="bg-purple-800/50 px-2 py-1 rounded">Uva Roxa</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-cook-orange mt-3"><i class="fas fa-star mr-1"></i>Você ganha XP de
+                            Culinária ao esmagar frutas!</p>
+                    </div>
+
+                    <!-- Barril de Fermentação -->
+                    <div class="section-card p-5">
+                        <h3 class="text-xl font-header text-cook-orange mb-3"><i
+                                class="fas fa-wine-bottle mr-2"></i>Barril de Fermentação</h3>
+                        <p class="text-steel mb-3">Coloque sucos dentro do barril e espere <strong class="text-gold">3
+                                dias in-game</strong> para fermentar em bebidas alcoólicas!</p>
+
+                        <div class="bg-stone-dark/50 p-3 rounded text-sm">
+                            <p class="text-parchment mb-2"><i
+                                    class="fas fa-exchange-alt text-amber-400 mr-2"></i>Conversões:</p>
+                            <div class="space-y-1 text-xs text-steel">
+                                <p>Suco de Laranja → <span class="text-amber-400">Licor de Laranja</span></p>
+                                <p>Suco de Maçã Verde → <span class="text-green-400">Cidra Verde</span></p>
+                                <p>Suco de Uva Roxa → <span class="text-purple-400">Vinho Tinto</span></p>
+                                <p>Suco de Uva Verde → <span class="text-yellow-200">Vinho Branco</span></p>
+                                <p>Extrato de Mel → <span class="text-yellow-400">Hidromel</span> <i
+                                        class="text-gold">(instantâneo!)</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coquetéis -->
+                <h3 class="text-xl font-header text-parchment mb-4"><i
+                        class="fas fa-cocktail mr-2 text-purple-400"></i>Coquetéis Especiais</h3>
+                <p class="text-steel mb-4">Misture sucos com bebidas alcoólicas (proporção 1:1) na prensa para criar
+                    coquetéis com <strong class="text-gold">buffs poderosos</strong>!</p>
+
+                <div class="overflow-x-auto rounded-lg border border-purple-500/30">
+                    <table class="container-table w-full text-sm">
+                        <thead class="text-parchment font-header">
+                            <tr style="background: linear-gradient(180deg, #3d1d3d 0%, #2d102d 100%);">
+                                <th class="p-3 text-left">Coquetel</th>
+                                <th class="p-3 text-center">Ingredientes</th>
+                                <th class="p-3 text-center">Efeito</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-steel">
+                            <tr>
+                                <td class="p-3 text-gold font-medium"><i
+                                        class="fas fa-sun text-yellow-400 mr-2"></i>Néctar do Sol Nascente</td>
+                                <td class="p-3 text-center">Suco Laranja + Cidra Verde</td>
+                                <td class="p-3 text-center text-parchment">+Int, +Resistência</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-purple-300 font-medium"><i
+                                        class="fas fa-moon text-purple-400 mr-2"></i>Aurora de Nornheim</td>
+                                <td class="p-3 text-center">Suco Laranja + Espumante Abacaxi</td>
+                                <td class="p-3 text-center text-parchment">+Int, Recuperação</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-green-300 font-medium"><i
+                                        class="fas fa-leaf text-green-400 mr-2"></i>Bruma Esmeralda</td>
+                                <td class="p-3 text-center">Suco Maçã Verde + Cidra Pera</td>
+                                <td class="p-3 text-center text-parchment">+Foco, +Agilidade</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-amber-300 font-medium"><i
+                                        class="fas fa-water text-amber-400 mr-2"></i>Maré Dourada</td>
+                                <td class="p-3 text-center">Suco Abacaxi + Licor Laranja</td>
+                                <td class="p-3 text-center text-parchment">+Força, +Energia</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-orange-300 font-medium"><i
+                                        class="fas fa-fire-flame-curved text-orange-400 mr-2"></i>Poente do Bazar</td>
+                                <td class="p-3 text-center">Suco Banana + Licor Laranja</td>
+                                <td class="p-3 text-center text-parchment">+Carisma, +Social</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-pink-300 font-medium"><i
+                                        class="fas fa-heart text-pink-400 mr-2"></i>Doçura do Peregrino</td>
+                                <td class="p-3 text-center">Suco Pera + Licor Banana</td>
+                                <td class="p-3 text-center text-parchment">+Constituição</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4 p-4 info-box">
+                    <p class="text-sm text-parchment"><i
+                            class="fas fa-beer-mug-empty text-amber-400 mr-2"></i><strong>Dica:</strong> Use um <strong
+                            class="text-gold">Copo</strong> para coletar líquidos da prensa e transportá-los para o
+                        barril de fermentação!</p>
                 </div>
             </section>
 
