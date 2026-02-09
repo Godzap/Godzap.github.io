@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Comércio e Lábia | Medieval Wiki</title>
+    <meta name="description"
+        content="Guia completo do sistema de comércio medieval - skill de Lábia, navio mercante, compra e venda de itens.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'parchment': '#e8dcc4',
+                        'parchment-dark': '#d4c4a8',
+                        'ink': '#2c2416',
+                        'gold': '#c9a227',
+                        'gold-dark': '#8b7023',
+                        'leather': '#8B4513',
+                        'steel': '#b5b5b5',
+                        'copper': '#b87333',
+                        'bronze': '#cd7f32',
+                        'stone-dark': '#1a1a1a',
+                        'stone-medium': '#2d2d2d',
+                        'merchant': '#a19708',
+                    },
+                    fontFamily: {
+                        'medieval': ['MedievalSharp', 'cursive'],
+                        'header': ['Almendra', 'serif'],
+                        'body': ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Almendra:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+        }
+
+        .nav-pill {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill:hover {
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0.2) 100%);
+            border-color: rgba(201, 162, 39, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .header-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
+        }
+
+        .section-card {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.6) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 0.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.15) 0%, rgba(139, 64, 19, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .material-table {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .material-table th {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .material-table tr:hover td {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .gold-glow {
+            animation: goldGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes goldGlow {
+            from {
+                text-shadow: 0 0 10px #c9a227, 0 0 20px #a19708;
+            }
+
+            to {
+                text-shadow: 0 0 15px #c9a227, 0 0 30px #a19708;
+            }
+        }
+
+        .formula-box {
+            background: linear-gradient(180deg, rgba(161, 151, 8, 0.2) 0%, rgba(100, 90, 5, 0.3) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            font-family: 'Courier New', monospace;
+        }
+
+        .ship-card {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.6) 0%, rgba(20, 40, 70, 0.8) 100%);
+            border: 2px solid #4a7eb8;
+        }
+
+        .value-bar {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body class="text-parchment">
+    <!-- Navigation Header -->
+    <header class="bg-stone-dark/90 border-b border-gold/20 sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <i class="fas fa-scroll text-gold text-2xl"></i>
+                    <span class="text-xl font-header text-gold">Medieval Wiki</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-parchment hover:text-gold transition-colors">Início</a>
+                    <a href="fazenda.html" class="text-parchment hover:text-gold transition-colors">Fazenda</a>
+                    <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors">Culinária</a>
+                    <a href="forja.html" class="text-parchment hover:text-gold transition-colors">Forja</a>
+                    <a href="comercio.html" class="text-gold border-b border-gold">Comércio</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-dark via-transparent to-stone-dark"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-medieval text-gold mb-4 gold-glow">
+                <i class="fas fa-coins mr-4"></i>Sistema de Comércio
+            </h1>
+            <p class="text-xl text-steel max-w-2xl mx-auto">
+                Domine a arte da negociação! Aprenda a usar sua Lábia para conseguir melhores preços.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- Quick Navigation -->
+        <section class="flex flex-wrap justify-center gap-3 mb-10">
+            <a href="#labia" class="nav-pill text-parchment"><i class="fas fa-comments-dollar mr-2"></i>Skill de
+                Lábia</a>
+            <a href="#navio" class="nav-pill text-parchment"><i class="fas fa-ship mr-2"></i>Navio Mercante</a>
+            <a href="#vender" class="nav-pill text-parchment"><i class="fas fa-hand-holding-usd mr-2"></i>Vendendo
+                Itens</a>
+            <a href="#comprar" class="nav-pill text-parchment"><i class="fas fa-shopping-cart mr-2"></i>Comprando
+                Itens</a>
+            <a href="#formulas" class="nav-pill text-parchment"><i class="fas fa-calculator mr-2"></i>Fórmulas de
+                Preço</a>
+            <a href="#valor" class="nav-pill text-parchment"><i class="fas fa-eye mr-2"></i>Sistema de Valor</a>
+        </section>
+
+        <!-- Main Content Card -->
+        <div class="main-content p-8 space-y-12">
+
+            <!-- Skill de Lábia -->
+            <section id="labia">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-comments-dollar mr-3 text-merchant"></i>Skill de Lábia
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    A <strong class="text-gold">Lábia</strong> (Bartering) é sua habilidade de negociar por melhores
+                    preços.
+                    Quanto maior seu nível, melhores são os preços que você consegue!
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="section-card p-5 border-l-4 border-green-500">
+                        <h3 class="text-xl font-header text-green-400 mb-3"><i
+                                class="fas fa-arrow-up mr-2"></i>Benefício na Venda</h3>
+                        <p class="text-sm text-steel mb-3">Cada nível de Lábia aumenta o preço que o mercador paga pelos
+                            seus itens:</p>
+                        <div class="bg-stone-dark/50 p-4 rounded text-center">
+                            <span class="text-green-400 font-bold text-2xl">+1%</span>
+                            <span class="text-steel text-sm block">por nível de Lábia</span>
+                        </div>
+                        <p class="text-xs text-green-300 mt-2">Nível 50 = +50% no preço de venda!</p>
+                    </div>
+
+                    <div class="section-card p-5 border-l-4 border-blue-500">
+                        <h3 class="text-xl font-header text-blue-400 mb-3"><i
+                                class="fas fa-arrow-down mr-2"></i>Benefício na Compra</h3>
+                        <p class="text-sm text-steel mb-3">Cada nível de Lábia reduz o preço dos itens do mercador:</p>
+                        <div class="bg-stone-dark/50 p-4 rounded text-center">
+                            <span class="text-blue-400 font-bold text-2xl">-1%</span>
+                            <span class="text-steel text-sm block">por nível de Lábia</span>
+                        </div>
+                        <p class="text-xs text-blue-300 mt-2">Nível 50 = paga só 50% do preço!</p>
+                    </div>
+                </div>
+
+                <!-- Como upar -->
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-3"><i class="fas fa-chart-line mr-2"></i>Como Subir
+                        Lábia</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-stone-dark/50 p-4 rounded text-center">
+                            <i class="fas fa-hand-holding-usd text-3xl text-merchant mb-2"></i>
+                            <p class="text-parchment font-header">Vender Itens</p>
+                            <p class="text-xs text-steel">Ganhe XP ao vender para o mercador</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-4 rounded text-center">
+                            <i class="fas fa-shopping-cart text-3xl text-merchant mb-2"></i>
+                            <p class="text-parchment font-header">Comprar Itens</p>
+                            <p class="text-xs text-steel">Ganhe XP ao comprar do mercador</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-4 rounded text-center">
+                            <i class="fas fa-redo text-3xl text-merchant mb-2"></i>
+                            <p class="text-parchment font-header">Negociar Muito</p>
+                            <p class="text-xs text-steel">Pratique regularmente!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Mercantilism -->
+                <div class="info-box p-4 mt-6">
+                    <h4 class="text-gold font-header mb-2"><i class="fas fa-eye mr-2"></i>Skill Especial: Mercantilismo
+                    </h4>
+                    <p class="text-steel text-sm">
+                        Se você possui a skill <strong class="text-yellow-400">Mercantilismo</strong>, você ganha dois
+                        benefícios:
+                    </p>
+                    <ul class="text-sm text-steel mt-2 space-y-1 list-disc pl-6">
+                        <li><strong class="text-green-400">+20% no preço de venda</strong> - O mercador paga mais pelos
+                            seus itens!</li>
+                        <li><strong class="text-blue-400">Ver preços reais</strong> - Você vê o valor exato em moedas,
+                            não barras de valor</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Navio Mercante -->
+            <section id="navio">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-ship mr-3 text-blue-400"></i>O Navio Mercante
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    O <strong class="text-blue-400">Navio Mercante</strong> é a principal forma de comércio no
+                    Arquipélago.
+                    Ele chega periodicamente nas docas trazendo mercadorias exóticas!
+                </p>
+
+                <div class="ship-card rounded-lg p-6 mb-6">
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <i class="fas fa-clock text-4xl text-blue-300 mb-2"></i>
+                            <p class="text-xl font-header text-parchment">~15 minutos</p>
+                            <p class="text-sm text-steel">Duração da visita</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-calendar-day text-4xl text-blue-300 mb-2"></i>
+                            <p class="text-xl font-header text-parchment">4 visitas</p>
+                            <p class="text-sm text-steel">Por dia (ciclo)</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-bell text-4xl text-yellow-400 mb-2"></i>
+                            <p class="text-xl font-header text-parchment">Aviso prévio</p>
+                            <p class="text-sm text-steel">5 min e 1 min antes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-3"><i class="fas fa-store mr-2"></i>O que o Navio
+                        Oferece</h3>
+                    <div class="grid md:grid-cols-4 gap-3 text-sm">
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-shield-alt text-gray-400 mb-1"></i>
+                            <p class="text-parchment">Armaduras T1</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-gem text-purple-400 mb-1"></i>
+                            <p class="text-parchment">Charmes</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-bullseye text-red-400 mb-1"></i>
+                            <p class="text-parchment">Arremessáveis</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-tools text-gray-400 mb-1"></i>
+                            <p class="text-parchment">Utilitários</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-carrot text-orange-400 mb-1"></i>
+                            <p class="text-parchment">Ingredientes</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-wrench text-gray-400 mb-1"></i>
+                            <p class="text-parchment">Ferramentas</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-medkit text-red-400 mb-1"></i>
+                            <p class="text-parchment">Medicina</p>
+                        </div>
+                        <div class="bg-stone-dark/50 p-3 rounded text-center">
+                            <i class="fas fa-flask text-green-400 mb-1"></i>
+                            <p class="text-parchment">Alquimia</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vendendo Itens -->
+            <section id="vender">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-hand-holding-usd mr-3 text-green-400"></i>Vendendo Itens
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Para vender itens, você precisa encontrar o <strong class="text-gold">Mercador John</strong> no
+                    navio
+                    e colocar os itens na mesa dele.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="section-card p-5 border-l-4 border-merchant">
+                        <h3 class="text-xl font-header text-merchant mb-3"><i class="fas fa-list-ol mr-2"></i>Passo a
+                            Passo</h3>
+                        <ol class="space-y-2 text-sm text-steel">
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-merchant/30 text-merchant rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">1</span>
+                                <span>Vá até o <strong class="text-blue-400">Navio Mercante</strong> nas docas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-merchant/30 text-merchant rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">2</span>
+                                <span>Encontre o <strong class="text-gold">Mercador John</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-merchant/30 text-merchant rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">3</span>
+                                <span><strong class="text-parchment">Coloque os itens</strong> na mesa/balcão</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-merchant/30 text-merchant rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">4</span>
+                                <span>Interaja com John e selecione <strong
+                                        class="text-green-400">"Vender"</strong></span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="section-card p-5 border-l-4 border-red-500">
+                        <h3 class="text-xl font-header text-red-400 mb-3"><i
+                                class="fas fa-exclamation-triangle mr-2"></i>Limites Importantes</h3>
+                        <div class="space-y-3">
+                            <div class="bg-stone-dark/50 p-3 rounded">
+                                <p class="text-red-400 font-bold">Limite por visita:</p>
+                                <p class="text-parchment text-2xl font-header">3 itens</p>
+                                <p class="text-xs text-steel">Reseta quando o navio vai embora</p>
+                            </div>
+                            <div class="bg-stone-dark/50 p-3 rounded">
+                                <p class="text-red-400 font-bold">Dinheiro do mercador:</p>
+                                <p class="text-parchment text-2xl font-header">~500 moedas</p>
+                                <p class="text-xs text-steel">Ele pode ficar sem dinheiro!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box p-4">
+                    <p class="text-gold text-sm">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        <strong>Dica:</strong> Use a opção <strong class="text-yellow-400">"Avaliar"</strong> para ver
+                        quanto
+                        o mercador pagaria pelos itens ANTES de vender!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Comprando Itens -->
+            <section id="comprar">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-shopping-cart mr-3 text-blue-400"></i>Comprando Itens
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    O navio traz diversos itens para vender. Eles ficam expostos nas <strong
+                        class="text-gold">prateleiras e mesas</strong>.
+                </p>
+
+                <div class="section-card p-5 mb-6">
+                    <h3 class="text-xl font-header text-gold mb-3"><i class="fas fa-dice mr-2"></i>Sistema de Raridade
+                        na Compra</h3>
+                    <p class="text-steel text-sm mb-4">
+                        Itens na prateleira aparecem como <strong class="text-gray-400">Comuns</strong>, mas a <strong
+                            class="text-gold">raridade real</strong>
+                        é determinada no momento da compra, baseada na sua <strong class="text-merchant">Lábia</strong>!
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="material-table w-full text-sm">
+                            <thead class="text-parchment font-header">
+                                <tr>
+                                    <th class="p-3 text-left">Nível de Lábia</th>
+                                    <th class="p-3 text-center">Comum</th>
+                                    <th class="p-3 text-center">Incomum</th>
+                                    <th class="p-3 text-center">Raro</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-steel text-center">
+                                <tr>
+                                    <td class="p-3 text-left text-gray-400">Nível 1</td>
+                                    <td class="p-3 text-gray-300">~90%</td>
+                                    <td class="p-3 text-green-400">~8%</td>
+                                    <td class="p-3 text-blue-400">~2%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-left text-green-400">Nível 25</td>
+                                    <td class="p-3 text-gray-300">~60%</td>
+                                    <td class="p-3 text-green-400">~25%</td>
+                                    <td class="p-3 text-blue-400">~15%</td>
+                                </tr>
+                                <tr class="bg-gold/10">
+                                    <td class="p-3 text-left text-gold font-bold">Nível 50</td>
+                                    <td class="p-3 text-gray-300">~0%</td>
+                                    <td class="p-3 text-green-400">~40%</td>
+                                    <td class="p-3 text-blue-400 font-bold">~60%!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-box p-4">
+                    <p class="text-blue-400 text-sm">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        <strong>Preço de Compra:</strong> Itens do mercador custam <strong class="text-parchment">2× o
+                            preço base</strong>.
+                        Sua Lábia reduz esse valor!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Fórmulas de Preço -->
+            <section id="formulas">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-calculator mr-3 text-yellow-400"></i>Fórmulas de Preço
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Entenda exatamente como os preços são calculados!
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Fórmula de Venda -->
+                    <div class="formula-box p-5 rounded-lg">
+                        <h3 class="text-green-400 font-header text-lg mb-3"><i class="fas fa-arrow-up mr-2"></i>Fórmula
+                            de Venda</h3>
+                        <div class="bg-black/50 p-4 rounded text-center mb-3">
+                            <p class="text-lg">
+                                <span class="text-green-400">Preço</span> =
+                                <span class="text-parchment">Base</span> ×
+                                (<span class="text-merchant">0.5</span> +
+                                <span class="text-yellow-400">Lábia</span> × <span class="text-merchant">0.01</span>)
+                            </p>
+                        </div>
+                        <div class="text-xs text-steel space-y-1">
+                            <p><strong class="text-parchment">Exemplo:</strong> Item base 100 moedas, Lábia nível 30</p>
+                            <p>Preço = 100 × (0.5 + 30 × 0.01) = 100 × 0.8 = <strong class="text-green-400">80
+                                    moedas</strong></p>
+                        </div>
+                        <div class="mt-3 p-2 bg-green-900/30 rounded border border-green-500/30">
+                            <p class="text-green-300 text-xs">
+                                <i class="fas fa-plus-circle mr-1"></i>
+                                <strong>Com Mercantilismo:</strong> +20% adicional! (80 → 96 moedas)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Fórmula de Compra -->
+                    <div class="formula-box p-5 rounded-lg">
+                        <h3 class="text-blue-400 font-header text-lg mb-3"><i class="fas fa-arrow-down mr-2"></i>Fórmula
+                            de Compra</h3>
+                        <div class="bg-black/50 p-4 rounded text-center mb-3">
+                            <p class="text-lg">
+                                <span class="text-blue-400">Preço</span> =
+                                <span class="text-parchment">Base</span> ×
+                                <span class="text-merchant">2</span> ×
+                                (<span class="text-merchant">1</span> -
+                                <span class="text-yellow-400">Lábia</span> / <span class="text-merchant">100</span>)
+                            </p>
+                        </div>
+                        <div class="text-xs text-steel space-y-1">
+                            <p><strong class="text-parchment">Exemplo:</strong> Item base 100 moedas, Lábia nível 30</p>
+                            <p>Preço = 100 × 2 × (1 - 30/100) = 200 × 0.7 = <strong class="text-blue-400">140
+                                    moedas</strong></p>
+                        </div>
+                        <div class="mt-3 p-2 bg-blue-900/30 rounded border border-blue-500/30">
+                            <p class="text-blue-300 text-xs">
+                                <i class="fas fa-percent mr-1"></i>
+                                <strong>Máximo:</strong> Lábia 50 = paga só 50% do preço da prateleira!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sistema de Valor -->
+            <section id="valor">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-eye mr-3 text-merchant"></i>Sistema de Barras de Valor
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Se você <strong class="text-red-400">não tem</strong> a skill <strong
+                        class="text-yellow-400">Mercantilismo</strong>,
+                    os preços aparecem como <strong class="text-merchant">barras de valor</strong> ao invés de números
+                    exatos.
+                </p>
+
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-chart-bar mr-2"></i>Tabela de Barras
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="material-table w-full text-sm">
+                            <thead class="text-parchment font-header">
+                                <tr>
+                                    <th class="p-3 text-left">Barra de Valor</th>
+                                    <th class="p-3 text-center">Faixa de Preço</th>
+                                    <th class="p-3 text-center">Significado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-steel">
+                                <tr>
+                                    <td class="p-3 value-bar text-gray-500">¤○○○○○○○</td>
+                                    <td class="p-3 text-center">0-10</td>
+                                    <td class="p-3 text-center text-gray-400">Sem valor</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 value-bar text-gray-400">¤¤○○○○○○</td>
+                                    <td class="p-3 text-center">10-20</td>
+                                    <td class="p-3 text-center text-gray-300">Muito barato</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 value-bar text-orange-400">¤¤¤○○○○○</td>
+                                    <td class="p-3 text-center">20-40</td>
+                                    <td class="p-3 text-center text-orange-300">Barato</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 value-bar text-orange-400">¤¤¤¤○○○○</td>
+                                    <td class="p-3 text-center">40-60</td>
+                                    <td class="p-3 text-center text-orange-300">Moderado</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 value-bar text-orange-400">¤¤¤¤¤○○○</td>
+                                    <td class="p-3 text-center">60-80</td>
+                                    <td class="p-3 text-center text-orange-300">Valioso</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 value-bar text-orange-400">¤¤¤¤¤¤○○</td>
+                                    <td class="p-3 text-center">80-100</td>
+                                    <td class="p-3 text-center text-orange-300">Muito valioso</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 value-bar text-yellow-500">¤¤¤¤¤¤¤○</td>
+                                    <td class="p-3 text-center">100-150</td>
+                                    <td class="p-3 text-center text-yellow-400">Precioso</td>
+                                </tr>
+                                <tr class="bg-gold/10">
+                                    <td class="p-3 value-bar text-yellow-300 font-bold">¤¤¤¤¤¤¤¤</td>
+                                    <td class="p-3 text-center">150+</td>
+                                    <td class="p-3 text-center text-yellow-300 font-bold">Extremamente valioso</td>
+                                </tr>
+                                <tr class="bg-gold/20">
+                                    <td class="p-3 value-bar text-yellow-200 font-bold">¤¤¤¤¤¤¤¤+</td>
+                                    <td class="p-3 text-center">∞</td>
+                                    <td class="p-3 text-center text-yellow-200 font-bold">Inestimável!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-box p-4 mt-6">
+                    <p class="text-yellow-400 text-sm">
+                        <i class="fas fa-star mr-2"></i>
+                        <strong>Dica de Mestre Comerciante:</strong> Com a skill <strong
+                            class="text-gold">Mercantilismo</strong>,
+                        você vê o preço exato em moedas, permitindo negociações mais precisas!
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-dark/90 border-t border-gold/20 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-steel text-sm">
+                <i class="fas fa-scroll text-gold mr-2"></i>
+                Medieval Wiki - Guia do Sistema de Comércio
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
