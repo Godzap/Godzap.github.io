@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Forja | Medieval Wiki</title>
+    <meta name="description"
+        content="Guia completo do sistema de forja medieval - coleta de recursos, fundição de minérios, criação de armas e armaduras.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'parchment': '#e8dcc4',
+                        'parchment-dark': '#d4c4a8',
+                        'ink': '#2c2416',
+                        'gold': '#c9a227',
+                        'gold-dark': '#8b7023',
+                        'leather': '#8B4513',
+                        'steel': '#b5b5b5',
+                        'copper': '#b87333',
+                        'bronze': '#cd7f32',
+                        'iron': '#4a4a4a',
+                        'fire': '#ff6b35',
+                        'ember': '#ff4500',
+                        'stone-dark': '#1a1a1a',
+                        'stone-medium': '#2d2d2d',
+                    },
+                    fontFamily: {
+                        'medieval': ['MedievalSharp', 'cursive'],
+                        'header': ['Almendra', 'serif'],
+                        'body': ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Almendra:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+        }
+
+        .nav-pill {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill:hover {
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0.2) 100%);
+            border-color: rgba(201, 162, 39, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .header-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
+        }
+
+        .section-card {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.6) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 0.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.15) 0%, rgba(139, 64, 19, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .recipe-card {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.2) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            border-color: rgba(201, 162, 39, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .material-table {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .material-table th {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .material-table tr:hover td {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .fire-glow {
+            animation: fireGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes fireGlow {
+            from {
+                text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff4500;
+            }
+
+            to {
+                text-shadow: 0 0 15px #ff6b35, 0 0 30px #ff4500;
+            }
+        }
+
+        .jota-tribute {
+            background: linear-gradient(135deg, rgba(92, 51, 23, 0.6) 0%, rgba(61, 40, 23, 0.6) 100%);
+            border: 2px solid #8b5a2b;
+        }
+
+        .formula-box {
+            background: linear-gradient(180deg, rgba(0, 68, 180, 0.2) 0%, rgba(0, 40, 100, 0.3) 100%);
+            border: 1px solid rgba(0, 128, 255, 0.4);
+            font-family: 'Courier New', monospace;
+        }
+
+        .affix-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body class="text-parchment">
+    <!-- Navigation Header -->
+    <header class="bg-stone-dark/90 border-b border-gold/20 sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <i class="fas fa-scroll text-gold text-2xl"></i>
+                    <span class="text-xl font-header text-gold">Medieval Wiki</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-parchment hover:text-gold transition-colors">Início</a>
+                    <a href="fazenda.html" class="text-parchment hover:text-gold transition-colors">Fazenda</a>
+                    <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors">Culinária</a>
+                    <a href="forja.html" class="text-gold border-b border-gold">Forja</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-dark via-transparent to-stone-dark"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-medieval text-gold mb-4 fire-glow">
+                <i class="fas fa-hammer mr-4"></i>Sistema de Forja
+            </h1>
+            <p class="text-xl text-steel max-w-2xl mx-auto">
+                Domine a arte ancestral da forja. Colete minérios, funda metais e crie armas lendárias!
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- Quick Navigation -->
+        <section class="flex flex-wrap justify-center gap-3 mb-10">
+            <a href="#nodes" class="nav-pill text-parchment"><i class="fas fa-gem mr-2"></i>Nodes de Minério</a>
+            <a href="#fundicao" class="nav-pill text-parchment"><i class="fas fa-fire mr-2"></i>Fundição e Ligas</a>
+            <a href="#forjamento" class="nav-pill text-parchment"><i class="fas fa-gavel mr-2"></i>Forjamento</a>
+            <a href="#martelos" class="nav-pill text-parchment"><i class="fas fa-hammer mr-2"></i>Martelos</a>
+            <a href="#calculo" class="nav-pill text-parchment"><i class="fas fa-calculator mr-2"></i>Poder de Craft</a>
+            <a href="#raridades" class="nav-pill text-parchment"><i class="fas fa-star mr-2"></i>Raridades</a>
+            <a href="#afixos" class="nav-pill text-parchment"><i class="fas fa-magic mr-2"></i>Afixos</a>
+            <a href="#jota" class="nav-pill text-parchment"><i class="fas fa-book mr-2"></i>Guia do Jota</a>
+        </section>
+
+        <!-- Main Content Card -->
+        <div class="main-content p-8 space-y-12">
+
+            <!-- Nodes de Minério -->
+            <section id="nodes">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-gem mr-3 text-copper"></i>Nodes de Minério
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Cada tipo de <strong class="text-gold">node de minério</strong> dá um recurso específico.
+                    Use uma <strong class="text-steel">picareta</strong> para minerar. Os nodes brilham com cores
+                    indicando sua <strong class="text-purple-400">raridade</strong>!
+                </p>
+
+                <!-- Tipos de Nodes -->
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-mountain text-gray-400 text-3xl mb-2"></i>
+                        <h4 class="text-gray-300 font-header">Pedra</h4>
+                        <p class="text-xs text-steel">→ Pedra bruta</p>
+                        <p class="text-xs text-purple-300 mt-1">Pode dropar Arsênico!</p>
+                    </div>
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-fire-flame-curved text-gray-600 text-3xl mb-2"></i>
+                        <h4 class="text-gray-400 font-header">Carvão</h4>
+                        <p class="text-xs text-steel">→ Carvão</p>
+                        <p class="text-xs text-purple-300 mt-1">Pode dropar Arsênico!</p>
+                    </div>
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-cube text-copper text-3xl mb-2"></i>
+                        <h4 class="text-copper font-header">Cobre</h4>
+                        <p class="text-xs text-steel">→ Minério de Cobre</p>
+                        <p class="text-xs text-purple-300 mt-1">Pode dropar Arsênico!</p>
+                    </div>
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-cube text-gray-500 text-3xl mb-2"></i>
+                        <h4 class="text-gray-400 font-header">Ferro Gusa</h4>
+                        <p class="text-xs text-steel">→ Minério de Ferro Gusa</p>
+                        <p class="text-xs text-purple-300 mt-1">Pode dropar Arsênico!</p>
+                    </div>
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-cube text-yellow-600 text-3xl mb-2"></i>
+                        <h4 class="text-yellow-500 font-header">Saharita</h4>
+                        <p class="text-xs text-steel">→ Minério de Saharita</p>
+                        <p class="text-xs text-amber-400">Metal do deserto</p>
+                    </div>
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-cube text-cyan-400 text-3xl mb-2"></i>
+                        <h4 class="text-cyan-300 font-header">Frostal</h4>
+                        <p class="text-xs text-steel">→ Minério de Frostal</p>
+                        <p class="text-xs text-cyan-400">Metal gelado</p>
+                    </div>
+                    <div class="recipe-card p-4 text-center">
+                        <i class="fas fa-cube text-white text-3xl mb-2"></i>
+                        <h4 class="text-white font-header">Sal</h4>
+                        <p class="text-xs text-steel">→ Sal mineral</p>
+                        <p class="text-xs text-green-400">Para conservação</p>
+                    </div>
+                </div>
+
+                <!-- Raridade dos Nodes -->
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-3"><i class="fas fa-sparkles mr-2"></i>Raridade dos
+                        Nodes</h3>
+                    <p class="text-steel mb-4">O <strong class="text-gold">contorno brilhante</strong> do node indica
+                        sua raridade. Nodes raros dão recursos de maior qualidade!</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="material-table w-full text-sm">
+                            <thead class="text-parchment font-header">
+                                <tr>
+                                    <th class="p-3 text-left">Raridade do Node</th>
+                                    <th class="p-3 text-center">Cor do Brilho</th>
+                                    <th class="p-3 text-center">Multiplicador</th>
+                                    <th class="p-3 text-center">Chance</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-steel">
+                                <tr>
+                                    <td class="p-3 text-gray-300 font-medium">Comum</td>
+                                    <td class="p-3 text-center"><span
+                                            class="inline-block w-4 h-4 rounded-full bg-white border border-gray-400"></span>
+                                        Branco</td>
+                                    <td class="p-3 text-center">×1.0</td>
+                                    <td class="p-3 text-center">~74%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-green-400 font-medium">Incomum</td>
+                                    <td class="p-3 text-center"><span
+                                            class="inline-block w-4 h-4 rounded-full bg-green-400"></span> Verde</td>
+                                    <td class="p-3 text-center">×1.25</td>
+                                    <td class="p-3 text-center">~20%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-blue-400 font-medium">Raro</td>
+                                    <td class="p-3 text-center"><span
+                                            class="inline-block w-4 h-4 rounded-full bg-blue-400"></span> Azul</td>
+                                    <td class="p-3 text-center">×1.5</td>
+                                    <td class="p-3 text-center">~5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-purple-400 font-medium">Épico</td>
+                                    <td class="p-3 text-center"><span
+                                            class="inline-block w-4 h-4 rounded-full bg-purple-400"></span> Roxo</td>
+                                    <td class="p-3 text-center">×2.0</td>
+                                    <td class="p-3 text-center">~1%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-4 p-3 bg-purple-900/20 rounded border border-purple-500/30">
+                        <p class="text-purple-300 text-sm">
+                            <i class="fas fa-flask mr-2"></i>
+                            <strong>Arsênico:</strong> Ao minerar Cobre, Ferro Gusa, Pedra ou Carvão, você pode obter
+                            <strong class="text-green-400">Pó de Arsênico</strong> como subproduto! Guarde-o, é
+                            essencial para criar Bronze.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fundição e Ligas -->
+            <section id="fundicao">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-fire mr-3 text-fire"></i>Fundição e Ligas
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    O <strong class="text-gold">Cadinho</strong> (crucible) é onde você mistura minérios para criar
+                    ligas.
+                    A <strong class="text-fire">Fornalha</strong> deve estar acesa com carvão!
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <!-- Como Fundir -->
+                    <div class="section-card p-5 border-l-4 border-fire">
+                        <h3 class="text-xl font-header text-fire mb-3"><i class="fas fa-fire-burner mr-2"></i>Como Usar
+                            o Cadinho</h3>
+                        <ol class="space-y-2 text-sm text-steel">
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-fire/30 text-fire rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">1</span>
+                                <span>Acenda a <strong class="text-fire">Fornalha</strong> com carvão</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-fire/30 text-fire rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">2</span>
+                                <span>Coloque os <strong class="text-copper">minérios/barras</strong> no cadinho</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-fire/30 text-fire rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">3</span>
+                                <span>Use <strong class="text-gold">(E)</strong> no cadinho para fundir</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span
+                                    class="bg-fire/30 text-fire rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">4</span>
+                                <span>Colete a <strong class="text-bronze">liga resultante</strong>!</span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Sistema de Calor -->
+                    <div class="section-card p-5 border-l-4 border-yellow-500">
+                        <h3 class="text-xl font-header text-yellow-400 mb-3"><i
+                                class="fas fa-thermometer-half mr-2"></i>Sistema de Calor</h3>
+                        <p class="text-sm text-steel mb-3">Barras saem <strong class="text-fire">quentes</strong>! O
+                            calor diminui ~10/segundo:</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <span class="text-red-500 font-bold mr-2 w-28">(Muito Quente)</span>
+                                <span class="text-steel">200+ calor</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-red-400 font-bold mr-2 w-28">(Quente)</span>
+                                <span class="text-steel">150-200 calor</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-orange-400 font-bold mr-2 w-28">(Morno)</span>
+                                <span class="text-steel">25-150 calor</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-blue-400 font-bold mr-2 w-28">(Frio)</span>
+                                <span class="text-steel">0-25 calor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Receitas de Ligas -->
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-flask mr-2"></i>Receitas de Ligas
+                        (Cadinho)</h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-stone-dark/50 p-4 rounded-lg border border-bronze/50">
+                            <h4 class="text-bronze font-header text-lg mb-2"><i class="fas fa-cube mr-2"></i>Bronze</h4>
+                            <p class="text-steel text-sm mb-2">Liga resistente e versátil</p>
+                            <div class="bg-black/30 p-2 rounded font-mono text-sm">
+                                <span class="text-copper">Cobre ×2</span> + <span class="text-green-400">Arsênico
+                                    ×1</span> = <span class="text-bronze">Bronze</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-stone-dark/50 p-4 rounded-lg border border-gray-500/50">
+                            <h4 class="text-gray-300 font-header text-lg mb-2"><i class="fas fa-cube mr-2"></i>Ferro
+                            </h4>
+                            <p class="text-steel text-sm mb-2">Metal sólido e confiável</p>
+                            <div class="bg-black/30 p-2 rounded font-mono text-sm">
+                                <span class="text-gray-400">Ferro Gusa ×2</span> = <span
+                                    class="text-gray-300">Ferro</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-stone-dark/50 p-4 rounded-lg border border-purple-500/50 md:col-span-2">
+                            <h4 class="text-purple-300 font-header text-lg mb-2"><i
+                                    class="fas fa-moon mr-2"></i>Crepuscular</h4>
+                            <p class="text-steel text-sm mb-2">O metal nascido do encontro de extremos - calor do
+                                deserto e frio glacial</p>
+                            <div class="bg-black/30 p-2 rounded font-mono text-sm">
+                                <span class="text-yellow-500">Saharita ×2</span> + <span class="text-cyan-400">Frostal
+                                    ×2</span> = <span class="text-purple-400">Crepuscular</span>
+                            </div>
+                            <p class="text-xs text-purple-400 mt-2 italic">"Nem todo metal pertence ao dia... nem à
+                                noite."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forjamento -->
+            <section id="forjamento">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-gavel mr-3 text-bronze"></i>Forjamento na Bigorna
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Use um <strong class="text-gold">Martelo de Forja</strong> para bater nas barras/minérios na
+                    bigorna.
+                    Cada martelada avança o progresso!
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="section-card p-5 border-l-4 border-copper">
+                        <h3 class="text-xl font-header text-copper mb-3">
+                            <i class="fas fa-cubes mr-2"></i>Minério → Barra
+                        </h3>
+                        <p class="text-sm text-steel mb-3">Minérios brutos precisam ser achatados:</p>
+                        <div class="bg-stone-dark/50 p-4 rounded">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-parchment">Marteladas:</span>
+                                <span class="text-fire font-bold text-2xl">15×</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded h-3">
+                                <div class="bg-gradient-to-r from-fire to-yellow-500 h-3 rounded" style="width: 100%">
+                                </div>
+                            </div>
+                            <p class="text-xs text-green-400 mt-2">"Você achata o minério e cria uma bela barra."</p>
+                        </div>
+                    </div>
+
+                    <div class="section-card p-5 border-l-4 border-bronze">
+                        <h3 class="text-xl font-header text-bronze mb-3">
+                            <i class="fas fa-cube mr-2"></i>Barra → Acabada
+                        </h3>
+                        <p class="text-sm text-steel mb-3">Barras precisam ser refinadas antes de usar:</p>
+                        <div class="bg-stone-dark/50 p-4 rounded">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-parchment">Marteladas:</span>
+                                <span class="text-bronze font-bold text-2xl">10×</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded h-3">
+                                <div class="bg-gradient-to-r from-bronze to-gold h-3 rounded" style="width: 100%"></div>
+                            </div>
+                            <p class="text-xs text-green-400 mt-2">"A barra foi forjada com perfeição!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box p-4">
+                    <p class="text-parchment text-sm">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 mr-2"></i>
+                        <strong>Atenção:</strong> Barras <strong class="text-red-400">NÃO ACABADAS</strong> bloqueiam a
+                        criação de receitas.
+                        Sempre forje até aparecer "finished" antes de montar componentes!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Martelos de Forja -->
+            <section id="martelos">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-hammer mr-3 text-steel"></i>Martelos de Forja
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Martelos melhores dão mais <strong class="text-gold">Poder de Forja</strong>, aumentando suas
+                    chances de criar itens raros!
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="recipe-card p-5 border-l-4 border-gray-500">
+                        <h4 class="text-xl font-header text-gray-300 mb-2">
+                            <i class="fas fa-hammer mr-2"></i>Martelo de Forja
+                        </h4>
+                        <p class="text-xs text-steel mb-2">Material: <span class="text-gray-400">Pedra + Madeira</span>
+                        </p>
+                        <p class="text-xs text-steel mb-2">Nível: <span class="text-green-400">0</span></p>
+                        <div class="bg-stone-dark/50 p-2 rounded text-xs mt-2">
+                            <span class="text-gray-400">Poder de Forja:</span>
+                            <span class="text-gray-300 font-bold ml-2">Básico</span>
+                        </div>
+                    </div>
+
+                    <div class="recipe-card p-5 border-l-4 border-gray-400">
+                        <h4 class="text-xl font-header text-gray-200 mb-2">
+                            <i class="fas fa-hammer mr-2"></i>Martelo de Ferro
+                        </h4>
+                        <p class="text-xs text-steel mb-2">Material: <span class="text-gray-300">Barra de Ferro +
+                                Madeira</span></p>
+                        <p class="text-xs text-steel mb-2">Nível: <span class="text-blue-400">5</span></p>
+                        <div class="bg-stone-dark/50 p-2 rounded text-xs mt-2">
+                            <span class="text-gray-400">Poder de Forja:</span>
+                            <span class="text-gray-200 font-bold ml-2">+Médio</span>
+                        </div>
+                    </div>
+
+                    <div class="recipe-card p-5 border-l-4 border-purple-500">
+                        <h4 class="text-xl font-header text-purple-300 mb-2">
+                            <i class="fas fa-hammer mr-2"></i>Martelo Crepuscular
+                        </h4>
+                        <p class="text-xs text-steel mb-2">Material: <span class="text-purple-400">Barra Crepuscular +
+                                Madeira</span></p>
+                        <p class="text-xs text-steel mb-2">Nível: <span class="text-purple-400">10</span></p>
+                        <div class="bg-stone-dark/50 p-2 rounded text-xs mt-2">
+                            <span class="text-gray-400">Poder de Forja:</span>
+                            <span class="text-purple-400 font-bold ml-2">+Alto</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cálculo de Poder de Craft -->
+            <section id="calculo">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-calculator mr-3 text-blue-400"></i>Poder de Craft
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    A <strong class="text-gold">raridade do item criado</strong> depende do seu <strong
+                        class="text-blue-400">Poder de Craft</strong>.
+                    Quanto maior, melhores são as chances de itens épicos e lendários!
+                </p>
+
+                <!-- Fórmula -->
+                <div class="formula-box p-5 rounded-lg mb-6">
+                    <h3 class="text-blue-300 font-header text-lg mb-3"><i class="fas fa-function mr-2"></i>Fórmula do
+                        Poder de Craft</h3>
+                    <div class="bg-black/50 p-4 rounded text-center text-lg">
+                        <span class="text-cyan-400">Poder</span> =
+                        <span class="text-yellow-400">Foco</span> +
+                        (<span class="text-green-400">Smithing</span> × 3) +
+                        <span class="text-purple-400">Martelo</span> +
+                        <span class="text-orange-400">Ingredientes</span>
+                    </div>
+                </div>
+
+                <!-- Componentes da Fórmula -->
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="section-card p-4">
+                        <h4 class="text-yellow-400 font-header mb-2"><i class="fas fa-eye mr-2"></i>Foco (Atributo)</h4>
+                        <p class="text-sm text-steel">Seu atributo de personagem. Cada ponto conta diretamente no
+                            cálculo.</p>
+                    </div>
+                    <div class="section-card p-4">
+                        <h4 class="text-green-400 font-header mb-2"><i class="fas fa-chart-line mr-2"></i>Smithing
+                            (Skill)</h4>
+                        <p class="text-sm text-steel">Seu nível na skill Smithing. <strong
+                                class="text-green-300">Multiplicado por 3!</strong></p>
+                    </div>
+                    <div class="section-card p-4">
+                        <h4 class="text-purple-400 font-header mb-2"><i class="fas fa-hammer mr-2"></i>Poder do Martelo
+                        </h4>
+                        <p class="text-sm text-steel">Cada martelo tem um valor de "focus" diferente. Martelos melhores
+                            = mais poder.</p>
+                    </div>
+                    <div class="section-card p-4">
+                        <h4 class="text-orange-400 font-header mb-2"><i class="fas fa-cubes mr-2"></i>Modificador de
+                            Ingredientes</h4>
+                        <p class="text-sm text-steel">Ingredientes de maior raridade aumentam o poder médio do craft!
+                        </p>
+                        <div class="text-xs text-steel mt-2">
+                            <span class="text-gray-300">Comum:</span> +30 |
+                            <span class="text-green-400">Incomum:</span> +60 |
+                            <span class="text-blue-400">Raro:</span> +100 |
+                            <span class="text-purple-400">Épico:</span> +150 |
+                            <span class="text-yellow-400">Lendário:</span> +240
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sistema de Raridade -->
+            <section id="raridades">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-star mr-3 text-yellow-400"></i>Chances por Tier de Poder
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Dependendo do seu <strong class="text-blue-400">Poder de Craft</strong>, as chances de cada raridade
+                    mudam!
+                </p>
+
+                <div class="overflow-x-auto mb-6">
+                    <table class="material-table w-full text-sm">
+                        <thead class="text-parchment font-header">
+                            <tr>
+                                <th class="p-3 text-left">Tier de Poder</th>
+                                <th class="p-3 text-center">Comum</th>
+                                <th class="p-3 text-center">Incomum</th>
+                                <th class="p-3 text-center">Raro</th>
+                                <th class="p-3 text-center">Épico</th>
+                                <th class="p-3 text-center">Lendário</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-steel text-center">
+                            <tr>
+                                <td class="p-3 text-left text-gray-400">0-100</td>
+                                <td class="p-3 text-gray-300">~80%</td>
+                                <td class="p-3 text-green-400">~12%</td>
+                                <td class="p-3 text-blue-400">~5%</td>
+                                <td class="p-3 text-purple-400">~2%</td>
+                                <td class="p-3 text-yellow-400">~1%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-left text-green-400">101-200</td>
+                                <td class="p-3 text-gray-300">~66%</td>
+                                <td class="p-3 text-green-400">~28%</td>
+                                <td class="p-3 text-blue-400">~1%</td>
+                                <td class="p-3 text-purple-400">~4%</td>
+                                <td class="p-3 text-yellow-400">~1%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-left text-blue-400">201-300</td>
+                                <td class="p-3 text-gray-300">~10%</td>
+                                <td class="p-3 text-green-400">Alta</td>
+                                <td class="p-3 text-blue-400">Sobe</td>
+                                <td class="p-3 text-purple-400">Sobe</td>
+                                <td class="p-3 text-yellow-400">~2%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-left text-purple-400">301-350</td>
+                                <td class="p-3 text-gray-300">~10%</td>
+                                <td class="p-3 text-green-400">Alta</td>
+                                <td class="p-3 text-blue-400">Alta</td>
+                                <td class="p-3 text-purple-400">Sobe</td>
+                                <td class="p-3 text-yellow-400">Sobe</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-left text-yellow-400">351-400</td>
+                                <td class="p-3 text-gray-300">~10%</td>
+                                <td class="p-3 text-green-400">~10%</td>
+                                <td class="p-3 text-blue-400">Alta</td>
+                                <td class="p-3 text-purple-400">Alta</td>
+                                <td class="p-3 text-yellow-400">Sobe</td>
+                            </tr>
+                            <tr class="bg-gold/10">
+                                <td class="p-3 text-left text-gold font-bold">400+</td>
+                                <td class="p-3 text-gray-300">0%</td>
+                                <td class="p-3 text-green-400">0%</td>
+                                <td class="p-3 text-blue-400">~10%</td>
+                                <td class="p-3 text-purple-400">~60%</td>
+                                <td class="p-3 text-yellow-400 font-bold">~30%!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box p-4">
+                    <p class="text-gold text-sm">
+                        <i class="fas fa-crown mr-2"></i>
+                        <strong>Ferreiro Experiente:</strong> Com 400+ de poder, você tem 30% de chance de criar itens
+                        <strong class="text-yellow-400">LENDÁRIOS</strong>! Invista em Foco, suba Smithing e use os
+                        melhores martelos.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Afixos -->
+            <section id="afixos">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-magic mr-3 text-purple-400"></i>Sistema de Afixos
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-4">
+                    Itens de raridade maior podem ter <strong class="text-purple-400">Afixos</strong> - bônus especiais
+                    que
+                    melhoram seus atributos quando equipados!
+                </p>
+
+                <div class="info-box p-4 mb-6">
+                    <p class="text-gold text-sm">
+                        <i class="fas fa-layer-group mr-2"></i>
+                        <strong>Quantidade de Afixos:</strong> Quanto <strong>maior a raridade</strong> do item,
+                        <strong>mais afixos</strong> ele pode ter! Itens Lendários podem ter múltiplos afixos poderosos.
+                    </p>
+                </div>
+
+                <!-- Afixos Tier 1 -->
+                <div class="section-card p-5 mb-6 border-l-4 border-green-500">
+                    <h3 class="text-xl font-header text-green-400 mb-3"><i class="fas fa-plus-circle mr-2"></i>Afixos
+                        Tier 1 (Incomum)</h3>
+                    <p class="text-sm text-steel mb-4">Bônus menores, aparecem em itens Incomuns. Valores: +1 a +3</p>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="affix-item">
+                            <span class="text-green-400 font-header">Ágil</span>
+                            <span class="text-steel text-sm">+Agilidade</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-green-400 font-header">Forte</span>
+                            <span class="text-steel text-sm">+Força</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-green-400 font-header">Inteligente</span>
+                            <span class="text-steel text-sm">+Inteligência</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-green-400 font-header">Rígida</span>
+                            <span class="text-steel text-sm">+Constituição</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-green-400 font-header">Perspicaz</span>
+                            <span class="text-steel text-sm">+Foco</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-green-400 font-header">Ligeira</span>
+                            <span class="text-steel text-sm">+Destreza</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Afixos Tier 2 -->
+                <div class="section-card p-5 mb-6 border-l-4 border-blue-500">
+                    <h3 class="text-xl font-header text-blue-400 mb-3"><i class="fas fa-sparkles mr-2"></i>Afixos Tier 2
+                        (Raro)</h3>
+                    <p class="text-sm text-steel mb-4">Bônus maiores, aparecem em itens Raros. Valores: +3 a +5</p>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Cortante</span>
+                            <span class="text-steel text-sm">+Dano (Arma)</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Veloz</span>
+                            <span class="text-steel text-sm">+Agilidade</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Robusta</span>
+                            <span class="text-steel text-sm">+Força</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Sábio</span>
+                            <span class="text-steel text-sm">+Inteligência</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Inflexível</span>
+                            <span class="text-steel text-sm">+Constituição</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Sagaz</span>
+                            <span class="text-steel text-sm">+Foco</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Lépida</span>
+                            <span class="text-steel text-sm">+Destreza</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Tramado</span>
+                            <span class="text-steel text-sm">+Resist. Corte (Armadura)</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Reforçado</span>
+                            <span class="text-steel text-sm">+Resist. Impacto (Armadura)</span>
+                        </div>
+                        <div class="affix-item">
+                            <span class="text-blue-400 font-header">Acolchoado</span>
+                            <span class="text-steel text-sm">+Resist. Perfuração (Armadura)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Raridades e Afixos -->
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-layer-group mr-2"></i>Afixos por
+                        Raridade</h3>
+                    <div class="overflow-x-auto">
+                        <table class="material-table w-full text-sm">
+                            <thead class="text-parchment font-header">
+                                <tr>
+                                    <th class="p-3 text-left">Raridade</th>
+                                    <th class="p-3 text-center">Tier de Afixos</th>
+                                    <th class="p-3 text-center">Qtd. Afixos</th>
+                                    <th class="p-3 text-center">Valores</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-steel">
+                                <tr>
+                                    <td class="p-3 text-gray-300">Comum</td>
+                                    <td class="p-3 text-center">—</td>
+                                    <td class="p-3 text-center">0</td>
+                                    <td class="p-3 text-center">—</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-green-400">Incomum</td>
+                                    <td class="p-3 text-center">Tier 1</td>
+                                    <td class="p-3 text-center">0-1</td>
+                                    <td class="p-3 text-center">+1 a +3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-blue-400">Raro</td>
+                                    <td class="p-3 text-center">Tier 1-2</td>
+                                    <td class="p-3 text-center">1-2</td>
+                                    <td class="p-3 text-center">+3 a +5</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-purple-400">Épico</td>
+                                    <td class="p-3 text-center">Tier 2-3</td>
+                                    <td class="p-3 text-center">2-3</td>
+                                    <td class="p-3 text-center">+6 a +10</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-yellow-400">Lendário</td>
+                                    <td class="p-3 text-center">Tier 3-5</td>
+                                    <td class="p-3 text-center">3+</td>
+                                    <td class="p-3 text-center">+8 a +24</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cores de Raridade -->
+            <section class="section-card p-5">
+                <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-palette mr-2"></i>Identificação de
+                    Raridade</h3>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full bg-gray-300"></span>
+                        <span class="text-gray-300">Comum</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full" style="background-color: rgb(72, 167, 11);"></span>
+                        <span class="text-green-400">Incomum</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full" style="background-color: rgb(0, 68, 180);"></span>
+                        <span class="text-blue-500">Raro</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full" style="background-color: rgb(186, 85, 211);"></span>
+                        <span class="text-purple-400">Épico</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full" style="background-color: rgb(255, 165, 0);"></span>
+                        <span class="text-orange-400">Lendário</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tributo ao Jota - NO FINAL -->
+            <section id="jota" class="jota-tribute rounded-lg p-6">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-book-open mr-3 text-amber-600"></i>O Livro da Forja Viva
+                </h2>
+                <div class="header-divider w-1/4 mb-4"></div>
+
+                <p class="text-parchment mb-4 italic text-lg">
+                    "Se este livro chegou às suas mãos, viajante, então o fogo já chamou você."
+                </p>
+
+                <p class="text-steel mb-4">
+                    <strong class="text-gold">Jota, o Ferreiro</strong>, é um dos trabalhadores mais respeitados do
+                    <strong class="text-cyan-300">Arquipélago de Nornheim</strong>.
+                    Ele escreveu o <strong class="text-amber-400">"Livro da Forja Viva"</strong>, um guia essencial para
+                    todo aspirante a ferreiro.
+                </p>
+
+                <div class="bg-stone-dark/50 p-4 rounded-lg border border-amber-700/50">
+                    <p class="text-amber-400 font-header mb-2"><i class="fas fa-quote-left mr-2"></i>Ensinamentos do
+                        Jota:</p>
+                    <ul class="text-sm text-steel space-y-1 list-disc pl-6">
+                        <li>Crie a <strong class="text-parchment">Luva de Ferreiro</strong> antes de qualquer coisa -
+                            sem ela você se queima!</li>
+                        <li>A forja só responde a quem sabe chamá-la - use <strong
+                                class="text-parchment">Carvão</strong> para acender</li>
+                        <li>O martelo decide o que o metal será - crie um <strong class="text-parchment">Martelo de
+                                Forja</strong></li>
+                        <li>O <strong class="text-parchment">Cadinho</strong> é onde os metais deixam de ser pedra e
+                            viram ligas</li>
+                    </ul>
+                </div>
+
+                <p class="text-amber-600 text-sm mt-4 italic">
+                    <i class="fas fa-scroll mr-2"></i>
+                    O livro pode ser encontrado no Arquipélago de Nornheim. Procure por Jota!
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-dark/90 border-t border-gold/20 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-steel text-sm">
+                <i class="fas fa-scroll text-gold mr-2"></i>
+                Medieval Wiki - Guia do Sistema de Forja
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
