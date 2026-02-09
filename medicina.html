@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Médico e Vidas | Medieval Wiki</title>
+    <meta name="description"
+        content="Guia do sistema médico medieval - doenças, plantas medicinais, tipos de cura e sistema de vidas.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'parchment': '#e8dcc4',
+                        'parchment-dark': '#d4c4a8',
+                        'ink': '#2c2416',
+                        'gold': '#c9a227',
+                        'gold-dark': '#8b7023',
+                        'leather': '#8B4513',
+                        'steel': '#b5b5b5',
+                        'stone-dark': '#1a1a1a',
+                        'stone-medium': '#2d2d2d',
+                        'health-full': '#801313',
+                        'health-medium': '#5e320c',
+                        'health-low': '#3c404e',
+                        'stamina': '#506b42',
+                        'stability': '#a08719',
+                        'mana': '#3c6ea0',
+                        'disease-bacterial': '#e74c3c',
+                        'disease-viral': '#9b59b6',
+                        'disease-fungal': '#27ae60',
+                        'disease-parasitic': '#f39c12',
+                    },
+                    fontFamily: {
+                        'medieval': ['MedievalSharp', 'cursive'],
+                        'header': ['Almendra', 'serif'],
+                        'body': ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Almendra:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+        }
+
+        .nav-pill {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill:hover {
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0.2) 100%);
+            border-color: rgba(201, 162, 39, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .header-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
+        }
+
+        .section-card {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.6) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 0.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.15) 0%, rgba(139, 64, 19, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .mystery-box {
+            background: linear-gradient(180deg, rgba(100, 50, 120, 0.2) 0%, rgba(60, 30, 80, 0.3) 100%);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            border-radius: 0.5rem;
+        }
+
+        .material-table {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .material-table th {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .material-table tr:hover td {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .gold-glow {
+            animation: goldGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes goldGlow {
+            from {
+                text-shadow: 0 0 10px #c9a227, 0 0 20px #8b7023;
+            }
+
+            to {
+                text-shadow: 0 0 15px #c9a227, 0 0 30px #8b7023;
+            }
+        }
+
+        .health-bar {
+            height: 30px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .health-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .plant-card {
+            transition: all 0.3s ease;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .disease-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disease-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .disease-bacterial::before {
+            background: #e74c3c;
+        }
+
+        .disease-viral::before {
+            background: #9b59b6;
+        }
+
+        .disease-fungal::before {
+            background: #27ae60;
+        }
+
+        .disease-parasitic::before {
+            background: #f39c12;
+        }
+    </style>
+</head>
+
+<body class="text-parchment">
+    <!-- Navigation Header -->
+    <header class="bg-stone-dark/90 border-b border-gold/20 sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <i class="fas fa-scroll text-gold text-2xl"></i>
+                    <span class="text-xl font-header text-gold">Medieval Wiki</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-parchment hover:text-gold transition-colors">Início</a>
+                    <a href="forja.html" class="text-parchment hover:text-gold transition-colors">Forja</a>
+                    <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors">Culinária</a>
+                    <a href="comercio.html" class="text-parchment hover:text-gold transition-colors">Comércio</a>
+                    <a href="medicina.html" class="text-gold border-b border-gold">Medicina</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-dark via-transparent to-stone-dark"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-medieval text-gold mb-4 gold-glow">
+                <i class="fas fa-heart-pulse mr-4"></i>Sistema Médico
+            </h1>
+            <p class="text-xl text-steel max-w-2xl mx-auto">
+                A arte da cura é um mistério. Aprenda sobre as aflições que assolam Nornheim e as plantas que podem
+                salvá-lo.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- Quick Navigation -->
+        <section class="flex flex-wrap justify-center gap-3 mb-10">
+            <a href="#vidas" class="nav-pill text-parchment"><i class="fas fa-heart mr-2"></i>Sistema de Vidas</a>
+            <a href="#barras" class="nav-pill text-parchment"><i class="fas fa-bars-progress mr-2"></i>Barras Vitais</a>
+            <a href="#doencas" class="nav-pill text-parchment"><i class="fas fa-biohazard mr-2"></i>Doenças</a>
+            <a href="#plantas" class="nav-pill text-parchment"><i class="fas fa-leaf mr-2"></i>Plantas Medicinais</a>
+            <a href="#tipos-cura" class="nav-pill text-parchment"><i class="fas fa-flask mr-2"></i>Tipos de Cura</a>
+            <a href="#elixires" class="nav-pill text-parchment"><i class="fas fa-prescription-bottle mr-2"></i>Criando
+                Elixires</a>
+        </section>
+
+        <!-- Main Content Card -->
+        <div class="main-content p-8 space-y-12">
+
+            <!-- Sistema de Vidas -->
+            <section id="vidas">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-heart mr-3 text-red-500"></i>Sistema de Vidas
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Em Nornheim, a morte não é o fim... até que seja. Todo personagem possui <strong class="text-gold">3
+                        vidas</strong>.
+                    Cada vez que você cai e é ressuscitado, uma parte de si é perdida.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="section-card p-5 border-l-4 border-red-500">
+                        <h3 class="text-xl font-header text-red-400 mb-3"><i class="fas fa-heart mr-2"></i> 3 Vidas</h3>
+                        <div class="health-bar bg-health-full mb-3"></div>
+                        <p class="text-sm text-steel italic">"Ainda respira, mas com mais peso. O corpo responde, mas já
+                            não é o mesmo."</p>
+                    </div>
+
+                    <div class="section-card p-5 border-l-4 border-amber-600">
+                        <h3 class="text-xl font-header text-amber-500 mb-3"><i class="fas fa-heart-broken mr-2"></i> 2
+                            Vidas</h3>
+                        <div class="health-bar bg-health-medium mb-3"></div>
+                        <p class="text-sm text-steel italic">"O primeiro passo em direção à morte é o mais difícil. Algo
+                            dentro de você está diferente."</p>
+                    </div>
+
+                    <div class="section-card p-5 border-l-4 border-gray-500">
+                        <h3 class="text-xl font-header text-gray-400 mb-3"><i class="fas fa-skull mr-2"></i> 1 Vida</h3>
+                        <div class="health-bar bg-health-low mb-3"></div>
+                        <p class="text-sm text-steel italic">"Você perde o último resquício de si mesmo. Esta é sua
+                            última chance."</p>
+                    </div>
+                </div>
+
+                <div class="info-box p-4 border-l-4 border-red-700">
+                    <h4 class="text-red-400 font-header mb-2"><i class="fas fa-skull-crossbones mr-2"></i>Modo Canônico
+                    </h4>
+                    <p class="text-steel text-sm">
+                        Quando o <strong class="text-red-400">Modo Canônico</strong> está ativo, morrer na sua
+                        <strong>última vida</strong>
+                        resulta em <strong class="text-red-300">morte permanente do personagem</strong>.
+                        A silhueta da árvore desaparece do horizonte...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Barras Vitais -->
+            <section id="barras">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-bars-progress mr-3 text-green-400"></i>Barras Vitais
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Sua HUD exibe quatro barras essenciais que representam seu estado físico e espiritual.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="section-card p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded bg-health-full flex items-center justify-center mr-3">
+                                <i class="fas fa-heart text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-header text-red-400">Vida</h3>
+                        </div>
+                        <p class="text-sm text-steel">Sua saúde atual. Quando chega a zero, você cai. A cor muda
+                            conforme suas vidas restantes.</p>
+                    </div>
+
+                    <div class="section-card p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded bg-stamina flex items-center justify-center mr-3">
+                                <i class="fas fa-running text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-header text-green-400">Stamina</h3>
+                        </div>
+                        <p class="text-sm text-steel">Sua energia física. Usada para correr, atacar e realizar ações
+                            físicas intensas.</p>
+                    </div>
+
+                    <div class="section-card p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded bg-stability flex items-center justify-center mr-3">
+                                <i class="fas fa-balance-scale text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-header text-yellow-400">Estabilidade</h3>
+                        </div>
+                        <p class="text-sm text-steel">Seu equilíbrio físico. Quando zerada, você <strong
+                                class="text-yellow-300">cai no chão</strong> e fica vulnerável por alguns segundos.</p>
+                    </div>
+
+                    <div class="section-card p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded bg-mana flex items-center justify-center mr-3">
+                                <i class="fas fa-magic text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-header text-blue-400">Mana</h3>
+                        </div>
+                        <p class="text-sm text-steel">Sua energia arcana. Necessária para usar habilidades mágicas e
+                            encantamentos.</p>
+                    </div>
+                </div>
+
+                <div class="info-box p-4 mt-6">
+                    <p class="text-yellow-400 text-sm">
+                        <i class="fas fa-person-falling mr-2"></i>
+                        <strong>Sistema de Queda:</strong> Quando sua <strong
+                            class="text-yellow-300">Estabilidade</strong> chega a zero,
+                        você é derrubado e fica incapacitado por alguns segundos. Inimigos podem aproveitar para atacar
+                        ou executar!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Doenças -->
+            <section id="doencas">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-biohazard mr-3 text-red-400"></i>Doenças de Nornheim
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    As terras de Nornheim abrigam diversas aflições. Cada doença possui <strong class="text-gold">4
+                        estágios</strong>
+                    que pioram com o tempo, e é causada por um tipo específico de <strong
+                        class="text-purple-400">patógeno</strong>.
+                </p>
+
+                <div class="mystery-box p-4 mb-6 text-center">
+                    <p class="text-purple-300 text-sm italic">
+                        <i class="fas fa-question-circle mr-2"></i>
+                        "A cura para cada doença é um segredo guardado pelos curandeiros.
+                        Apenas o estudo e a experimentação revelarão qual remédio combate qual mal..."
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="section-card disease-card disease-bacterial p-5">
+                        <h3 class="text-xl font-header text-red-400 mb-2"><i
+                                class="fas fa-bacteria mr-2"></i>Tuberculose</h3>
+                        <span
+                            class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded mb-3 inline-block">Bacteriana</span>
+                        <p class="text-sm text-steel mb-2">Uma aflição dos pulmões que se espalha pelo ar.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="mr-3"><i class="fas fa-head-side-cough mr-1"></i>Sintomas variados</span>
+                            <span><i class="fas fa-users mr-1"></i>Contagiosa</span>
+                        </div>
+                    </div>
+
+                    <div class="section-card disease-card disease-viral p-5">
+                        <h3 class="text-xl font-header text-purple-400 mb-2"><i class="fas fa-virus mr-2"></i>Influenza
+                        </h3>
+                        <span
+                            class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded mb-3 inline-block">Viral</span>
+                        <p class="text-sm text-steel mb-2">Febre e fraqueza que debilitam o corpo rapidamente.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="mr-3"><i class="fas fa-dizzy mr-1"></i>Sintomas variados</span>
+                            <span><i class="fas fa-users mr-1"></i>Muito contagiosa</span>
+                        </div>
+                    </div>
+
+                    <div class="section-card disease-card disease-fungal p-5">
+                        <h3 class="text-xl font-header text-green-400 mb-2"><i
+                                class="fas fa-disease mr-2"></i>Aspergilose</h3>
+                        <span
+                            class="text-xs bg-green-900/50 text-green-300 px-2 py-1 rounded mb-3 inline-block">Fúngica</span>
+                        <p class="text-sm text-steel mb-2">Esporos que se alojam nos pulmões e causam tosse severa.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="mr-3"><i class="fas fa-lungs mr-1"></i>Sintomas variados</span>
+                            <span><i class="fas fa-user mr-1"></i>Pouco contagiosa</span>
+                        </div>
+                    </div>
+
+                    <div class="section-card disease-card disease-parasitic p-5">
+                        <h3 class="text-xl font-header text-amber-400 mb-2"><i class="fas fa-bug mr-2"></i>Leishmaniose
+                        </h3>
+                        <span
+                            class="text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded mb-3 inline-block">Parasitária</span>
+                        <p class="text-sm text-steel mb-2">Feridas e lesões cutâneas causadas por parasitas.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="mr-3"><i class="fas fa-band-aid mr-1"></i>Sintomas variados</span>
+                            <span><i class="fas fa-user-slash mr-1"></i>Não contagiosa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card p-5">
+                    <h3 class="text-xl font-header text-gold mb-3"><i class="fas fa-chart-line mr-2"></i>Progressão de
+                        Estágio</h3>
+                    <p class="text-sm text-steel mb-4">Doenças progridem em 4 estágios. Quanto maior o estágio, mais
+                        severos os sintomas.</p>
+                    <div class="flex justify-between text-center">
+                        <div class="flex-1">
+                            <div
+                                class="w-12 h-12 mx-auto mb-2 rounded-full bg-green-900/50 border-2 border-green-500 flex items-center justify-center">
+                                <span class="text-green-400 font-bold">1</span>
+                            </div>
+                            <p class="text-xs text-green-400">Leve</p>
+                        </div>
+                        <div class="flex-1">
+                            <div
+                                class="w-12 h-12 mx-auto mb-2 rounded-full bg-yellow-900/50 border-2 border-yellow-500 flex items-center justify-center">
+                                <span class="text-yellow-400 font-bold">2</span>
+                            </div>
+                            <p class="text-xs text-yellow-400">Moderado</p>
+                        </div>
+                        <div class="flex-1">
+                            <div
+                                class="w-12 h-12 mx-auto mb-2 rounded-full bg-orange-900/50 border-2 border-orange-500 flex items-center justify-center">
+                                <span class="text-orange-400 font-bold">3</span>
+                            </div>
+                            <p class="text-xs text-orange-400">Severo</p>
+                        </div>
+                        <div class="flex-1">
+                            <div
+                                class="w-12 h-12 mx-auto mb-2 rounded-full bg-red-900/50 border-2 border-red-500 flex items-center justify-center">
+                                <span class="text-red-400 font-bold">4</span>
+                            </div>
+                            <p class="text-xs text-red-400">Crítico</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Plantas Medicinais -->
+            <section id="plantas">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-leaf mr-3 text-green-400"></i>Plantas Medicinais
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    A natureza de Nornheim oferece diversas plantas com propriedades curativas.
+                    Cada planta possui <strong class="text-green-400">propriedades únicas</strong> que podem ser
+                    combinadas em elixires.
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    <div class="section-card plant-card p-4 border-l-4 border-red-400">
+                        <h4 class="font-header text-lg text-red-300 mb-1"><i class="fas fa-seedling mr-2"></i>Aloe Vera
+                        </h4>
+                        <p class="text-xs text-steel italic mb-2">"Roseta de folhas carnudas com gel translúcido e frio
+                            ao toque."</p>
+                        <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded">Cicatrizante</span>
+                    </div>
+
+                    <div class="section-card plant-card p-4 border-l-4 border-purple-400">
+                        <h4 class="font-header text-lg text-purple-300 mb-1"><i
+                                class="fas fa-seedling mr-2"></i>Hamamélis</h4>
+                        <p class="text-xs text-steel italic mb-2">"Arbusto com flores amarelas finas como fitas, aroma
+                            de madeira fresca."</p>
+                        <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Hemostático</span>
+                    </div>
+
+                    <div class="section-card plant-card p-4 border-l-4 border-cyan-400">
+                        <h4 class="font-header text-lg text-cyan-300 mb-1"><i
+                                class="fas fa-seedling mr-2"></i>Hortelã-pimenta</h4>
+                        <p class="text-xs text-steel italic mb-2">"Caule quadrangular, folhas serrilhadas de verde
+                            intenso, flores lilás."</p>
+                        <span class="text-xs bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded">Antibactericida</span>
+                    </div>
+
+                    <div class="section-card plant-card p-4 border-l-4 border-green-400">
+                        <h4 class="font-header text-lg text-green-300 mb-1"><i
+                                class="fas fa-seedling mr-2"></i>Salgueiro-Branco</h4>
+                        <p class="text-xs text-steel italic mb-2">"Ramos pendentes e folhas verde-prateadas. Casca
+                            pálida e amarga."</p>
+                        <span class="text-xs bg-green-900/50 text-green-300 px-2 py-1 rounded">Desinfetante</span>
+                    </div>
+
+                    <div class="section-card plant-card p-4 border-l-4 border-amber-400">
+                        <h4 class="font-header text-lg text-amber-300 mb-1"><i class="fas fa-seedling mr-2"></i>Tomilho
+                        </h4>
+                        <p class="text-xs text-steel italic mb-2">"Tufos baixos com folhas miúdas, perfume quente e
+                            herbal."</p>
+                        <span class="text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded">Antisséptico</span>
+                    </div>
+
+                    <div class="section-card plant-card p-4 border-l-4 border-gray-400">
+                        <h4 class="font-header text-lg text-gray-300 mb-1"><i class="fas fa-question mr-2"></i>Outras...
+                        </h4>
+                        <p class="text-xs text-steel italic mb-2">"Dizem que há mais plantas raras escondidas pelo
+                            arquipélago..."</p>
+                        <span class="text-xs bg-gray-900/50 text-gray-300 px-2 py-1 rounded">???</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tipos de Cura -->
+            <section id="tipos-cura">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-flask mr-3 text-blue-400"></i>Tipos de Propriedades Curativas
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Cada ingrediente médico possui uma ou mais <strong class="text-gold">propriedades
+                        curativas</strong>.
+                    Combine ingredientes para criar elixires poderosos!
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="material-table w-full text-sm">
+                        <thead class="text-parchment font-header">
+                            <tr>
+                                <th class="p-3 text-left">Propriedade</th>
+                                <th class="p-3 text-left">Descrição</th>
+                                <th class="p-3 text-center">Cor Associada</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-steel">
+                            <tr>
+                                <td class="p-3 font-header text-amber-400"><i
+                                        class="fas fa-band-aid mr-2"></i>Antisséptico</td>
+                                <td class="p-3">Previne infecções e limpa ferimentos superficiais.</td>
+                                <td class="p-3 text-center"><span class="inline-block w-4 h-4 rounded"
+                                        style="background: rgb(139, 69, 19)"></span> Marrom</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-header text-red-400"><i
+                                        class="fas fa-heart-pulse mr-2"></i>Cicatrizante</td>
+                                <td class="p-3">Acelera a regeneração de ferimentos e tecidos.</td>
+                                <td class="p-3 text-center"><span class="inline-block w-4 h-4 rounded"
+                                        style="background: rgb(255, 0, 0)"></span> Vermelho</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-header text-green-400"><i
+                                        class="fas fa-spray-can mr-2"></i>Desinfetante</td>
+                                <td class="p-3">Elimina contaminantes e purifica ferimentos.</td>
+                                <td class="p-3 text-center"><span class="inline-block w-4 h-4 rounded"
+                                        style="background: rgb(0, 128, 0)"></span> Verde</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-header text-white"><i class="fas fa-pills mr-2"></i>Analgésico</td>
+                                <td class="p-3">Alivia a dor e fornece conforto ao paciente.</td>
+                                <td class="p-3 text-center"><span
+                                        class="inline-block w-4 h-4 rounded bg-white border border-gray-500"></span>
+                                    Branco</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-header text-purple-400"><i class="fas fa-tint mr-2"></i>Hemostático
+                                </td>
+                                <td class="p-3">Estanca sangramentos e previne hemorragias.</td>
+                                <td class="p-3 text-center"><span class="inline-block w-4 h-4 rounded"
+                                        style="background: rgb(106, 90, 205)"></span> Roxo</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-header text-cyan-400"><i
+                                        class="fas fa-shield-virus mr-2"></i>Antibactericida</td>
+                                <td class="p-3">Combate infecções bacterianas ao longo do tempo.</td>
+                                <td class="p-3 text-center"><span class="inline-block w-4 h-4 rounded"
+                                        style="background: rgb(173, 216, 230)"></span> Azul claro</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mystery-box p-4 mt-6 text-center">
+                    <p class="text-purple-300 text-sm italic">
+                        <i class="fas fa-brain mr-2"></i>
+                        "Qual propriedade combate qual doença? Isso é um segredo que apenas os médicos experientes
+                        conhecem..."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Criando Elixires -->
+            <section id="elixires">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-prescription-bottle mr-3 text-purple-400"></i>Criando Elixires
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Para criar medicamentos, você precisa de um <strong class="text-gold">contêiner</strong>
+                    (frasco, bandagem ou seringa) e <strong class="text-green-400">ingredientes medicinais</strong>.
+                </p>
+
+                <div class="section-card p-5 mb-6">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-list-ol mr-2"></i>Passo a Passo</h3>
+                    <ol class="space-y-3 text-sm text-steel">
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">1</span>
+                            <span>Obtenha um <strong class="text-parchment">contêiner</strong> (Frasco, Bandagem Vazia
+                                ou Seringa Vazia)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">2</span>
+                            <span>Ative o contêiner com uma <strong class="text-purple-400">Mistura de
+                                    Elixir</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">3</span>
+                            <span>Adicione até <strong class="text-green-400">2 ingredientes medicinais</strong> ao
+                                contêiner</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">4</span>
+                            <span>O elixir terá as propriedades combinadas dos ingredientes</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div class="section-card p-4 text-center">
+                        <i class="fas fa-flask text-4xl text-purple-400 mb-3"></i>
+                        <h4 class="font-header text-parchment mb-1">Elixir</h4>
+                        <p class="text-xs text-steel">Bebível. Efeito interno rápido.</p>
+                    </div>
+                    <div class="section-card p-4 text-center">
+                        <i class="fas fa-band-aid text-4xl text-amber-400 mb-3"></i>
+                        <h4 class="font-header text-parchment mb-1">Bandagem Tratada</h4>
+                        <p class="text-xs text-steel">Aplicada em ferimentos externos.</p>
+                    </div>
+                    <div class="section-card p-4 text-center">
+                        <i class="fas fa-syringe text-4xl text-blue-400 mb-3"></i>
+                        <h4 class="font-header text-parchment mb-1">Injeção</h4>
+                        <p class="text-xs text-steel">Efeito direto na corrente sanguínea.</p>
+                    </div>
+                </div>
+
+                <div class="info-box p-4">
+                    <h4 class="text-gold font-header mb-2"><i class="fas fa-info-circle mr-2"></i>Perfil do Contêiner
+                    </h4>
+                    <p class="text-steel text-sm">
+                        Cada contêiner tem um <strong class="text-parchment">perfil de mistura</strong> que multiplica
+                        certas propriedades:
+                    </p>
+                    <ul class="text-sm text-steel mt-2 space-y-1 list-disc pl-6">
+                        <li><strong class="text-green-400">Tipo Principal:</strong> Multiplicador aumentado</li>
+                        <li><strong class="text-yellow-400">Tipos Normais:</strong> Multiplicador padrão</li>
+                        <li><strong class="text-red-400">Tipo Contrário:</strong> Multiplicador reduzido</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-dark/90 border-t border-gold/20 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-steel text-sm">
+                <i class="fas fa-scroll text-gold mr-2"></i>
+                Medieval Wiki - Guia do Sistema Médico
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

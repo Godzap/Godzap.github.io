@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coletor - Caça e Esfolamento | Medieval Wiki</title>
+    <meta name="description"
+        content="Guia completo da profissão de Coletor - caça de criaturas, esfolamento e coleta de recursos em Nornheim.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'parchment': '#e8dcc4',
+                        'parchment-dark': '#d4c4a8',
+                        'ink': '#2c2416',
+                        'gold': '#c9a227',
+                        'gold-dark': '#8b7023',
+                        'leather': '#8B4513',
+                        'steel': '#b5b5b5',
+                        'stone-dark': '#1a1a1a',
+                        'stone-medium': '#2d2d2d',
+                        'tier0': '#8b9467',
+                        'tier1': '#6b8e23',
+                        'tier2': '#ffa500',
+                        'tier3': '#dc143c',
+                        'tier4': '#9400d3',
+                    },
+                    fontFamily: {
+                        'medieval': ['MedievalSharp', 'cursive'],
+                        'header': ['Almendra', 'serif'],
+                        'body': ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Almendra:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+        }
+
+        .nav-pill {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill:hover {
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0.2) 100%);
+            border-color: rgba(201, 162, 39, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .header-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
+        }
+
+        .section-card {
+            background: linear-gradient(180deg, rgba(45, 45, 45, 0.6) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 0.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.15) 0%, rgba(139, 64, 19, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .formula-box {
+            background: linear-gradient(180deg, rgba(60, 90, 60, 0.2) 0%, rgba(40, 60, 40, 0.3) 100%);
+            border: 1px solid rgba(90, 140, 90, 0.3);
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .material-table {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .material-table th {
+            background: linear-gradient(180deg, rgba(139, 64, 19, 0.4) 0%, rgba(139, 64, 19, 0.2) 100%);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .material-table tr:hover td {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .gold-glow {
+            animation: goldGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes goldGlow {
+            from {
+                text-shadow: 0 0 10px #c9a227, 0 0 20px #8b7023;
+            }
+
+            to {
+                text-shadow: 0 0 15px #c9a227, 0 0 30px #8b7023;
+            }
+        }
+
+        .creature-card {
+            transition: all 0.3s ease;
+        }
+
+        .creature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tier-badge {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+        }
+
+        .tier-0 {
+            background: rgba(139, 148, 103, 0.3);
+            border: 1px solid #8b9467;
+            color: #8b9467;
+        }
+
+        .tier-1 {
+            background: rgba(107, 142, 35, 0.3);
+            border: 1px solid #6b8e23;
+            color: #9acd32;
+        }
+
+        .tier-2 {
+            background: rgba(255, 165, 0, 0.3);
+            border: 1px solid #ffa500;
+            color: #ffa500;
+        }
+
+        .tier-3 {
+            background: rgba(220, 20, 60, 0.3);
+            border: 1px solid #dc143c;
+            color: #ff6b6b;
+        }
+
+        .tier-4 {
+            background: rgba(148, 0, 211, 0.3);
+            border: 1px solid #9400d3;
+            color: #da70d6;
+        }
+    </style>
+</head>
+
+<body class="text-parchment">
+    <!-- Navigation Header -->
+    <header class="bg-stone-dark/90 border-b border-gold/20 sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <i class="fas fa-scroll text-gold text-2xl"></i>
+                    <span class="text-xl font-header text-gold">Medieval Wiki</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-parchment hover:text-gold transition-colors">Início</a>
+                    <a href="forja.html" class="text-parchment hover:text-gold transition-colors">Forja</a>
+                    <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors">Culinária</a>
+                    <a href="comercio.html" class="text-parchment hover:text-gold transition-colors">Comércio</a>
+                    <a href="medicina.html" class="text-parchment hover:text-gold transition-colors">Medicina</a>
+                    <a href="coletor.html" class="text-gold border-b border-gold">Coletor</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-dark via-transparent to-stone-dark"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-medieval text-gold mb-4 gold-glow">
+                <i class="fas fa-feather-alt mr-4"></i>Coletor
+            </h1>
+            <p class="text-xl text-steel max-w-2xl mx-auto">
+                A arte de caçar criaturas e coletar seus recursos. Peles, ossos, gordura e componentes raros aguardam os
+                caçadores habilidosos.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- Quick Navigation -->
+        <section class="flex flex-wrap justify-center gap-3 mb-10">
+            <a href="#esfolamento" class="nav-pill text-parchment"><i class="fas fa-cut mr-2"></i>Esfolamento</a>
+            <a href="#poder" class="nav-pill text-parchment"><i class="fas fa-dumbbell mr-2"></i>Poder de Coleta</a>
+            <a href="#criaturas" class="nav-pill text-parchment"><i class="fas fa-paw mr-2"></i>Criaturas</a>
+            <a href="#recursos" class="nav-pill text-parchment"><i class="fas fa-box mr-2"></i>Recursos</a>
+            <a href="#curtimento" class="nav-pill text-parchment"><i class="fas fa-scroll mr-2"></i>Curtimento</a>
+        </section>
+
+        <!-- Main Content Card -->
+        <div class="main-content p-8 space-y-12">
+
+            <!-- Sistema de Esfolamento -->
+            <section id="esfolamento">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-cut mr-3 text-red-400"></i>Sistema de Esfolamento
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Ao derrotar uma criatura, seu corpo permanece no chão como um <strong
+                        class="text-gold">ragdoll</strong>.
+                    Para extrair seus recursos, você precisa <strong class="text-amber-400">esfolá-la</strong>.
+                </p>
+
+                <div class="section-card p-5 mb-6">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-list-ol mr-2"></i>Como Esfolar</h3>
+                    <ol class="space-y-3 text-sm text-steel">
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">1</span>
+                            <span>Derrote uma criatura - ela cairá como um ragdoll</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">2</span>
+                            <span>Equipe uma <strong class="text-amber-400">Faca</strong> no seu inventário</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">3</span>
+                            <span>Pressione <strong class="text-parchment">E</strong> no corpo da criatura</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">4</span>
+                            <span>Aguarde <strong class="text-gold">10 segundos</strong> enquanto esfola</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">5</span>
+                            <span>Receba os recursos no inventário (ou dropados se estiver cheio)</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="info-box p-4">
+                        <h4 class="text-amber-400 font-header mb-2"><i class="fas fa-knife-kitchen mr-2"></i>Requisito:
+                            Faca</h4>
+                        <p class="text-steel text-sm">
+                            Você <strong class="text-red-400">precisa</strong> ter uma faca equipada para esfolar.
+                            Sem faca, o esfolamento não é possível.
+                        </p>
+                    </div>
+                    <div class="info-box p-4">
+                        <h4 class="text-blue-400 font-header mb-2"><i class="fas fa-star mr-2"></i>Recompensas</h4>
+                        <p class="text-steel text-sm">
+                            Esfolar concede <strong class="text-gold">+10 XP</strong> e <strong
+                                class="text-green-400">+100 XP em Melee</strong>
+                            (armazenado para uso).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Poder de Coleta -->
+            <section id="poder">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-dumbbell mr-3 text-green-400"></i>Poder de Coleta
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Seu <strong class="text-gold">Poder de Esfolamento</strong> determina o bônus nas chances de obter
+                    recursos
+                    e a <strong class="text-purple-400">raridade</strong> dos itens coletados.
+                </p>
+
+                <div class="formula-box p-4 mb-6 text-center">
+                    <p class="text-sm text-green-300 mb-2">Fórmula do Poder de Esfolamento:</p>
+                    <p class="text-lg text-green-400">
+                        <strong>Poder</strong> = (<span class="text-blue-400">Foco</span> × 1.5) +
+                        (<span class="text-red-400">Melee</span> × 4) +
+                        <span class="text-amber-400">Poder da Faca</span>
+                    </p>
+                </div>
+
+                <div class="section-card p-5 mb-6">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-chart-line mr-2"></i>Tiers de Bônus
+                    </h3>
+                    <p class="text-sm text-steel mb-4">Quanto maior seu poder, maior o bônus nas chances de drop:</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="material-table w-full text-sm">
+                            <thead class="text-parchment font-header">
+                                <tr>
+                                    <th class="p-3 text-left">Poder Máximo</th>
+                                    <th class="p-3 text-center">Bônus de Chance</th>
+                                    <th class="p-3 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-steel">
+                                <tr>
+                                    <td class="p-3">0 - 50</td>
+                                    <td class="p-3 text-center text-gray-400">+0%</td>
+                                    <td class="p-3 text-gray-500 text-xs">Iniciante</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">51 - 100</td>
+                                    <td class="p-3 text-center text-green-400">+10%</td>
+                                    <td class="p-3 text-gray-500 text-xs">Aprendiz</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">101 - 200</td>
+                                    <td class="p-3 text-center text-yellow-400">+25%</td>
+                                    <td class="p-3 text-gray-500 text-xs">Intermediário</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">201 - 300</td>
+                                    <td class="p-3 text-center text-orange-400">+40%</td>
+                                    <td class="p-3 text-gray-500 text-xs">Experiente</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">301+</td>
+                                    <td class="p-3 text-center text-purple-400">+100%</td>
+                                    <td class="p-3 text-gray-500 text-xs">Mestre</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-box p-4">
+                    <h4 class="text-purple-400 font-header mb-2"><i class="fas fa-gem mr-2"></i>Sistema de Raridade</h4>
+                    <p class="text-steel text-sm">
+                        Os recursos coletados podem ter <strong class="text-gray-400">Comum</strong>,
+                        <strong class="text-green-400">Incomum</strong>,
+                        <strong class="text-blue-400">Raro</strong>,
+                        <strong class="text-purple-400">Épico</strong> ou
+                        <strong class="text-amber-400">Lendário</strong> raridade.
+                        Quanto maior seu poder, maior a chance de raridades superiores!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Criaturas -->
+            <section id="criaturas">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-paw mr-3 text-amber-400"></i>Criaturas de Nornheim
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Diversas criaturas habitam as terras de Nornheim. Cada uma oferece recursos únicos e possui
+                    um <strong class="text-gold">Tier</strong> de dificuldade.
+                </p>
+
+                <!-- Tier 0 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-header text-tier0 mb-4 flex items-center">
+                        <span class="tier-badge tier-0 mr-3">T0</span>Criaturas Comuns
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="section-card creature-card p-3 border-l-4 border-tier0">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-frog mr-2 text-green-400"></i>Sapo</h4>
+                            <p class="text-xs text-steel">Gordura, Olhos de Sapo, Carne</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier0">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-egg mr-2 text-yellow-200"></i>Galinha</h4>
+                            <p class="text-xs text-steel">Gordura, Ossos, Pele, Ovos, Penas</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier0">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-horse mr-2 text-amber-600"></i>Veado</h4>
+                            <p class="text-xs text-steel">Carne Média, Gordura, Ossos, Pele Média</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier0">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-cloud mr-2 text-white"></i>Ovelha</h4>
+                            <p class="text-xs text-steel">Carne, Gordura, Ossos, Pele, Lã</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier0">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-carrot mr-2 text-orange-400"></i>Coelho</h4>
+                            <p class="text-xs text-steel">Carne, Gordura, Ossos, Pele, Pé de Coelho</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier 1 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-header text-tier1 mb-4 flex items-center">
+                        <span class="tier-badge tier-1 mr-3">T1</span>Criaturas Fracas
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="section-card creature-card p-3 border-l-4 border-tier1">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-bug mr-2 text-green-300"></i>Mosca Gigante</h4>
+                            <p class="text-xs text-steel">Asas de Inseto, Carne Branca</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier1">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-spider mr-2 text-gray-400"></i>Aranha</h4>
+                            <p class="text-xs text-steel">Teia, Carne Branca</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier1">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-paw mr-2 text-amber-700"></i>Urso</h4>
+                            <p class="text-xs text-steel">Carne Grande, Pele de Urso, Gordura, Ossos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-header text-tier2 mb-4 flex items-center">
+                        <span class="tier-badge tier-2 mr-3">T2</span>Criaturas Moderadas
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-dragon mr-2 text-green-500"></i>Gecko</h4>
+                            <p class="text-xs text-steel">Rabo, Olho, Pele de Gecko, Carne</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-scorpion mr-2 text-yellow-600"></i>Escorpião</h4>
+                            <p class="text-xs text-steel">Carapaça, Ferrão, Carne Branca</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-fly mr-2 text-orange-500"></i>Cazador</h4>
+                            <p class="text-xs text-steel">Probóscide, Asas, Pele, Carne</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-bug-slash mr-2 text-red-600"></i>Formiga Gigante</h4>
+                            <p class="text-xs text-steel">Pinças, Antenas, Carapaça, Carne</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-shrimp mr-2 text-blue-400"></i>Mirimidão</h4>
+                            <p class="text-xs text-steel">Pele, Núcleo, Pinças, Carne</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-locust mr-2 text-green-600"></i>Louva-deus</h4>
+                            <p class="text-xs text-steel">Garras, Presas, Carne</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-dog mr-2 text-gray-500"></i>Stalker</h4>
+                            <p class="text-xs text-steel">Pele, Dentes, Carne Vermelha</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-rat mr-2 text-gray-400"></i>Rato Gigante</h4>
+                            <p class="text-xs text-steel">Dentes de Rato</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-seedling mr-2 text-green-400"></i>Planta Gigante</h4>
+                            <p class="text-xs text-steel">Dentes, Caule, Néctar</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-paw mr-2 text-purple-500"></i>Yaogui</h4>
+                            <p class="text-xs text-steel">Palmas, Carne Vermelha</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier2">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-worm mr-2 text-amber-600"></i>Tunneler</h4>
+                            <p class="text-xs text-steel">Mãos, Carne Vermelha</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-header text-tier3 mb-4 flex items-center">
+                        <span class="tier-badge tier-3 mr-3">T3</span>Criaturas Perigosas
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="section-card creature-card p-3 border-l-4 border-tier3">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-spider mr-2 text-red-500"></i>Aranha Gigante</h4>
+                            <p class="text-xs text-steel">Teia (x6), Pele, Carne Grande</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier 4 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-header text-tier4 mb-4 flex items-center">
+                        <span class="tier-badge tier-4 mr-3">T4</span>Criaturas Lendárias
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-snowflake mr-2 text-cyan-300"></i>Urso Gélido</h4>
+                            <p class="text-xs text-steel">Carne T4, Gordura, Ossos, Pele Gigante, <span
+                                    class="text-cyan-400">Núcleo Gélido</span></p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-worm mr-2 text-amber-500"></i>Minhoca do Deserto</h4>
+                            <p class="text-xs text-steel">Pele, Dentes, Carne T4, <span class="text-orange-400">Núcleo
+                                    Incandescente</span></p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-fire mr-2 text-orange-500"></i>Formiga de Fogo</h4>
+                            <p class="text-xs text-steel">Pele, Pinças, Carne T4, <span class="text-orange-400">Núcleo
+                                    Incandescente</span></p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-spider mr-2 text-cyan-400"></i>Aranha de Gelo</h4>
+                            <p class="text-xs text-steel">Pele, Garras, Carne T4, <span class="text-cyan-400">Núcleo
+                                    Gélido</span></p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-ghost mr-2 text-cyan-200"></i>Atronach de Gelo</h4>
+                            <p class="text-xs text-steel"><span class="text-cyan-400">Núcleo Gélido</span>, Frostal,
+                                <span class="text-purple-400">Fractal de Gelo</span></p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-fire-alt mr-2 text-red-500"></i>Gecko de Fogo</h4>
+                            <p class="text-xs text-steel"><span class="text-orange-400">Núcleo Incandescente</span>,
+                                Espinho Flamejante, Pele</p>
+                        </div>
+                        <div class="section-card creature-card p-3 border-l-4 border-tier4">
+                            <h4 class="font-header text-parchment mb-1"><i
+                                    class="fas fa-frog mr-2 text-red-400"></i>Sapo de Fogo</h4>
+                            <p class="text-xs text-steel"><span class="text-orange-400">Núcleo Incandescente</span>,
+                                Olho, Pele Grande, Gordura</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recursos -->
+            <section id="recursos">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-box mr-3 text-amber-400"></i>Tipos de Recursos
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    Cada criatura pode fornecer diferentes tipos de recursos. Aqui estão as principais categorias:
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="section-card p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded bg-amber-800 flex items-center justify-center mr-3">
+                                <i class="fas fa-scroll text-amber-300"></i>
+                            </div>
+                            <h4 class="font-header text-amber-400">Peles</h4>
+                        </div>
+                        <p class="text-xs text-steel">Pequena, Média, Grande, Urso, Gecko, Mirimidão, etc. Usadas para
+                            curtir couro.</p>
+                    </div>
+
+                    <div class="section-card p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded bg-red-800 flex items-center justify-center mr-3">
+                                <i class="fas fa-drumstick-bite text-red-300"></i>
+                            </div>
+                            <h4 class="font-header text-red-400">Carnes</h4>
+                        </div>
+                        <p class="text-xs text-steel">Branca e Vermelha em vários tiers (T1-T4). Usadas na culinária.
+                        </p>
+                    </div>
+
+                    <div class="section-card p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded bg-yellow-700 flex items-center justify-center mr-3">
+                                <i class="fas fa-droplet text-yellow-300"></i>
+                            </div>
+                            <h4 class="font-header text-yellow-400">Gordura</h4>
+                        </div>
+                        <p class="text-xs text-steel">Gordura animal. Usada para culinária e crafts diversos.</p>
+                    </div>
+
+                    <div class="section-card p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded bg-gray-700 flex items-center justify-center mr-3">
+                                <i class="fas fa-bone text-gray-300"></i>
+                            </div>
+                            <h4 class="font-header text-gray-400">Ossos</h4>
+                        </div>
+                        <p class="text-xs text-steel">Ossos de animais. Usados para crafts e componentes.</p>
+                    </div>
+
+                    <div class="section-card p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded bg-purple-700 flex items-center justify-center mr-3">
+                                <i class="fas fa-gem text-purple-300"></i>
+                            </div>
+                            <h4 class="font-header text-purple-400">Componentes Especiais</h4>
+                        </div>
+                        <p class="text-xs text-steel">Núcleos, Ferrões, Garras, Teias, etc. Usados em receitas
+                            especiais.</p>
+                    </div>
+
+                    <div class="section-card p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded bg-cyan-700 flex items-center justify-center mr-3">
+                                <i class="fas fa-egg text-cyan-300"></i>
+                            </div>
+                            <h4 class="font-header text-cyan-400">Ovos / Filhotes</h4>
+                        </div>
+                        <p class="text-xs text-steel">10% de chance. Podem ser usados para criação ou culinária.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Curtimento -->
+            <section id="curtimento">
+                <h2 class="text-3xl font-header text-gold mb-2 flex items-center">
+                    <i class="fas fa-scroll mr-3 text-amber-600"></i>Curtimento de Peles
+                </h2>
+                <div class="header-divider w-1/4 mb-6"></div>
+
+                <p class="text-steel mb-6">
+                    As peles coletadas precisam ser <strong class="text-gold">curtidas</strong> para se tornarem couro
+                    utilizável.
+                </p>
+
+                <div class="section-card p-5 mb-6">
+                    <h3 class="text-xl font-header text-gold mb-4"><i class="fas fa-clock mr-2"></i>Processo de
+                        Curtimento</h3>
+                    <ol class="space-y-3 text-sm text-steel">
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">1</span>
+                            <span>Obtenha uma <strong class="text-parchment">Pele</strong> de qualquer criatura</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">2</span>
+                            <span>A pele possui um estado <strong class="text-amber-400">"isCuring"</strong> (em
+                                processo)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">3</span>
+                            <span>Após um tempo, ela se torna <strong class="text-green-400">"cured"</strong>
+                                (curada)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="bg-gold/30 text-gold rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 font-bold text-xs">4</span>
+                            <span>Use a pele curada para criar <strong class="text-gold">Couro</strong> nas
+                                bancadas</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="info-box p-4">
+                    <h4 class="text-amber-400 font-header mb-2"><i class="fas fa-info-circle mr-2"></i>Tipos de Peles e
+                        Couros</h4>
+                    <p class="text-steel text-sm mb-3">Cada tipo de pele produz um couro específico:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+                        <span class="text-steel">• Pele Pequena → Couro Pequeno</span>
+                        <span class="text-steel">• Pele Média → Couro Médio</span>
+                        <span class="text-steel">• Pele Grande → Couro Grande</span>
+                        <span class="text-steel">• Pele de Urso → Couro de Urso</span>
+                        <span class="text-steel">• Pele de Gecko → Couro de Gecko</span>
+                        <span class="text-steel">• etc.</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-dark/90 border-t border-gold/20 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-steel text-sm">
+                <i class="fas fa-scroll text-gold mr-2"></i>
+                Medieval Wiki - Guia do Coletor
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
