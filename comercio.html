@@ -69,6 +69,39 @@
             transform: translateY(-2px);
         }
 
+                .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #e8dcc4;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .active-page {
+            color: #c9a227 !important;
+            background-color: rgba(201, 162, 39, 0.4) !important;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .dropdown-content a:hover {background-color: #353535;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover  {background-color: rgba(201, 162, 39, 0.4);}
+
         .main-content {
             background: linear-gradient(180deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
             border: 1px solid rgba(201, 162, 39, 0.2);
@@ -150,10 +183,18 @@
                 </a>
                 <nav class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-parchment hover:text-gold transition-colors">Início</a>
-                    <a href="fazenda.html" class="text-parchment hover:text-gold transition-colors">Fazenda</a>
-                    <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors">Culinária</a>
-                    <a href="forja.html" class="text-parchment hover:text-gold transition-colors">Forja</a>
-                    <a href="comercio.html" class="text-gold border-b border-gold">Comércio</a>
+                    <div class="dropdown">
+                        <button class="dropbtn text-parchment hover:text-gold transition-colors">Profissões <i class="fas fa-chevron-down ml-1 text-sm"></i></button>
+                        <div class="dropdown-content">
+                            <a href="alquimia.html" class="text-parchment hover:text-gold transition-colors">Alquimia</a>
+                            <a href="comercio.html" class="text-parchment hover:text-gold transition-colors active-page">Comércio</a>
+                            <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors">Culinária</a>
+                            <a href="coletor.html" class="text-gold border-gold transition-colors">Coletor</a>
+                            <a href="fazenda.html" class="text-parchment hover:text-gold transition-colors">Fazenda</a>
+                            <a href="forja.html" class="dropbtn text-parchment hover:text-gold transition-colors">Forja</a>
+                            <a href="medicina.html" class="text-parchment border-b hover:text-gold transition-colors">Medicina</a>                       
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>

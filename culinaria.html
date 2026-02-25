@@ -183,6 +183,39 @@
             transform: translateY(-2px);
         }
 
+                .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #e8dcc4;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .active-page {
+            color: #c9a227 !important;
+            background-color: rgba(201, 162, 39, 0.4) !important;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .dropdown-content a:hover {background-color: #353535;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover  {background-color: rgba(201, 162, 39, 0.4);}
+
         .step-number {
             display: inline-flex;
             align-items: center;
@@ -280,10 +313,19 @@
                     </div>
                 </div>
                 <nav class="desktop-nav hidden lg:flex items-center space-x-6 text-parchment font-header">
-                    <a href="index.html" class="hover:text-gold transition-colors tracking-wider">Home</a>
-                    <a href="armas.html" class="hover:text-gold transition-colors tracking-wider">Armas</a>
-                    <a href="armaduras.html" class="hover:text-gold transition-colors tracking-wider">Armaduras</a>
-                    <a href="fazenda.html" class="hover:text-gold transition-colors tracking-wider">Fazenda</a>
+                    <a href="index.html" class="text-parchment hover:text-gold transition-colors">Início</a>
+                    <div class="dropdown">
+                        <button class="dropbtn text-parchment hover:text-gold transition-colors">Profissões <i class="fas fa-chevron-down ml-1 text-sm"></i></button>
+                        <div class="dropdown-content">
+                            <a href="alquimia.html" class="text-parchment hover:text-gold transition-colors">Alquimia</a>
+                            <a href="comercio.html" class="text-parchment hover:text-gold transition-colors">Comércio</a>
+                            <a href="culinaria.html" class="text-parchment hover:text-gold transition-colors active-page">Culinária</a>
+                            <a href="coletor.html" class="text-gold border-gold transition-colors">Coletor</a>
+                            <a href="fazenda.html" class="text-parchment hover:text-gold transition-colors">Fazenda</a>
+                            <a href="forja.html" class="dropbtn text-parchment hover:text-gold transition-colors">Forja</a>
+                            <a href="medicina.html" class="text-parchment border-b hover:text-gold transition-colors">Medicina</a>                       
+                        </div>
+                    </div>
                 </nav>
                 <div class="mobile-menu lg:hidden">
                     <button id="mobileMenuToggle" class="text-parchment"><i class="fas fa-bars text-2xl"></i></button>
